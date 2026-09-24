@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="665" viewBox="0 0 1200 665" role="img" aria-labelledby="title desc">
+  <title id="title">OpenWiki 代码仓生成与维护主链</title>
+  <desc id="desc">从入口层向下进入生成层。生成层从左到右依次为 Begin、Plan、Page Worker、Submit Claim、Finish。Page Worker 和 Submit Claim 逐页循环，最终生成 Wiki 页面、导航、证据和逐页完成账本。</desc>
+  <defs>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; fill: #263445; }
+      .title { font-size: 27px; font-weight: 700; letter-spacing: .2px; }
+      .subtitle { font-size: 14px; fill: #64748b; }
+      .layer { font-size: 18px; font-weight: 700; }
+      .entry-title { font-size: 16px; font-weight: 700; fill: #224b2a; }
+      .entry-sub { font-size: 12px; fill: #365b3b; }
+      .step { font-size: 13px; font-weight: 700; fill: #8b631f; }
+      .step-name { font-size: 18px; font-weight: 700; }
+      .action { font-size: 14px; font-weight: 600; }
+      .note { font-size: 12px; fill: #6b604b; }
+      .output-title { font-size: 14px; font-weight: 700; fill: #244363; }
+      .output-path { font-size: 12px; fill: #385775; }
+      .caption { font-size: 12px; fill: #64748b; }
+      .arrow { fill: none; stroke: #334155; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M1,1 L7,4 L1,7 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="665" fill="#ffffff"/>
+  <text class="title" x="38" y="43">OpenWiki 代码仓：生成与维护主链</text>
+  <text class="subtitle" x="39" y="69">自上而下看层次；中间按 01 → 05 阅读。UPDATE 的差异写在对应步骤内。</text>
+
+  <!-- Entry layer -->
+  <rect x="38" y="92" width="1124" height="82" rx="7" fill="#eaf3e6"/>
+  <text class="layer" x="59" y="139">入口层</text>
+  <rect x="150" y="108" width="311" height="50" rx="5" fill="#c8dfbc"/>
+  <rect x="473" y="108" width="311" height="50" rx="5" fill="#c8dfbc"/>
+  <rect x="796" y="108" width="311" height="50" rx="5" fill="#c8dfbc"/>
+  <text class="entry-title" x="305" y="129" text-anchor="middle">CLI · INIT</text>
+  <text class="entry-sub" x="305" y="146" text-anchor="middle">首次生成</text>
+  <text class="entry-title" x="628" y="129" text-anchor="middle">CLI · UPDATE</text>
+  <text class="entry-sub" x="628" y="146" text-anchor="middle">增量维护</text>
+  <text class="entry-title" x="951" y="129" text-anchor="middle">MCP 宿主</text>
+  <text class="entry-sub" x="951" y="146" text-anchor="middle">调用同一生成协议</text>
+  <path class="arrow" d="M600 176 V197"/>
+
+  <!-- Generation layer -->
+  <rect x="38" y="207" width="1124" height="310" rx="7" fill="#fff5d9"/>
+  <text class="layer" x="58" y="244">生成层</text>
+
+  <rect x="146" y="228" width="186" height="233" rx="5" fill="#ffecb4"/>
+  <rect x="354" y="228" width="186" height="233" rx="5" fill="#ffecb4"/>
+  <rect x="562" y="228" width="186" height="233" rx="5" fill="#ffecb4"/>
+  <rect x="770" y="228" width="186" height="233" rx="5" fill="#ffecb4"/>
+  <rect x="978" y="228" width="165" height="233" rx="5" fill="#ffecb4"/>
+
+  <text class="step" x="239" y="251" text-anchor="middle">01</text>
+  <text class="step-name" x="239" y="277" text-anchor="middle">Begin</text>
+  <rect x="162" y="291" width="154" height="28" rx="4" fill="#efcb82"/>
+  <rect x="162" y="327" width="154" height="28" rx="4" fill="#efcb82"/>
+  <rect x="162" y="363" width="154" height="28" rx="4" fill="#efcb82"/>
+  <text class="action" x="239" y="310" text-anchor="middle">读取仓库状态</text>
+  <text class="action" x="239" y="346" text-anchor="middle">建立源码快照</text>
+  <text class="action" x="239" y="382" text-anchor="middle">恢复运行会话</text>
+  <text class="note" x="239" y="416" text-anchor="middle">UPDATE：旧 Claim 预检</text>
+  <text class="note" x="239" y="434" text-anchor="middle">无变化可结束</text>
+
+  <text class="step" x="447" y="251" text-anchor="middle">02</text>
+  <text class="step-name" x="447" y="277" text-anchor="middle">Plan</text>
+  <rect x="370" y="291" width="154" height="28" rx="4" fill="#efcb82"/>
+  <rect x="370" y="327" width="154" height="28" rx="4" fill="#efcb82"/>
+  <rect x="370" y="363" width="154" height="28" rx="4" fill="#efcb82"/>
+  <text class="action" x="447" y="310" text-anchor="middle">Agent 探索源码</text>
+  <text class="action" x="447" y="346" text-anchor="middle">拆主题与页面</text>
+  <text class="action" x="447" y="382" text-anchor="middle">关联 related paths</text>
+  <text class="note" x="447" y="416" text-anchor="middle">PageJob 队列</text>
+  <text class="note" x="447" y="434" text-anchor="middle">暂存于 .run.json</text>
+
+  <text class="step" x="655" y="251" text-anchor="middle">03</text>
+  <text class="step-name" x="655" y="277" text-anchor="middle">Page Worker</text>
+  <rect x="578" y="291" width="154" height="28" rx="4" fill="#efcb82"/>
+  <rect x="578" y="327" width="154" height="28" rx="4" fill="#efcb82"/>
+  <rect x="578" y="363" width="154" height="28" rx="4" fill="#efcb82"/>
+  <text class="action" x="655" y="310" text-anchor="middle">取一个 PageJob</text>
+  <text class="action" x="655" y="346" text-anchor="middle">按需读取代码</text>
+  <text class="action" x="655" y="382" text-anchor="middle">正文＋Claim 决策</text>
+  <text class="note" x="655" y="416" text-anchor="middle">逐页重复</text>
+  <text class="note" x="655" y="434" text-anchor="middle">quickstart 排最后</text>
+
+  <text class="step" x="863" y="251" text-anchor="middle">04</text>
+  <text class="step-name" x="863" y="277" text-anchor="middle">Submit / Claim</text>
+  <rect x="786" y="291" width="154" height="28" rx="4" fill="#efcb82"/>
+  <rect x="786" y="327" width="154" height="28" rx="4" fill="#efcb82"/>
+  <rect x="786" y="363" width="154" height="28" rx="4" fill="#efcb82"/>
+  <text class="action" x="863" y="310" text-anchor="middle">解析 repo:// 行号</text>
+  <text class="action" x="863" y="346" text-anchor="middle">核验源码证据</text>
+  <text class="action" x="863" y="382" text-anchor="middle">保存页面＋sidecar</text>
+  <text class="note" x="863" y="416" text-anchor="middle">校验失败则</text>
+  <text class="note" x="863" y="434" text-anchor="middle">修正当前页</text>
+
+  <text class="step" x="1060" y="251" text-anchor="middle">05</text>
+  <text class="step-name" x="1060" y="277" text-anchor="middle">Finish</text>
+  <rect x="994" y="291" width="133" height="28" rx="4" fill="#efcb82"/>
+  <rect x="994" y="327" width="133" height="28" rx="4" fill="#efcb82"/>
+  <rect x="994" y="363" width="133" height="28" rx="4" fill="#efcb82"/>
+  <text class="action" x="1060" y="310" text-anchor="middle">链接 / Mermaid</text>
+  <text class="action" x="1060" y="346" text-anchor="middle">index / 来源</text>
+  <text class="action" x="1060" y="382" text-anchor="middle">维护状态</text>
+  <text class="note" x="1060" y="416" text-anchor="middle">全部页面完成</text>
+  <text class="note" x="1060" y="434" text-anchor="middle">后统一收尾</text>
+
+  <path class="arrow" d="M333 339 H349"/>
+  <path class="arrow" d="M541 339 H557"/>
+  <path class="arrow" d="M749 339 H765"/>
+  <path class="arrow" d="M957 339 H973"/>
+  <path d="M562 479 H956" stroke="#b69b66" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <text class="note" x="759" y="498" text-anchor="middle">03 → 04 按页循环；队列完成后进入 05</text>
+
+  <path class="arrow" d="M600 519 V541"/>
+
+  <!-- File layer -->
+  <rect x="38" y="552" width="1124" height="82" rx="7" fill="#e7f1fb"/>
+  <text class="layer" x="59" y="599">文件层</text>
+  <rect x="148" y="568" width="190" height="50" rx="5" fill="#c4ddf5"/>
+  <rect x="348" y="568" width="190" height="50" rx="5" fill="#c4ddf5"/>
+  <rect x="548" y="568" width="190" height="50" rx="5" fill="#c4ddf5"/>
+  <rect x="748" y="568" width="190" height="50" rx="5" fill="#c4ddf5"/>
+  <rect x="948" y="568" width="190" height="50" rx="5" fill="#c4ddf5"/>
+  <text class="output-title" x="243" y="588" text-anchor="middle">发现提示 · 可选</text>
+  <text class="output-path" x="243" y="606" text-anchor="middle">AGENTS / CLAUDE.md</text>
+  <text class="output-title" x="443" y="588" text-anchor="middle">任务路由 · 必有</text>
+  <text class="output-path" x="443" y="606" text-anchor="middle">quickstart.md</text>
+  <text class="output-title" x="643" y="588" text-anchor="middle">目录导航 · 自动生成</text>
+  <text class="output-path" x="643" y="606" text-anchor="middle">index.md</text>
+  <text class="output-title" x="843" y="588" text-anchor="middle">专题页＋证据</text>
+  <text class="output-path" x="843" y="606" text-anchor="middle">*.md ＋ .claims/*.json</text>
+  <text class="output-title" x="1043" y="588" text-anchor="middle">逐页完成账本</text>
+  <text class="output-path" x="1043" y="606" text-anchor="middle">.page-manifest.json</text>
+
+  <text class="caption" x="39" y="654">范围：代码仓 INIT / UPDATE；不含个人知识库 ingest。文件层展示产物与阅读入口，不表示这些文件必须按从左到右读取。</text>
+</svg>
