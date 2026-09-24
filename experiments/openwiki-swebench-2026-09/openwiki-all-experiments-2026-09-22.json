@@ -1,0 +1,161 @@
+{
+  "frozen_cells": 18,
+  "trial_evidence_count": 125,
+  "arms": {
+    "baseline": {
+      "cells": 18,
+      "official": {
+        "resolved": 15,
+        "unresolved": 3
+      },
+      "mean_seconds": 1002.6777389623845,
+      "mean_tokens_total": 3884564.111111111,
+      "mean_tokens_noncache": 403003.22222222225,
+      "mean_iterations": 65.44444444444444,
+      "final_attempt_tokens_total": 69922154,
+      "wiki_nonempty_read": 0,
+      "wiki_before_first_edit": 0,
+      "quickstart_nonempty": 0,
+      "index_nonempty": 0,
+      "quickstart_and_topic_before_edit": 0,
+      "nav_packet_verified": 0,
+      "protocol_valid": 18,
+      "protocol_invalid": 0,
+      "wiki_bytes_read_total": 0,
+      "trace_count": 18
+    },
+    "forced": {
+      "cells": 18,
+      "official": {
+        "resolved": 15,
+        "unresolved": 3
+      },
+      "mean_seconds": 1109.284264728013,
+      "mean_tokens_total": 4277842.222222222,
+      "mean_tokens_noncache": 461970.77777777775,
+      "mean_iterations": 62.833333333333336,
+      "final_attempt_tokens_total": 77001160,
+      "wiki_nonempty_read": 18,
+      "wiki_before_first_edit": 18,
+      "quickstart_nonempty": 18,
+      "index_nonempty": 0,
+      "quickstart_and_topic_before_edit": 18,
+      "nav_packet_verified": 0,
+      "protocol_valid": 18,
+      "protocol_invalid": 0,
+      "wiki_bytes_read_total": 424993,
+      "trace_count": 18
+    },
+    "optional": {
+      "cells": 18,
+      "official": {
+        "resolved": 15,
+        "unresolved": 3
+      },
+      "mean_seconds": 1137.457503402709,
+      "mean_tokens_total": 5007742.777777778,
+      "mean_tokens_noncache": 629338.7222222222,
+      "mean_iterations": 65.72222222222223,
+      "final_attempt_tokens_total": 90139370,
+      "wiki_nonempty_read": 5,
+      "wiki_before_first_edit": 2,
+      "quickstart_nonempty": 1,
+      "index_nonempty": 0,
+      "quickstart_and_topic_before_edit": 1,
+      "nav_packet_verified": 0,
+      "protocol_valid": 18,
+      "protocol_invalid": 0,
+      "wiki_bytes_read_total": 10104,
+      "trace_count": 18
+    },
+    "nav_packet": {
+      "cells": 18,
+      "official": {
+        "resolved": 14,
+        "unresolved": 4
+      },
+      "mean_seconds": 1558.4922311144571,
+      "mean_tokens_total": 4757041.833333333,
+      "mean_tokens_noncache": 643330.0555555555,
+      "mean_iterations": 70.11111111111111,
+      "final_attempt_tokens_total": 85626753,
+      "wiki_nonempty_read": 0,
+      "wiki_before_first_edit": 0,
+      "quickstart_nonempty": 0,
+      "index_nonempty": 0,
+      "quickstart_and_topic_before_edit": 0,
+      "nav_packet_verified": 18,
+      "protocol_valid": 18,
+      "protocol_invalid": 0,
+      "wiki_bytes_read_total": 0,
+      "trace_count": 18
+    },
+    "grep_optional": {
+      "cells": 18,
+      "official": {
+        "resolved": 15,
+        "unresolved": 3
+      },
+      "mean_seconds": 1082.4990025428642,
+      "mean_tokens_total": 3883684.388888889,
+      "mean_tokens_noncache": 379119.05555555556,
+      "mean_iterations": 66.83333333333333,
+      "final_attempt_tokens_total": 69906319,
+      "wiki_nonempty_read": 0,
+      "wiki_before_first_edit": 0,
+      "quickstart_nonempty": 0,
+      "index_nonempty": 0,
+      "quickstart_and_topic_before_edit": 0,
+      "nav_packet_verified": 0,
+      "protocol_valid": 18,
+      "protocol_invalid": 0,
+      "wiki_bytes_read_total": 0,
+      "trace_count": 18
+    },
+    "agents_routed": {
+      "cells": 17,
+      "official": {
+        "resolved": 13,
+        "unresolved": 4
+      },
+      "mean_seconds": 1586.3592921962195,
+      "mean_tokens_total": 6886967.823529412,
+      "mean_tokens_noncache": 833889.2352941176,
+      "mean_iterations": 71.6470588235294,
+      "final_attempt_tokens_total": 117078453,
+      "wiki_nonempty_read": 17,
+      "wiki_before_first_edit": 17,
+      "quickstart_nonempty": 17,
+      "index_nonempty": 17,
+      "quickstart_and_topic_before_edit": 17,
+      "nav_packet_verified": 0,
+      "protocol_valid": 17,
+      "protocol_invalid": 0,
+      "wiki_bytes_read_total": 428043,
+      "trace_count": 17
+    },
+    "wiki_before_source_v2_fixed_glm53": {
+      "cells": 18,
+      "official": {
+        "resolved": 12,
+        "unresolved": 4,
+        "empty_patch": 2
+      },
+      "mean_seconds": 1657.9276933469291,
+      "mean_tokens_total": 5525577.055555556,
+      "mean_tokens_noncache": 227649.94444444444,
+      "mean_iterations": 61.5,
+      "final_attempt_tokens_total": 99460387,
+      "wiki_nonempty_read": 18,
+      "wiki_before_first_edit": 16,
+      "quickstart_nonempty": 18,
+      "index_nonempty": 0,
+      "quickstart_and_topic_before_edit": 16,
+      "nav_packet_verified": 0,
+      "protocol_valid": 7,
+      "protocol_invalid": 11,
+      "wiki_bytes_read_total": 449049,
+      "trace_count": 18
+    }
+  }
+}
