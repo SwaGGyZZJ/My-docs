@@ -11,3 +11,4 @@
 ## 实验报告
 
 - [CannBot × OpenWiki SWE-bench 实验汇总](./experiments/openwiki-swebench-2026-09/README.md)
+- [920C OpenWiki × Optimizer 算子实验结果快照](./experiments/openwiki-optimizer-920c-2026-09/README.md)

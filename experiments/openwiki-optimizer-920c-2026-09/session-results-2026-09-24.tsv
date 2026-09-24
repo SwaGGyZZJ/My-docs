@@ -1,0 +1,70 @@
+阶段	算子	重复	组别	模型	状态	性能指标	基线中位数	最终中位数	性能提升(%)	性能样本数	正确性	非缓存Token	输入Token	输出Token	推理Token	缓存读取Token	缓存写入Token	耗时(分钟)	迭代轮数	源码grep次数	源码grep输出(字节)	Wiki非空读取次数	首次源码grep前Wiki读取次数	处理门禁	搜索计划标签
+formal	gf_vect_mul	1	A	cannbot/glm-5.3	正式有效	bandwidth_MBps	38778.99	46721.24	20.4808	7	pass	399097	241816	42883	114398	13640256	0	66.42	3	3	590	0	0	true	n.a.
+formal	gf_vect_mul	1	B	cannbot/glm-5.3	正式有效	bandwidth_MBps	38685.19	51876.53	34.0992	7	pass	242225	151709	25756	64760	7035072	0	38.63	3	2	3242	5	4	true	n.a.
+formal	gf_vect_mul	1	C	cannbot/glm-5.3	正式有效	bandwidth_MBps	39009.46	46137.02	18.2714	7	pass	267629	167616	30769	69244	7768896	0	44.94	3	2	1521	4	3	true	n.a.
+formal	gf_vect_mul	1	D	cannbot/glm-5.3	正式有效	bandwidth_MBps	38813.87	51282.55	32.1243	7	pass	627956	479163	52869	95924	15866368	0	63.17	2			4	0	true	n.a.
+formal	gf_vect_mul	2	A	cannbot/glm-5.3	正式有效	bandwidth_MBps	38566.13	46475.93	20.5097	7	pass	476633	291069	77498	108066	34662144	0	54.95	3	12	16450	0	0	true	n.a.
+formal	gf_vect_mul	2	B	cannbot/glm-5.3	正式有效	bandwidth_MBps	38592.44	46105.57	19.4679	7	pass	383477	241731	34427	107319	15644736	0	43.37	3	3	4769	3	2	true	n.a.
+formal	gf_vect_mul	2	C	cannbot/glm-5.3	正式有效	bandwidth_MBps	38880.46	46014.02	18.3474	7	pass	279580	184422	24710	70448	10900416	0	26.82	3	3	1993	3	2	true	n.a.
+formal	gf_vect_mul	2	D	cannbot/glm-5.3	正式有效	bandwidth_MBps	38710.25	46619.6	20.4322	7	pass	261473	161876	18629	80968	9828032	0	28.19	3	8	4875	5	5	true	n.a.
+formal	gf_vect_mul	3	A	cannbot/glm-5.3	正式有效	bandwidth_MBps	38636.24	51197.73	32.5122	7	pass	303707	189102	42244	72361	18330624	0	29.71	3	32	9086	0	0	true	n.a.
+formal	gf_vect_mul	3	B	cannbot/glm-5.3	正式有效	bandwidth_MBps	38714.91	46153.64	19.2141	7	pass	447483	288462	27181	131840	12270336	0	39.44	3	3	4780	3	2	true	n.a.
+formal	gf_vect_mul	3	C	cannbot/glm-5.3	未归档																				n.a.
+formal	gf_vect_mul	3	D	cannbot/glm-5.3	正式有效	bandwidth_MBps	38490.97	39981.96	3.8736	7	pass	580321	447273	22535	110513	14126336	0	38.72	3	5	15470	4	4	true	n.a.
+pilot	isal_zero_detect	1	A	cannbot/glm-5.3	pilot复测	bandwidth_MBps	91987.99	110833.9	20.4874	7	pass	633755	412665	67528	153562	19708224	0	78.63	3	2	108	0	0	true	not_applicable
+pilot	isal_zero_detect	1	B	cannbot/glm-5.3	pilot复测	bandwidth_MBps	91987.99	123819.18	34.6036	7	pass	588727	345482	94067	149178	28520320	0	76.21	3	4	4808	3	2	true	complete
+pilot	isal_zero_detect	1	C	cannbot/glm-5.3	pilot复测/旧plan门禁未通过	bandwidth_MBps	91987.99	95042.25	3.3203	7	pass	280396	173393	25822	81181	8883456	0	32.85	3	4	4965	3	2	false	missing
+pilot	isal_zero_detect	2	A	cannbot/glm-5.3	pilot复测	bandwidth_MBps	91987.99	116504.31	26.6517	7	pass	348295	210434	69891	67970	17871040	0	37.19	3	6	2831	0	0	true	not_applicable
+pilot	isal_zero_detect	2	B	cannbot/glm-5.3	pilot复测/旧plan门禁未通过	bandwidth_MBps	91987.99	94911.81	3.1785	7	pass	373798	229202	49708	94888	15195392	0	40.12	3	3	15686	4	2	false	partial
+pilot	isal_zero_detect	2	C	cannbot/glm-5.3	pilot复测	bandwidth_MBps	91987.99	98114.53	6.6602	7	pass	353868	223481	24920	105467	11940032	0	37.38	3	4	5864	4	2	true	complete
+pilot	isal_zero_detect	3	A	cannbot/glm-5.3	pilot未形成可比复测	bandwidth_MBps				0	pass	135244	122595	2426	10223	706496	0	9.28	0			0	0	false	not_applicable
+pilot	isal_zero_detect	3	B	cannbot/glm-5.3	pilot复测/旧plan门禁未通过	bandwidth_MBps	91987.99	116096.15	26.2079	7	pass	573687	344772	66557	162358	31052544	0	133.24	3	5	395	3	2	false	missing
+pilot	isal_zero_detect	3	C	cannbot/glm-5.3	pilot复测	bandwidth_MBps	91987.99	96728.07	5.1529	7	pass	368885	240864	43099	84922	20327680	0	37.71	3	3	375	3	2	true	complete
+formal	crc32_ieee	1	A	cannbot/glm-5.3	正式有效	bandwidth_MBps	17741.3	19725.29	11.1829	7	pass	586307	347830	59943	178534	34373056	0	77.88	2	4	2598	0	0	true	n.a.
+formal	crc32_ieee	1	B	cannbot/glm-5.3	正式有效	bandwidth_MBps	17772.84	27765.58	56.2248	7	pass	974304	545695	111513	317096	71094016	0	124.79	3	4	4367	5	2	true	n.a.
+formal	crc32_ieee	1	C	cannbot/glm-5.3	正式有效	bandwidth_MBps	17748.64	22846.45	28.7223	7	pass	764022	465158	85047	213817	69480320	0	85.64	3	8	24850	3	2	true	n.a.
+formal	crc32_ieee	1	D	cannbot/glm-5.3	未归档																				n.a.
+formal	crc32_ieee	2	A	cannbot/glm-5.3	正式有效	bandwidth_MBps	17768.78	28136.56	58.3483	7	pass	806189	510630	95933	199626	73371264	0	122.84	3	15	13146	0	0	true	n.a.
+formal	crc32_ieee	2	B	cannbot/glm-5.3	正式有效	bandwidth_MBps	17760.46	23689.62	33.384	7	pass	762582	471473	71602	219507	42144448	0	119.42	3	5	8211	4	2	true	n.a.
+formal	crc32_ieee	2	C	cannbot/glm-5.3	正式有效	bandwidth_MBps	17773.3	17774.11	0.0046	7	pass	500219	318798	32915	148506	26248448	0	74.89	3	4	6816	3	2	true	n.a.
+formal	crc32_ieee	2	D	cannbot/glm-5.3	正式有效	bandwidth_MBps	17746.29	24688.26	39.1179	7	pass	535476	315797	36387	183292	31908800	0	90.8	3	5	13177	5	5	true	n.a.
+formal	crc32_ieee	3	A	cannbot/glm-5.3	正式有效	bandwidth_MBps	17784.92	24110.49	35.567	7	pass	673029	434896	72204	165929	78912640	0	89.25	3	13	3542	0	0	true	n.a.
+formal	crc32_ieee	3	B	cannbot/glm-5.3	正式有效	bandwidth_MBps	17766.97	26497.07	49.1367	7	pass	886744	583046	79629	224069	78772416	0	87.41	3	7	3583	3	2	true	n.a.
+formal	crc32_ieee	3	C	cannbot/glm-5.3	正式有效	bandwidth_MBps	17756.48	27975.97	57.5536	7	pass	949244	645738	69631	233875	52256768	0	102.35	3	6	1238	4	3	true	n.a.
+formal	crc32_ieee	3	D	cannbot/glm-5.3	正式有效	bandwidth_MBps	17775.7	27052.52	52.1882	7	pass	803971	498118	102278	203575	74378752	0	90.58	3	10	14329	4	3	true	n.a.
+formal	libm_sin_cos_dp	1	A	cannbot/glm-5.3	正式有效	geometric_mean_sin_cos_Mops	160.03395653650665	173.86664004990075	8.6436	7	pass	431885	288449	30980	112456	29284608	0	34.84	3	25	96000	0	0	true	n.a.
+formal	libm_sin_cos_dp	1	B	cannbot/glm-5.3	正式有效	geometric_mean_sin_cos_Mops	160.6802074960169	169.01130038150893	5.1849	7	pass	403229	270852	32849	99528	22371968	0	29.96	3	9	29311	4	2	true	n.a.
+formal	libm_sin_cos_dp	1	C	cannbot/glm-5.3	正式有效	geometric_mean_sin_cos_Mops	160.2784480773878	164.51608899786777	2.6439	7	pass	394030	256324	24006	113700	19353600	0	33.15	3	9	22281	4	3	true	n.a.
+formal	libm_sin_cos_dp	1	D	cannbot/glm-5.3	正式有效	geometric_mean_sin_cos_Mops	159.74851232930104	163.52325267298812	2.3629	7	pass	348394	225252	37520	85622	26484224	0	34.61	3	22	14763	2	2	true	n.a.
+formal	libm_sin_cos_dp	2	A	cannbot/glm-5.3	正式有效	geometric_mean_sin_cos_Mops	158.25335179613495	170.43723521083416	7.699	7	pass	345788	233086	22318	90384	17519104	0	43.94	3	16	19957	0	0	true	n.a.
+formal	libm_sin_cos_dp	2	B	cannbot/glm-5.3	正式有效	geometric_mean_sin_cos_Mops	160.39163532024924	166.21454893273412	3.6304	7	pass	446745	293592	44372	108781	30156736	0	47.14	3	15	27485	6	4	true	n.a.
+formal	libm_sin_cos_dp	2	C	cannbot/glm-5.3	正式有效	geometric_mean_sin_cos_Mops	159.83661150653467	167.79391589279734	4.9784	7	pass	447985	338102	24522	85361	23339072	0	42.51	3	7	5141	4	3	true	n.a.
+formal	libm_sin_cos_dp	2	D	cannbot/glm-5.3	正式有效	geometric_mean_sin_cos_Mops	159.6881889669651	160.02405536375383	0.2103	7	pass	628022	390778	63915	173329	41589184	0	86.96	3	9	27142	6	6	true	n.a.
+formal	libm_sin_cos_dp	3	A	cannbot/glm-5.3	正式有效	geometric_mean_sin_cos_Mops	159.69894109167083	172.6422094264828	8.1048	7	pass	680757	546422	41647	92688	20627584	0	73.27	3	26	50049	0	0	true	n.a.
+formal	libm_sin_cos_dp	3	B	cannbot/glm-5.3	正式有效	geometric_mean_sin_cos_Mops	157.8427031566234	160.9512506974574	1.9694	7	pass	390982	246514	31289	113179	22997888	0	87.27	3	6	12010	3	1	true	n.a.
+formal	libm_sin_cos_dp	3	C	cannbot/glm-5.3	正式有效	geometric_mean_sin_cos_Mops	160.2140393964963	169.9199023336596	6.0581	7	pass	460325	304248	36786	119291	36482688	0	53.39	3	29	32075	5	3	true	n.a.
+formal	libm_sin_cos_dp	3	D	cannbot/glm-5.3	正式有效	geometric_mean_sin_cos_Mops	158.17467406976309	174.38070798595092	10.2457	7	pass	659526	476208	47878	135440	38179968	0	73.49	3	15	17091	2	2	true	n.a.
+formal	dftbench_double	1	A	cannbot/glm-5.3	正式有效	SLEEF_ST_Mflops	11123.8	13687.4	23.0461	7	pass	505256	343321	36845	125090	51467264	0	112.28	3	46	21566	0	0	true	n.a.
+formal	dftbench_double	1	B	cannbot/glm-5.3	正式有效	SLEEF_ST_Mflops	11054.2	13519.3	22.3001	7	pass	855679	707760	33998	113921	30002624	0	81.46	3	25	47968	4	3	true	n.a.
+formal	dftbench_double	1	C	cannbot/glm-5.3	正式有效	SLEEF_ST_Mflops	11157.3	13813	23.8024	7	pass	346537	220990	20318	105229	17592128	0	41.08	3	21	9111	4	2	true	n.a.
+formal	dftbench_double	1	D	cannbot/glm-5.3	正式有效	SLEEF_ST_Mflops	11056	14515.9	31.2943	7	pass	980783	816277	29084	135422	29771264	0	82.77	3	16	7741	5	5	true	n.a.
+formal	dftbench_double	2	A	cannbot/glm-5.3	正式有效	SLEEF_ST_Mflops	11148	14502.9	30.0942	7	pass	333926	217643	29086	87197	26305216	0	47.09	3	28	11806	0	0	true	n.a.
+formal	dftbench_double	2	B	cannbot/glm-5.3	正式有效	SLEEF_ST_Mflops	11159.6	13224.4	18.5025	7	pass	467014	327609	25835	113570	34286848	0	49.69	3	24	89091	4	2	true	n.a.
+formal	dftbench_double	2	C	cannbot/glm-5.3	正式有效	SLEEF_ST_Mflops	11081.7	13044.8	17.7148	7	pass	741161	607662	28580	104919	41942720	0	80.06	3	25	10723	4	3	true	n.a.
+formal	dftbench_double	2	D	cannbot/glm-5.3	正式有效	SLEEF_ST_Mflops	11150.1	14811.8	32.8401	7	pass	653685	382697	76167	194821	53415424	0	117.17	3	16	20158	5	5	true	n.a.
+formal	dftbench_double	3	A	cannbot/glm-5.3	未归档																				n.a.
+formal	dftbench_double	3	B	cannbot/glm-5.3	未归档																				n.a.
+formal	dftbench_double	3	C	cannbot/glm-5.3	未归档																				n.a.
+formal	dftbench_double	3	D	cannbot/glm-5.3	未归档																				n.a.
+formal	tlfloat_quad_arithmetic	1	A	cannbot/glm-5.3	正式有效	geomean_8_arithmetic_Mops_per_second	72.462079307	74.444482549	2.7358	7	pass	439339	313819	20337	105183	12798272	0	61.22	1	7	27030	0	0	true	n.a.
+formal	tlfloat_quad_arithmetic	1	B	cannbot/glm-5.3	正式有效	geomean_8_arithmetic_Mops_per_second	72.540373179	74.929071397	3.2929	7	pass	516102	343629	45968	126505	38870912	0	98.32	3	6	29431	4	3	true	n.a.
+formal	tlfloat_quad_arithmetic	1	C	cannbot/glm-5.3	正式有效	geomean_8_arithmetic_Mops_per_second	72.581960705	84.03540044	15.78	7	pass	613320	384352	53713	175255	40488448	0	80.21	3	9	11165	6	4	true	n.a.
+formal	tlfloat_quad_arithmetic	1	D	cannbot/glm-5.3	正式有效	geomean_8_arithmetic_Mops_per_second	72.517572013	75.002358777	3.4265	7	pass	342350	227372	24826	90152	17443776	0	54.16	3	13	14387	3	3	true	n.a.
+formal	tlfloat_quad_arithmetic	2	A	cannbot/glm-5.3	正式有效	geomean_8_arithmetic_Mops_per_second	72.576059558	78.224608282	7.7829	7	pass	785825	610858	41435	133532	36682240	0	78.62	3	9	11182	0	0	true	n.a.
+formal	tlfloat_quad_arithmetic	2	B	cannbot/glm-5.3	正式有效	geomean_8_arithmetic_Mops_per_second	71.786683365	75.910425948	5.7444	7	pass	763987	476475	64663	222849	53103488	0	120.92	3	6	12038	4	3	true	n.a.
+formal	tlfloat_quad_arithmetic	2	C	cannbot/glm-5.3	正式有效	geomean_8_arithmetic_Mops_per_second	72.565895443	89.157974117	22.8648	7	pass	487120	320981	38447	127692	27652224	0	63.2	3	7	6665	5	3	true	n.a.
+formal	tlfloat_quad_arithmetic	2	D	cannbot/glm-5.3	正式有效	geomean_8_arithmetic_Mops_per_second	72.551885766	75.214149387	3.6695	7	pass	668357	400240	73478	194639	56254528	0	107.58	3	25	11200	3	1	true	n.a.
+formal	tlfloat_quad_arithmetic	3	A	cannbot/glm-5.3	正式有效	geomean_8_arithmetic_Mops_per_second	72.55654787	76.952044252	6.058	7	pass	398278	282884	22206	93188	20671936	0	54.13	3	1	41	0	0	true	n.a.
+formal	tlfloat_quad_arithmetic	3	B	cannbot/glm-5.3	正式有效	geomean_8_arithmetic_Mops_per_second	72.558992503	74.907338089	3.2365	7	pass	436714	289079	36425	111210	21452608	0	70.92	3	5	7539	5	3	true	n.a.
+formal	tlfloat_quad_arithmetic	3	C	cannbot/glm-5.3	正式有效	geomean_8_arithmetic_Mops_per_second	72.00980566	74.995868214	4.1467	7	pass	480594	322175	43545	114874	26168384	0	91.78	3	5	7725	5	3	true	n.a.
+formal	tlfloat_quad_arithmetic	3	D	cannbot/glm-5.3	正式有效	geomean_8_arithmetic_Mops_per_second	72.584824452	84.668449436	16.6476	7	pass	430132	290958	43218	95956	35214080	0	89.82	3	14	17619	5	4	true	n.a.
