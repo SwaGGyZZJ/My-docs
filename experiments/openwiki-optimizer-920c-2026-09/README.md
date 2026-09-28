@@ -4,8 +4,12 @@
 
 - [最新 Excel 工作簿](./session-results-2026-09-28.xlsx)：首张表为正式实验组别汇总，第二张表为全部 69 个预设格的明细。
 - [最新可粘贴 Excel 的 TSV 明细](./session-results-2026-09-28.tsv)：在 GitHub 点 **Raw**，全选复制后粘贴到 Excel 的 A1；若未自动分列，按 UTF-8、制表符导入。
+- [A 组对照与优势组 Excel](./a-baseline-advantage-2026-09-28.xlsx)：包含 A 组对照、组别区别、来源与限制三个工作表；绿色行标出优势组。
+- [A 组对照与优势组 TSV](./a-baseline-advantage-2026-09-28.tsv)：在 GitHub 点 **Raw** 后复制到 Excel；数值列可继续排序和计算。
 - [旧版 Excel](./session-results-2026-09-24.xlsx) / [旧版 TSV](./session-results-2026-09-24.tsv)：保留 2026-09-24 当时的状态，不代表当前进度。
 - 明细把 isal_zero_detect 的 pilot 和正式实验放在同一张表，以“阶段”区分；组别汇总只纳入正式有效格，不混算 pilot。
+
+新增对照表以每个算子的 A 组为 baseline，`diff` 是本组性能得分中位数减 A 组得分中位数，单位为百分点。B/C/D 只要性能得分更高、总 Token 更少、或非缓存 Token 更少，任一成立就标为“优势组”；耗时不参与这一标签。15 个 B/C/D 组合中有 12 个优势组。为保证配对可比，GF 仅使用四组均有效的第 1–2 轮，其余算子使用第 1–3 轮；此对照表的 GF 数值因此不同于下方按各组全部有效格汇总的历史表。总 Token 按每条 session 的非缓存 Token 加缓存读取 Token 算出后取中位数，OpenWiki 生成成本不在内。尚未完成统一低负载复测，优势标签只描述这批原始 session，不代表统计显著或最终结论。
 
 ## 组别汇总
 
