@@ -4,7 +4,7 @@
 
 - [最新 Excel 工作簿](./session-results-2026-09-28.xlsx)：首张表为正式实验组别汇总，第二张表为全部 69 个预设格的明细。
 - [最新可粘贴 Excel 的 TSV 明细](./session-results-2026-09-28.tsv)：在 GitHub 点 **Raw**，全选复制后粘贴到 Excel 的 A1；若未自动分列，按 UTF-8、制表符导入。
-- [A 组对照与优势组 Excel](./a-baseline-advantage-2026-09-28.xlsx)：包含 A 组对照、组别区别、来源与限制三个工作表；优势组以绿色底色和加粗文字标出。
+- [A 组对照与优势组 Excel](./a-baseline-advantage-2026-09-28.xlsx)：包含 A 组对照、组别区别、来源与限制三个工作表；无背景填色，每个算子的 A/B/C/D 四行用粗边框分组，优势组以加粗文字标出。
 - [A 组对照与优势组 TSV](./a-baseline-advantage-2026-09-28.tsv)：在 GitHub 点 **Raw** 后复制到 Excel；数值列可继续排序和计算。
 - [旧版 Excel](./session-results-2026-09-24.xlsx) / [旧版 TSV](./session-results-2026-09-24.tsv)：保留 2026-09-24 当时的状态，不代表当前进度。
 - 明细把 isal_zero_detect 的 pilot 和正式实验放在同一张表，以“阶段”区分；组别汇总只纳入正式有效格，不混算 pilot。
