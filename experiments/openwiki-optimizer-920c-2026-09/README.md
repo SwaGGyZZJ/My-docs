@@ -1,9 +1,10 @@
 # 920C OpenWiki × Optimizer 实验结果快照
 
-快照时间：2026-09-24 14:54（北京时间）。DFT 和 CRC 仍有未归档格，本页不是最终实验结论。
+最新快照：2026-09-28（北京时间）。正式实验为 59/60 有效格；唯一缺口是 GF 第 3 轮 C 组。旧版 2026-09-24 快照保留作历史记录。统一低负载复测尚未执行，因此以下性能是原优化 session 的测量，不是最终复测结论。
 
-- [Excel 工作簿](./session-results-2026-09-24.xlsx)：首张表为正式实验组别汇总，第二张表为全部 69 个预设格的明细。
-- [可粘贴 Excel 的 TSV 明细](./session-results-2026-09-24.tsv)：在 GitHub 点 **Raw**，全选复制后粘贴到 Excel 的 A1；若未自动分列，按 UTF-8、制表符导入。
+- [最新 Excel 工作簿](./session-results-2026-09-28.xlsx)：首张表为正式实验组别汇总，第二张表为全部 69 个预设格的明细。
+- [最新可粘贴 Excel 的 TSV 明细](./session-results-2026-09-28.tsv)：在 GitHub 点 **Raw**，全选复制后粘贴到 Excel 的 A1；若未自动分列，按 UTF-8、制表符导入。
+- [旧版 Excel](./session-results-2026-09-24.xlsx) / [旧版 TSV](./session-results-2026-09-24.tsv)：保留 2026-09-24 当时的状态，不代表当前进度。
 - 明细把 isal_zero_detect 的 pilot 和正式实验放在同一张表，以“阶段”区分；组别汇总只纳入正式有效格，不混算 pilot。
 
 ## 组别汇总
@@ -14,24 +15,24 @@
 | gf_vect_mul | B | 3/3 | 19.47 | 383,477 | 39.4 | 3.0 |
 | gf_vect_mul | C | 2/3 | 18.31 | 273,605 | 35.9 | 3.0 |
 | gf_vect_mul | D | 3/3 | 20.43 | 580,321 | 38.7 | 2.7 |
-| crc32_ieee | A | 3/3 | 35.57 | 673,029 | 89.2 | 2.7 |
+| crc32_ieee | A | 3/3 | 35.57 | 673,029 | 89.3 | 2.7 |
 | crc32_ieee | B | 3/3 | 49.14 | 886,744 | 119.4 | 3.0 |
 | crc32_ieee | C | 3/3 | 28.72 | 764,022 | 85.6 | 3.0 |
-| crc32_ieee | D | 2/3 | 45.65 | 669,724 | 90.7 | 3.0 |
+| crc32_ieee | D | 3/3 | 39.12 | 535,476 | 90.6 | 3.0 |
 | libm_sin_cos_dp | A | 3/3 | 8.10 | 431,885 | 43.9 | 3.0 |
 | libm_sin_cos_dp | B | 3/3 | 3.63 | 403,229 | 47.1 | 3.0 |
 | libm_sin_cos_dp | C | 3/3 | 4.98 | 447,985 | 42.5 | 3.0 |
 | libm_sin_cos_dp | D | 3/3 | 2.36 | 628,022 | 73.5 | 3.0 |
-| dftbench_double | A | 2/3 | 26.57 | 419,591 | 79.7 | 3.0 |
-| dftbench_double | B | 2/3 | 20.40 | 661,347 | 65.6 | 3.0 |
-| dftbench_double | C | 2/3 | 20.76 | 543,849 | 60.6 | 3.0 |
-| dftbench_double | D | 2/3 | 32.07 | 817,234 | 100.0 | 3.0 |
+| dftbench_double | A | 3/3 | 23.05 | 505,256 | 102.4 | 3.0 |
+| dftbench_double | B | 3/3 | 22.30 | 467,014 | 60.1 | 3.0 |
+| dftbench_double | C | 3/3 | 23.80 | 444,764 | 74.3 | 3.0 |
+| dftbench_double | D | 3/3 | 31.29 | 653,685 | 82.8 | 3.0 |
 | tlfloat_quad_arithmetic | A | 3/3 | 6.06 | 439,339 | 61.2 | 2.3 |
 | tlfloat_quad_arithmetic | B | 3/3 | 3.29 | 516,102 | 98.3 | 3.0 |
 | tlfloat_quad_arithmetic | C | 3/3 | 15.78 | 487,120 | 80.2 | 3.0 |
 | tlfloat_quad_arithmetic | D | 3/3 | 3.67 | 430,132 | 89.8 | 3.0 |
 
-正式实验共 54/60 格已归档并通过正确性、7 次性能样本、补丁重放和处理门禁。当前缺口：GF C3、CRC D1、DFT A3/B3/C3/D3。pilot 为 8/9 格有统一复测分数；A3 未形成可比的统一复测结果。空白表示未取得可比数据，不表示零提升或零 Token。
+正式实验共 59/60 格已归档并通过正确性、7 次性能样本、补丁重放和处理门禁。当前唯一缺口：GF C3。CRC、DFT、libm、TLFloat 均为 12/12，GF 为 11/12。920C 的 CRC、DFT 正式 manifest 本次重新核验为各 12 格；21 个历史 invalid manifest 不作为新样本重复计入。pilot 为 8/9 格有统一复测分数；A3 未形成可比的统一复测结果。空白表示未取得可比数据，不表示零提升或零 Token。
 
 ## 口径
 
@@ -43,4 +44,4 @@ A：原始源码搜索、不读 Wiki。B：在搜索阶段增加 OpenWiki 参考
 
 早期 pilot 的旧搜索计划门禁与后来规则不同：缺 plan 只保留为标签，不自动断言“未使用 Wiki”。明细同时给出非空 Wiki 读取和首次源码 grep 前读取数；旧 pilot 未完整记录“首次源码编辑前”时间，不能据此断言已满足后来的处理门禁。pilot 性能使用 2026-09-18 的统一低负载复测，Token、耗时、轮数仍取各自优化 session；不可把这两种时间点当作同一轮测试。A3 原优化归档缺轮次 JSON，且未纳入统一复测。
 
-数据来源：920C 正式 `run_manifest.json`；920B 已迁移的 GF、TLFloat、libm 正式归档；920B 的 isal pilot 归档与 `shared-retest-20260918T020704Z/summary.json`。此目录只公开统计摘要，不包含 trace、原始 session、补丁或凭据。
+数据来源：920C 正式 `run_manifest.json`；920B 已迁移的 GF、TLFloat、libm 正式归档；920B 的 isal pilot 归档与 `shared-retest-20260918T020704Z/summary.json`。2026-09-28 版由旧版明细加本次核实的 CRC D1、DFT A3/B3/C3/D3 五格构成。此目录只公开统计摘要，不包含 trace、原始 session、补丁或凭据。
