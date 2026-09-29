@@ -123,8 +123,8 @@ CANDIDATE ANSWER:
 
 ## Token 成本口径
 
-`run_local_cannbot.py:54-73` 从每个 `step_finish` 事件累加 `input`、`output`、`reasoning`、`cache.read`；事件中的 `tokens.total` 等于这四项之和。逐题回答总量是该题所有已记录回答尝试、所有步骤的四项之和。评分器是单独调用，其所有评分尝试的 Token 单列。组均值是 122 道题逐题总量之和再除以 122，不是把一次重试当作新题。`repoprobe-six-arm-122-per-question.csv` 对每题列出了分项、回答总量、评分总量及二者合计；`repoprobe-six-arm-122-summary.tsv` 可直接粘贴到 Excel。
+`run_local_cannbot.py:54-73` 从每个 `step_finish` 事件累加 `input`、`output`、`reasoning`、`cache.read`；事件中的 `tokens.total` 等于这四项之和。主比较只取每题**最终一次回答尝试**内所有步骤的 Token；评分器是单独调用，也只取最终一次评分尝试。此前失败或超时的重试均不计入主比较。组均值是 122 道题最终尝试 Token 之和再除以 122。`repoprobe-six-arm-122-per-question.csv` 保留了逐题最终尝试与历史重试的原始审计字段；其中 `answer_all_attempt_*` 仅供审计，**不参与主表计算**。`repoprobe-six-arm-122-summary.tsv` 可直接粘贴到 Excel。
 
-基线组只有 62/122 题保存了 `invocation_attempts`；其余 60 题只保留最终回答尝试。因此该组“含重试”列是**可核验下界**，不是证明全部耗费；其余五组回答尝试明细完整。评分器重试可从 `scores.jsonl` 和各评分 `-attempt-N.jsonl` trace 恢复。缓存读取是 CANNBot 报告的 cached-input token 用量，不是 Wiki 阅读次数；它参与 `tokens.total`，但不能据此推算货币账单（缺少对应价格/折扣）。
+基线组虽然只有 62/122 题保存了完整 `invocation_attempts`，但全部 122 题都保存了最终回答尝试用量；因此主表此口径不需要对缺失的重试作估计，也不标记下界。缓存读取是 CANNBot 报告的 cached-input token 用量，不是 Wiki 阅读次数；它参与 `tokens.total`，但不能据此推算货币账单（缺少对应价格/折扣）。
 
 OpenWiki 生成和 `/init` 是按仓库付费、各题复用的前置成本：分别见 `repoprobe-six-arm-122-generation.csv`。这些费用不能被“精确归属”到某一题；如需全链路摊销，必须先指定复用量及四个 Wiki 组之间的分摊规则。当前单题“回答 + 评分”不含生成费用。
