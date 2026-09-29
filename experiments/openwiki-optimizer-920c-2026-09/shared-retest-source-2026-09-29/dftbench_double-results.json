@@ -1,0 +1,269 @@
+{
+  "operator": "dftbench_double",
+  "metric_unit": "Mflops",
+  "baseline_key": "formal-dftbench_double-baseline",
+  "baseline_median": 11202.8,
+  "measurement_protocol": "7-round rotated interleave; numactl CPU0 and NUMA node0",
+  "rows": [
+    {
+      "key": "formal-dftbench_double-baseline",
+      "operator": "dftbench_double",
+      "treatment_gate_passed": null,
+      "binary_sha256": "a6a060da61ea383c0add4101ea047f010ca618b24cd1a79f5c82450a9bdd5a2f",
+      "values": [
+        11202.8,
+        11099.4,
+        11174.9,
+        11236.7,
+        11180.2,
+        11224.8,
+        11209.0
+      ],
+      "median": 11202.8,
+      "mean": 11189.685714285713,
+      "min": 11099.4,
+      "max": 11236.7,
+      "improvement_percent": 0.0
+    },
+    {
+      "key": "formal-dftbench_double-r1-a",
+      "operator": "dftbench_double",
+      "treatment_gate_passed": true,
+      "binary_sha256": "2f739ab40b7f96c11f63b1054c8daccc156d6c199e85f93f7836462d49c9f97c",
+      "values": [
+        13700.4,
+        13798.5,
+        13770.2,
+        13787.5,
+        13776.7,
+        13731.0,
+        13760.3
+      ],
+      "median": 13770.2,
+      "mean": 13760.657142857142,
+      "min": 13700.4,
+      "max": 13798.5,
+      "improvement_percent": 22.917484914485687
+    },
+    {
+      "key": "formal-dftbench_double-r1-b",
+      "operator": "dftbench_double",
+      "treatment_gate_passed": true,
+      "binary_sha256": "7e44ed8173f58f70a78fb2527f1dd90894cd8370de1589c14c24875586bfbb60",
+      "values": [
+        13869.5,
+        13948.6,
+        13829.9,
+        13892.6,
+        13845.8,
+        13892.9,
+        13948.9
+      ],
+      "median": 13892.6,
+      "mean": 13889.742857142857,
+      "min": 13829.9,
+      "max": 13948.9,
+      "improvement_percent": 24.01006891134361
+    },
+    {
+      "key": "formal-dftbench_double-r1-c",
+      "operator": "dftbench_double",
+      "treatment_gate_passed": true,
+      "binary_sha256": "8bf00e74b4c731462518ab3b28492f3c1f0f1d28ab72a8b92c24b969e1acdaf6",
+      "values": [
+        13846.5,
+        13711.3,
+        13914.8,
+        13847.8,
+        14030.7,
+        13809.1,
+        13886.8
+      ],
+      "median": 13847.8,
+      "mean": 13863.857142857143,
+      "min": 13711.3,
+      "max": 14030.7,
+      "improvement_percent": 23.610168886349836
+    },
+    {
+      "key": "formal-dftbench_double-r1-d",
+      "operator": "dftbench_double",
+      "treatment_gate_passed": true,
+      "binary_sha256": "9792f81378b44249e7924b1b3950d5ffd38bed6676081af64d3819cba14a5167",
+      "values": [
+        14524.6,
+        14536.4,
+        14513.1,
+        14473.1,
+        14483.9,
+        14496.2,
+        14520.4
+      ],
+      "median": 14513.1,
+      "mean": 14506.814285714287,
+      "min": 14473.1,
+      "max": 14536.4,
+      "improvement_percent": 29.54886278430393
+    },
+    {
+      "key": "formal-dftbench_double-r2-a",
+      "operator": "dftbench_double",
+      "treatment_gate_passed": true,
+      "binary_sha256": "2e6d471a37cd0516dbdfbd09ad1cea3893f7169340d67424c2466400583ef44c",
+      "values": [
+        14492.4,
+        14495.7,
+        14579.8,
+        14587.1,
+        14554.1,
+        14564.7,
+        14474.9
+      ],
+      "median": 14554.1,
+      "mean": 14535.528571428571,
+      "min": 14474.9,
+      "max": 14587.1,
+      "improvement_percent": 29.914842717891975
+    },
+    {
+      "key": "formal-dftbench_double-r2-b",
+      "operator": "dftbench_double",
+      "treatment_gate_passed": true,
+      "binary_sha256": "fd91c56bf5ad93980bb3e48d6302b6e8df4dd8c72b4db829a1363884915e3a84",
+      "values": [
+        13157.5,
+        13356.5,
+        13281.3,
+        13359.5,
+        13285.6,
+        13370.3,
+        13374.2
+      ],
+      "median": 13356.5,
+      "mean": 13312.128571428571,
+      "min": 13157.5,
+      "max": 13374.2,
+      "improvement_percent": 19.224658121183992
+    },
+    {
+      "key": "formal-dftbench_double-r2-c",
+      "operator": "dftbench_double",
+      "treatment_gate_passed": true,
+      "binary_sha256": "c5937076fcb5ad932e3936e3d01357474bfb1c5b0a4ebc79d27a12c69c1c172f",
+      "values": [
+        13096.5,
+        13042.7,
+        13027.1,
+        13065.6,
+        12909.7,
+        13035.2,
+        13043.9
+      ],
+      "median": 13042.7,
+      "mean": 13031.528571428571,
+      "min": 12909.7,
+      "max": 13096.5,
+      "improvement_percent": 16.423572678259024
+    },
+    {
+      "key": "formal-dftbench_double-r2-d",
+      "operator": "dftbench_double",
+      "treatment_gate_passed": true,
+      "binary_sha256": "a79824b4720aee4cfe898cb52ca48efe7359986337c7643cae40902411e1b5df",
+      "values": [
+        14770.9,
+        14851.1,
+        14853.9,
+        14800.9,
+        14761.3,
+        14824.2,
+        14785.6
+      ],
+      "median": 14800.9,
+      "mean": 14806.842857142858,
+      "min": 14761.3,
+      "max": 14853.9,
+      "improvement_percent": 32.11786339129503
+    },
+    {
+      "key": "formal-dftbench_double-r3-a",
+      "operator": "dftbench_double",
+      "treatment_gate_passed": true,
+      "binary_sha256": "c83473674dae38d7b250a51c0690bef3ec6da464d17a512f8434f00f65d0dc6a",
+      "values": [
+        12359.4,
+        11683.9,
+        12364.0,
+        12384.2,
+        12387.9,
+        12502.7,
+        12412.5
+      ],
+      "median": 12384.2,
+      "mean": 12299.228571428572,
+      "min": 11683.9,
+      "max": 12502.7,
+      "improvement_percent": 10.545577891241486
+    },
+    {
+      "key": "formal-dftbench_double-r3-b",
+      "operator": "dftbench_double",
+      "treatment_gate_passed": true,
+      "binary_sha256": "3787875fb076752463b6d3a1298ea7d6d9bd2cdce8ff49fe7a4bb77ac7c17a8d",
+      "values": [
+        13947.5,
+        13811.4,
+        13887.2,
+        13843.3,
+        13984.9,
+        13973.6,
+        13794.7
+      ],
+      "median": 13887.2,
+      "mean": 13891.8,
+      "min": 13794.7,
+      "max": 13984.9,
+      "improvement_percent": 23.961866676188116
+    },
+    {
+      "key": "formal-dftbench_double-r3-c",
+      "operator": "dftbench_double",
+      "treatment_gate_passed": true,
+      "binary_sha256": "3f7e70504732ba14876c4aea6a17ab63c0fec132409429cee4d97d52ce0bde9b",
+      "values": [
+        13916.6,
+        13955.2,
+        13716.8,
+        13778.9,
+        13977.4,
+        13858.4,
+        13785.7
+      ],
+      "median": 13858.4,
+      "mean": 13855.57142857143,
+      "min": 13716.8,
+      "max": 13977.4,
+      "improvement_percent": 23.70478808869212
+    },
+    {
+      "key": "formal-dftbench_double-r3-d",
+      "operator": "dftbench_double",
+      "treatment_gate_passed": true,
+      "binary_sha256": "9475b77d58c29e19d045412b8422d9cb0d25faec4797a133b401fee85c247a51",
+      "values": [
+        12634.6,
+        11949.1,
+        12747.4,
+        12693.6,
+        12678.1,
+        12792.0,
+        12702.5
+      ],
+      "median": 12693.6,
+      "mean": 12599.614285714286,
+      "min": 11949.1,
+      "max": 12792.0,
+      "improvement_percent": 13.30738743885458
+    }
+  ]
+}

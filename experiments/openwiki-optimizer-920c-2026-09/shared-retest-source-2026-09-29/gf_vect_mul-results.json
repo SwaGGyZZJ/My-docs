@@ -1,0 +1,249 @@
+{
+  "operator": "gf_vect_mul",
+  "metric_unit": "MB/s",
+  "baseline_key": "formal-gf_vect_mul-baseline",
+  "baseline_median": 38544.94,
+  "measurement_protocol": "7-round rotated interleave; numactl CPU0 and NUMA node0",
+  "rows": [
+    {
+      "key": "formal-gf_vect_mul-baseline",
+      "operator": "gf_vect_mul",
+      "treatment_gate_passed": null,
+      "binary_sha256": "0b26fd5d5b96a34df443a0f19be52d3f03b993f15ced634c0863333d27b40e6e",
+      "values": [
+        38300.06,
+        39217.02,
+        37893.46,
+        38414.2,
+        38864.87,
+        38544.94,
+        38711.1
+      ],
+      "median": 38544.94,
+      "mean": 38563.66428571429,
+      "min": 37893.46,
+      "max": 39217.02,
+      "improvement_percent": 0.0
+    },
+    {
+      "key": "formal-gf_vect_mul-r1-a",
+      "operator": "gf_vect_mul",
+      "treatment_gate_passed": true,
+      "binary_sha256": "9bcdc522a4848b68873d67f141a7f9e66f9c4aae635c5590907398a3aafe8d3a",
+      "values": [
+        46831.43,
+        46793.44,
+        46771.23,
+        46673.85,
+        46712.82,
+        46759.76,
+        46690.19
+      ],
+      "median": 46759.76,
+      "mean": 46747.53142857143,
+      "min": 46673.85,
+      "max": 46831.43,
+      "improvement_percent": 21.312317518200842
+    },
+    {
+      "key": "formal-gf_vect_mul-r1-b",
+      "operator": "gf_vect_mul",
+      "treatment_gate_passed": true,
+      "binary_sha256": "686b5999489295224dae832603454a0f38d29c9c36458ba9e755875b6d42bb48",
+      "values": [
+        51252.88,
+        51395.88,
+        51252.03,
+        51252.27,
+        51429.24,
+        51447.88,
+        51272.19
+      ],
+      "median": 51272.19,
+      "mean": 51328.909999999996,
+      "min": 51252.03,
+      "max": 51447.88,
+      "improvement_percent": 33.01924973809791
+    },
+    {
+      "key": "formal-gf_vect_mul-r1-c",
+      "operator": "gf_vect_mul",
+      "treatment_gate_passed": true,
+      "binary_sha256": "fbd6cd9ec3404e4a74b958b0078226724758aba630ad923f5ae42d907277c655",
+      "values": [
+        46199.48,
+        46186.35,
+        46073.31,
+        46119.24,
+        46109.71,
+        46064.05,
+        46190.98
+      ],
+      "median": 46119.24,
+      "mean": 46134.73142857143,
+      "min": 46064.05,
+      "max": 46199.48,
+      "improvement_percent": 19.650568920330393
+    },
+    {
+      "key": "formal-gf_vect_mul-r1-d",
+      "operator": "gf_vect_mul",
+      "treatment_gate_passed": true,
+      "binary_sha256": "2e7ce6cffc37415d9875da3590ac6e6202dd72474ba3239696aa2b7e219d21d0",
+      "values": [
+        51347.05,
+        51353.81,
+        51119.4,
+        51284.2,
+        51220.27,
+        51408.93,
+        51565.56
+      ],
+      "median": 51347.05,
+      "mean": 51328.46,
+      "min": 51119.4,
+      "max": 51565.56,
+      "improvement_percent": 33.21346459483399
+    },
+    {
+      "key": "formal-gf_vect_mul-r2-a",
+      "operator": "gf_vect_mul",
+      "treatment_gate_passed": true,
+      "binary_sha256": "5585b14224c40001c4f96f27b4d20091c1b1c0b19a3914ebb06f9ebb4ae1f379",
+      "values": [
+        46655.19,
+        46608.52,
+        46117.18,
+        46490.28,
+        46575.44,
+        46512.17,
+        46498.79
+      ],
+      "median": 46512.17,
+      "mean": 46493.938571428575,
+      "min": 46117.18,
+      "max": 46655.19,
+      "improvement_percent": 20.669976396383017
+    },
+    {
+      "key": "formal-gf_vect_mul-r2-b",
+      "operator": "gf_vect_mul",
+      "treatment_gate_passed": true,
+      "binary_sha256": "25e049cf5b9145cfd17da7a398c498af93a11af7c13aa93bf6976a9713699c7b",
+      "values": [
+        46007.79,
+        45814.08,
+        45905.03,
+        46066.09,
+        46172.7,
+        46185.36,
+        46040.27
+      ],
+      "median": 46040.27,
+      "mean": 46027.33142857143,
+      "min": 45814.08,
+      "max": 46185.36,
+      "improvement_percent": 19.445691185405913
+    },
+    {
+      "key": "formal-gf_vect_mul-r2-c",
+      "operator": "gf_vect_mul",
+      "treatment_gate_passed": true,
+      "binary_sha256": "18fdf95f3d5889ccca8446638d7a7b0cf90223c5b752d4cdf84b83b78b244e28",
+      "values": [
+        45917.13,
+        45935.16,
+        45935.59,
+        46198.37,
+        46206.02,
+        46108.91,
+        46015.01
+      ],
+      "median": 46015.01,
+      "mean": 46045.17,
+      "min": 45917.13,
+      "max": 46206.02,
+      "improvement_percent": 19.380157291722334
+    },
+    {
+      "key": "formal-gf_vect_mul-r2-d",
+      "operator": "gf_vect_mul",
+      "treatment_gate_passed": true,
+      "binary_sha256": "3e8082930138843e8f1d1dfb5e3e6d6c2a20b0add352b10dd8c535687c490d52",
+      "values": [
+        46445.3,
+        46452.48,
+        46559.66,
+        46246.26,
+        46440.09,
+        46180.88,
+        46014.93
+      ],
+      "median": 46440.09,
+      "mean": 46334.228571428575,
+      "min": 46014.93,
+      "max": 46559.66,
+      "improvement_percent": 20.482973900076097
+    },
+    {
+      "key": "formal-gf_vect_mul-r3-a",
+      "operator": "gf_vect_mul",
+      "treatment_gate_passed": true,
+      "binary_sha256": "d761ce072e2d4e2e1e4f8e3572c669af66958a1b29c2c068c918be96101ed99e",
+      "values": [
+        50994.94,
+        51079.74,
+        51519.01,
+        51102.8,
+        51463.77,
+        51090.57,
+        50941.54
+      ],
+      "median": 51090.57,
+      "mean": 51170.33857142857,
+      "min": 50941.54,
+      "max": 51519.01,
+      "improvement_percent": 32.548059485888416
+    },
+    {
+      "key": "formal-gf_vect_mul-r3-b",
+      "operator": "gf_vect_mul",
+      "treatment_gate_passed": true,
+      "binary_sha256": "968354f81aec00cd0833539ebaa9267ec674beb048d2de3f347d99713e679564",
+      "values": [
+        46167.92,
+        46067.35,
+        46371.36,
+        46072.35,
+        46267.8,
+        46052.45,
+        46113.13
+      ],
+      "median": 46113.13,
+      "mean": 46158.90857142857,
+      "min": 46052.45,
+      "max": 46371.36,
+      "improvement_percent": 19.634717293631777
+    },
+    {
+      "key": "formal-gf_vect_mul-r3-d",
+      "operator": "gf_vect_mul",
+      "treatment_gate_passed": true,
+      "binary_sha256": "25bc325c199b5039ebe329ab02d167eea1e54c25d2402ca39d731bd2bf7848e6",
+      "values": [
+        39809.1,
+        39964.71,
+        40269.87,
+        39969.72,
+        39955.76,
+        39916.67,
+        39679.54
+      ],
+      "median": 39955.76,
+      "mean": 39937.91,
+      "min": 39679.54,
+      "max": 40269.87,
+      "improvement_percent": 3.6601950865664756
+    }
+  ]
+}

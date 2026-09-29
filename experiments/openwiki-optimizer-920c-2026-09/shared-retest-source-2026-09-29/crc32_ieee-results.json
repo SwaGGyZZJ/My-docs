@@ -1,0 +1,269 @@
+{
+  "operator": "crc32_ieee",
+  "metric_unit": "MB/s",
+  "baseline_key": "formal-crc32_ieee-baseline",
+  "baseline_median": 17737.74,
+  "measurement_protocol": "7-round rotated interleave; numactl CPU0 and NUMA node0",
+  "rows": [
+    {
+      "key": "formal-crc32_ieee-baseline",
+      "operator": "crc32_ieee",
+      "treatment_gate_passed": null,
+      "binary_sha256": "121f90978de3951ce6f347394a9b1ddf852c0137f80d4f0f13fc2ae37439b1b0",
+      "values": [
+        17752.33,
+        17737.74,
+        17773.79,
+        17720.59,
+        17714.5,
+        17728.94,
+        17740.05
+      ],
+      "median": 17737.74,
+      "mean": 17738.277142857143,
+      "min": 17714.5,
+      "max": 17773.79,
+      "improvement_percent": 0.0
+    },
+    {
+      "key": "formal-crc32_ieee-r1-a",
+      "operator": "crc32_ieee",
+      "treatment_gate_passed": true,
+      "binary_sha256": "62344522677b89b02ad82d596896f3024f98ada71da84816b49ec0a15e45169e",
+      "values": [
+        19716.04,
+        19676.68,
+        19752.29,
+        19649.04,
+        19737.95,
+        19770.3,
+        19731.1
+      ],
+      "median": 19731.1,
+      "mean": 19719.057142857142,
+      "min": 19649.04,
+      "max": 19770.3,
+      "improvement_percent": 11.237959289063859
+    },
+    {
+      "key": "formal-crc32_ieee-r1-b",
+      "operator": "crc32_ieee",
+      "treatment_gate_passed": true,
+      "binary_sha256": "c6b9d80fe77bafccb54c4a8733892f2ccd1e0c405c3f0373b81ad9081076e8d0",
+      "values": [
+        27646.33,
+        27687.98,
+        27712.07,
+        27690.04,
+        27746.12,
+        27709.5,
+        27695.6
+      ],
+      "median": 27695.6,
+      "mean": 27698.234285714287,
+      "min": 27646.33,
+      "max": 27746.12,
+      "improvement_percent": 56.13939543594615
+    },
+    {
+      "key": "formal-crc32_ieee-r1-c",
+      "operator": "crc32_ieee",
+      "treatment_gate_passed": true,
+      "binary_sha256": "4be103b4eab2fdde82f56b6f64ab06fc1d2edaba6aaf0de6d29e0033b3fe4f19",
+      "values": [
+        22544.71,
+        22787.74,
+        22723.13,
+        22615.66,
+        22830.08,
+        22737.73,
+        22732.6
+      ],
+      "median": 22732.6,
+      "mean": 22710.235714285714,
+      "min": 22544.71,
+      "max": 22830.08,
+      "improvement_percent": 28.15950622796364
+    },
+    {
+      "key": "formal-crc32_ieee-r1-d",
+      "operator": "crc32_ieee",
+      "treatment_gate_passed": true,
+      "binary_sha256": "7978ad1368164f239d4dbead0ad47faf67a407d8b3dedee61e6c7dabfe8e6eda",
+      "values": [
+        21726.11,
+        21613.68,
+        21522.95,
+        21304.9,
+        21606.97,
+        21588.31,
+        21502.24
+      ],
+      "median": 21588.31,
+      "mean": 21552.165714285715,
+      "min": 21304.9,
+      "max": 21726.11,
+      "improvement_percent": 21.708346159093537
+    },
+    {
+      "key": "formal-crc32_ieee-r2-a",
+      "operator": "crc32_ieee",
+      "treatment_gate_passed": true,
+      "binary_sha256": "4b32d17c4feb20ae5be205dbfadc42f63e6255f23979d570a537e26af5a4ede5",
+      "values": [
+        27941.25,
+        28306.23,
+        28245.15,
+        28574.38,
+        28526.43,
+        28187.07,
+        28299.23
+      ],
+      "median": 28299.23,
+      "mean": 28297.105714285713,
+      "min": 27941.25,
+      "max": 28574.38,
+      "improvement_percent": 59.54247835406312
+    },
+    {
+      "key": "formal-crc32_ieee-r2-b",
+      "operator": "crc32_ieee",
+      "treatment_gate_passed": true,
+      "binary_sha256": "0fd3a4141b730fdc58836aad104873476c3bf55870bbf11fd2d11c6f22e72edb",
+      "values": [
+        23656.41,
+        23665.94,
+        23644.56,
+        23664.24,
+        23674.77,
+        23675.01,
+        23626.85
+      ],
+      "median": 23664.24,
+      "mean": 23658.254285714287,
+      "min": 23626.85,
+      "max": 23675.01,
+      "improvement_percent": 33.411810072760105
+    },
+    {
+      "key": "formal-crc32_ieee-r2-c",
+      "operator": "crc32_ieee",
+      "treatment_gate_passed": true,
+      "binary_sha256": "dc3559fdc348666278ec81960defbb3ed0f9729674e900085593ecd62abb6ea5",
+      "values": [
+        17780.0,
+        17736.27,
+        17732.78,
+        17763.62,
+        17750.14,
+        17732.54,
+        17736.24
+      ],
+      "median": 17736.27,
+      "mean": 17747.37,
+      "min": 17732.54,
+      "max": 17780.0,
+      "improvement_percent": -0.008287414292917905
+    },
+    {
+      "key": "formal-crc32_ieee-r2-d",
+      "operator": "crc32_ieee",
+      "treatment_gate_passed": true,
+      "binary_sha256": "493752d871ac28a34bbf496ebe97d45fc9fe7cdd61fcf5cfc7fa059e72efd0d0",
+      "values": [
+        24526.66,
+        24783.07,
+        24722.13,
+        24791.72,
+        24768.73,
+        24790.4,
+        24665.49
+      ],
+      "median": 24768.73,
+      "mean": 24721.17142857143,
+      "min": 24526.66,
+      "max": 24791.72,
+      "improvement_percent": 39.63858980907376
+    },
+    {
+      "key": "formal-crc32_ieee-r3-a",
+      "operator": "crc32_ieee",
+      "treatment_gate_passed": true,
+      "binary_sha256": "02dd6857c51b60a3179ff349803a782b39561cd02c37b988945e97343149d5ff",
+      "values": [
+        24036.84,
+        24149.55,
+        24073.41,
+        24116.66,
+        24101.89,
+        23932.13,
+        23985.81
+      ],
+      "median": 24073.41,
+      "mean": 24056.612857142856,
+      "min": 23932.13,
+      "max": 24149.55,
+      "improvement_percent": 35.71858647155723
+    },
+    {
+      "key": "formal-crc32_ieee-r3-b",
+      "operator": "crc32_ieee",
+      "treatment_gate_passed": true,
+      "binary_sha256": "ccc49d0bdd338768a12dac3111a84153f228f169e5d11025820b2d46c4a8a87d",
+      "values": [
+        26526.37,
+        26539.38,
+        26589.82,
+        26667.0,
+        26543.99,
+        26553.15,
+        26663.22
+      ],
+      "median": 26553.15,
+      "mean": 26583.275714285715,
+      "min": 26526.37,
+      "max": 26667.0,
+      "improvement_percent": 49.698608729184215
+    },
+    {
+      "key": "formal-crc32_ieee-r3-c",
+      "operator": "crc32_ieee",
+      "treatment_gate_passed": true,
+      "binary_sha256": "70f5c6bb2f946e98a55feac20e7ac3d7392110951196505f409b0507ba13827a",
+      "values": [
+        27941.38,
+        27919.75,
+        27981.58,
+        27937.2,
+        27926.4,
+        27933.16,
+        27970.39
+      ],
+      "median": 27937.2,
+      "mean": 27944.265714285713,
+      "min": 27919.75,
+      "max": 27981.58,
+      "improvement_percent": 57.50146298231904
+    },
+    {
+      "key": "formal-crc32_ieee-r3-d",
+      "operator": "crc32_ieee",
+      "treatment_gate_passed": true,
+      "binary_sha256": "2ccf7250479703ea7c7fa608a80c473f10a167b1d53b8e4488141a5b789c84a3",
+      "values": [
+        26966.52,
+        26941.09,
+        27017.67,
+        26996.37,
+        26939.24,
+        26986.78,
+        26984.07
+      ],
+      "median": 26984.07,
+      "mean": 26975.96285714286,
+      "min": 26939.24,
+      "max": 27017.67,
+      "improvement_percent": 52.128005033335675
+    }
+  ]
+}

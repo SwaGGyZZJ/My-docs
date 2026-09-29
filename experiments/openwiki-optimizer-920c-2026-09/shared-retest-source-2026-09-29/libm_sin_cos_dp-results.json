@@ -1,0 +1,269 @@
+{
+  "operator": "libm_sin_cos_dp",
+  "metric_unit": "Mops/s",
+  "baseline_key": "formal-libm_sin_cos_dp-baseline",
+  "baseline_median": 157.95344400614076,
+  "measurement_protocol": "7-round rotated interleave; numactl CPU0 and NUMA node0",
+  "rows": [
+    {
+      "key": "formal-libm_sin_cos_dp-baseline",
+      "operator": "libm_sin_cos_dp",
+      "treatment_gate_passed": null,
+      "binary_sha256": "36bf71d7bb228c95776473030101be5ac072e301bf5be9f4415264d6b1bccbc3",
+      "values": [
+        159.30632371397294,
+        159.36392960609632,
+        155.69729982408182,
+        157.74812627506955,
+        159.47110983093842,
+        156.32809659946847,
+        157.95344400614076
+      ],
+      "median": 157.95344400614076,
+      "mean": 157.98118997939548,
+      "min": 155.69729982408182,
+      "max": 159.47110983093842,
+      "improvement_percent": 0.0
+    },
+    {
+      "key": "formal-libm_sin_cos_dp-r1-a",
+      "operator": "libm_sin_cos_dp",
+      "treatment_gate_passed": true,
+      "binary_sha256": "620cf84baafa7c3fd0ea5616af8f040d602a5a92247a75cee8b18466959ab22b",
+      "values": [
+        173.3028217375887,
+        172.762489602668,
+        169.83710965330928,
+        171.4622646411084,
+        174.62177225969077,
+        173.22359881513142,
+        175.10522804708356
+      ],
+      "median": 173.22359881513142,
+      "mean": 172.9021835366543,
+      "min": 169.83710965330928,
+      "max": 175.10522804708356,
+      "improvement_percent": 9.667503551487622
+    },
+    {
+      "key": "formal-libm_sin_cos_dp-r1-b",
+      "operator": "libm_sin_cos_dp",
+      "treatment_gate_passed": true,
+      "binary_sha256": "8cf128f65b54909014885c972b8ece0138ed491fc543bc4fd2d2aa160604b7b6",
+      "values": [
+        164.66303980835957,
+        169.2129846020355,
+        165.4087763132417,
+        168.03811462879406,
+        169.28837779503783,
+        168.14737517107164,
+        164.5775467817174
+      ],
+      "median": 168.03811462879406,
+      "mean": 167.04803072860824,
+      "min": 164.5775467817174,
+      "max": 169.28837779503783,
+      "improvement_percent": 6.384584195746457
+    },
+    {
+      "key": "formal-libm_sin_cos_dp-r1-c",
+      "operator": "libm_sin_cos_dp",
+      "treatment_gate_passed": true,
+      "binary_sha256": "01fc53369a5077143e052f237f655095020abfdadd08fb87f459f3895e3da49c",
+      "values": [
+        166.16389672173983,
+        164.25927291763213,
+        167.44217005930633,
+        167.9490719239415,
+        166.97434728114487,
+        167.09332122233027,
+        166.3475823137609
+      ],
+      "median": 166.97434728114487,
+      "mean": 166.60423749140799,
+      "min": 164.25927291763213,
+      "max": 167.9490719239415,
+      "improvement_percent": 5.711115279419565
+    },
+    {
+      "key": "formal-libm_sin_cos_dp-r1-d",
+      "operator": "libm_sin_cos_dp",
+      "treatment_gate_passed": true,
+      "binary_sha256": "4955fb4d480bd8aad2e230fea03259ba768ad852e8dbb88c9dd6ef5a90b84e0c",
+      "values": [
+        164.40032528044222,
+        165.1801211976944,
+        164.08463354486466,
+        161.03246138269517,
+        165.22730214541522,
+        161.3082138367755,
+        162.06182159026787
+      ],
+      "median": 164.08463354486466,
+      "mean": 163.32783985402216,
+      "min": 161.03246138269517,
+      "max": 165.22730214541522,
+      "improvement_percent": 3.8816434660871035
+    },
+    {
+      "key": "formal-libm_sin_cos_dp-r2-a",
+      "operator": "libm_sin_cos_dp",
+      "treatment_gate_passed": true,
+      "binary_sha256": "c39025e772c3a896b0a0b12555857f1427875ab2c88b5180a5de3b8cb13b20ad",
+      "values": [
+        171.09750147905686,
+        171.18377096964224,
+        167.11468189370453,
+        171.63797425794544,
+        170.70856018103404,
+        163.32107960098708,
+        170.5697372651904
+      ],
+      "median": 170.70856018103404,
+      "mean": 169.3761865210801,
+      "min": 163.32107960098708,
+      "max": 171.63797425794544,
+      "improvement_percent": 8.075237773477983
+    },
+    {
+      "key": "formal-libm_sin_cos_dp-r2-b",
+      "operator": "libm_sin_cos_dp",
+      "treatment_gate_passed": true,
+      "binary_sha256": "838ab85aa17e42fefa8e0c0d1f9a09a45c5c51f41042399123aea84863e62815",
+      "values": [
+        163.76977122459493,
+        163.66024385973506,
+        165.76838403240433,
+        163.89776365602566,
+        166.20247808246606,
+        162.24390338561457,
+        162.55583830226064
+      ],
+      "median": 163.76977122459493,
+      "mean": 164.01405464901447,
+      "min": 162.24390338561457,
+      "max": 166.20247808246606,
+      "improvement_percent": 3.6823047797729824
+    },
+    {
+      "key": "formal-libm_sin_cos_dp-r2-c",
+      "operator": "libm_sin_cos_dp",
+      "treatment_gate_passed": true,
+      "binary_sha256": "0731f725db2145584c92a49ecd91ba59f4bb761dd56390aa491927733e22bbae",
+      "values": [
+        168.8415995084318,
+        165.08804948191354,
+        164.70856236966682,
+        168.24330133249893,
+        166.70396889640733,
+        163.7330304414784,
+        168.75244832133276
+      ],
+      "median": 166.70396889640733,
+      "mean": 166.5815657645328,
+      "min": 163.7330304414784,
+      "max": 168.8415995084318,
+      "improvement_percent": 5.539939281049411
+    },
+    {
+      "key": "formal-libm_sin_cos_dp-r2-d",
+      "operator": "libm_sin_cos_dp",
+      "treatment_gate_passed": true,
+      "binary_sha256": "2f6146dd7247177961e7c7f79dd26d63c021e6aa8f609394a4db2199319ee14c",
+      "values": [
+        159.18721454128203,
+        158.9857041734475,
+        160.69821831360613,
+        159.50306943395285,
+        153.49491579873697,
+        161.12469196255444,
+        154.05576884132986
+      ],
+      "median": 159.18721454128203,
+      "mean": 158.14994043784426,
+      "min": 153.49491579873697,
+      "max": 161.12469196255444,
+      "improvement_percent": 0.7810975841041623
+    },
+    {
+      "key": "formal-libm_sin_cos_dp-r3-a",
+      "operator": "libm_sin_cos_dp",
+      "treatment_gate_passed": true,
+      "binary_sha256": "9bc4e5e51766e7d4d4511e7ddc8e9590b6bb54a2725b69bd59508f0d4bbd5f7c",
+      "values": [
+        170.2040535084056,
+        171.94932213118997,
+        171.37299500178975,
+        172.490932417402,
+        172.02718648961448,
+        171.88439487295014,
+        172.46229629380682
+      ],
+      "median": 171.94932213118997,
+      "mean": 171.7701686735941,
+      "min": 170.2040535084056,
+      "max": 172.490932417402,
+      "improvement_percent": 8.860761608024891
+    },
+    {
+      "key": "formal-libm_sin_cos_dp-r3-b",
+      "operator": "libm_sin_cos_dp",
+      "treatment_gate_passed": true,
+      "binary_sha256": "c9c0714dc9e0ba49a04266e9f67c20020d436c258c30bfc9e93a144e9e66d78c",
+      "values": [
+        159.60755119247787,
+        159.6234889803462,
+        158.78511792024702,
+        158.398840828592,
+        159.12799692165987,
+        160.13207758210942,
+        161.11566233383152
+      ],
+      "median": 159.60755119247787,
+      "mean": 159.54153367989485,
+      "min": 158.398840828592,
+      "max": 161.11566233383152,
+      "improvement_percent": 1.0472118520396423
+    },
+    {
+      "key": "formal-libm_sin_cos_dp-r3-c",
+      "operator": "libm_sin_cos_dp",
+      "treatment_gate_passed": true,
+      "binary_sha256": "c3402d8a203ce8b9fc019f8ed3673b6c1adc52da3fc5b7ba07dabf3101e8f1ba",
+      "values": [
+        166.45833905747725,
+        170.40542089258932,
+        169.80361722044347,
+        163.30818897127642,
+        169.64566163633828,
+        168.1348593221939,
+        169.62991448167983
+      ],
+      "median": 169.62991448167983,
+      "mean": 168.19800022599978,
+      "min": 163.30818897127642,
+      "max": 170.40542089258932,
+      "improvement_percent": 7.3923494033375725
+    },
+    {
+      "key": "formal-libm_sin_cos_dp-r3-d",
+      "operator": "libm_sin_cos_dp",
+      "treatment_gate_passed": true,
+      "binary_sha256": "7ab476cd4519461067ece8a363a47993c6adccd07a6da43ea6b1c448cfd321b5",
+      "values": [
+        174.78537762935775,
+        172.73474277503445,
+        174.32509417440895,
+        174.0581936921874,
+        171.70207632779628,
+        174.403837703236,
+        171.7015622211482
+      ],
+      "median": 174.0581936921874,
+      "mean": 173.3872692175956,
+      "min": 171.7015622211482,
+      "max": 174.78537762935775,
+      "improvement_percent": 10.195883848800747
+    }
+  ]
+}
