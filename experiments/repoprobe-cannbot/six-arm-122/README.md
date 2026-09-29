@@ -37,6 +37,8 @@
 
 数值完整、可筛选的版本是 [CSV](repoprobe-six-arm-122-summary.csv)。要直接复制到 Excel，请打开 [TSV](repoprobe-six-arm-122-summary.tsv) 的 **Raw** 页面，复制全部内容后粘贴到单元格 A1。六组工作区、完整回答 prompt、生成 prompt 和评分 prompt 见 [流程和提示词](PROMPTS_AND_COST.md)。
 
+按 DeepSeek Flash 缓存命中、未命中输入及输出价格进行的假设性费用折算，见 [成本估算表](DEEPSEEK_FLASH_COST.md)；该页提供 Excel、CSV 和 TSV 下载。
+
 口径：分数按每题官方 checklist 的满分归一到 10 分。“模型步骤”是最终回答尝试中的 model call 数。“实际读 Wiki”要求有页面正文返回。回答、评分的耗时及 Token 都只统计各自最终一次尝试；所有组此前的重试均不计入比较。“总 tokens”是模型 trace 的 `tokens.total`，等于 input + output + reasoning + cache.read；这是 Token 用量，不是货币账单。每题均值是 122 题最终尝试总量除以 122。组级合计保留在 CSV/TSV 中用于对账。OpenWiki 与 `/init` 的仓库级共享生成成本单列，未强行归属到单题。
 
 本表从本地逐题答案和评分记录重新计算，并与冻结的六组共同题汇总核对；公开目录仅提供组级汇总。
