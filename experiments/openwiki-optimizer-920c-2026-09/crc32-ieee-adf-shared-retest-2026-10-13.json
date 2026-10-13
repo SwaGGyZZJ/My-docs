@@ -1,0 +1,314 @@
+{
+  "metric_unit": "MB/s",
+  "baseline_key": "formal-crc32_ieee-baseline",
+  "baseline_seven_values_MBps": [
+    17738.78,
+    17751.45,
+    17737.16,
+    17794.33,
+    17761.32,
+    17748.29,
+    17722.89
+  ],
+  "baseline_seven_mean_MBps": 17750.602857142858,
+  "baseline_seven_sample_variance_MBps2": 520.2466571428916,
+  "groups": {
+    "A": {
+      "runs": [
+        {
+          "key": "formal-crc32_ieee-r1-a",
+          "repetition": 1,
+          "seven_values_MBps": [
+            19779.97,
+            19750.14,
+            19752.94,
+            19764.68,
+            19829.33,
+            19768.82,
+            19748.49
+          ],
+          "seven_mean_MBps": 19770.624285714286,
+          "seven_median_MBps": 19764.68,
+          "seven_sample_variance_MBps2": 799.0932952381326,
+          "improvement_percent": 11.380015906099604,
+          "tokens": {
+            "total": 34959363,
+            "input": 347830,
+            "output": 59943,
+            "reasoning": 178534,
+            "cache_read": 34373056,
+            "cache_write": 0,
+            "non_cache": 586307
+          },
+          "elapsed_seconds": 4672.935,
+          "iteration_count": 2
+        },
+        {
+          "key": "formal-crc32_ieee-r2-a",
+          "repetition": 2,
+          "seven_values_MBps": [
+            27633.08,
+            27310.95,
+            27704.51,
+            27345.91,
+            27345.45,
+            27394.68,
+            28213.9
+          ],
+          "seven_mean_MBps": 27564.068571428572,
+          "seven_median_MBps": 27394.68,
+          "seven_sample_variance_MBps2": 105819.33318095254,
+          "improvement_percent": 55.28525308838606,
+          "tokens": {
+            "total": 74177453,
+            "input": 510630,
+            "output": 95933,
+            "reasoning": 199626,
+            "cache_read": 73371264,
+            "cache_write": 0,
+            "non_cache": 806189
+          },
+          "elapsed_seconds": 7370.368,
+          "iteration_count": 3
+        },
+        {
+          "key": "formal-crc32_ieee-r3-a",
+          "repetition": 3,
+          "seven_values_MBps": [
+            23730.02,
+            24021.6,
+            23891.09,
+            23776.39,
+            23789.83,
+            23820.19,
+            23914.9
+          ],
+          "seven_mean_MBps": 23849.145714285714,
+          "seven_median_MBps": 23820.19,
+          "seven_sample_variance_MBps2": 9944.091161904687,
+          "improvement_percent": 34.356821039961446,
+          "tokens": {
+            "total": 79585669,
+            "input": 434896,
+            "output": 72204,
+            "reasoning": 165929,
+            "cache_read": 78912640,
+            "cache_write": 0,
+            "non_cache": 673029
+          },
+          "elapsed_seconds": 5354.877,
+          "iteration_count": 3
+        }
+      ],
+      "mean_improvement_percent": 33.67403001148237,
+      "median_improvement_percent": 34.356821039961446,
+      "variance_pp2": 482.26711569963584,
+      "non_cache_token_median": 673029,
+      "non_cache_token_sample_variance": 12266730801.333334,
+      "total_token_median": 74177453,
+      "elapsed_minutes_median": 89.24795,
+      "iteration_mean": 2.6666666666666665
+    },
+    "D": {
+      "runs": [
+        {
+          "key": "formal-crc32_ieee-r1-d",
+          "repetition": 1,
+          "seven_values_MBps": [
+            21018.1,
+            21284.76,
+            21521.94,
+            21662.76,
+            21535.8,
+            21479.92,
+            21426.17
+          ],
+          "seven_mean_MBps": 21418.492857142857,
+          "seven_median_MBps": 21479.92,
+          "seven_sample_variance_MBps2": 44359.977290476214,
+          "improvement_percent": 20.663467204574616,
+          "tokens": {
+            "total": 24044918,
+            "input": 299088,
+            "output": 41812,
+            "reasoning": 115282,
+            "cache_read": 23588736,
+            "cache_write": 0,
+            "non_cache": 456182
+          },
+          "elapsed_seconds": 3640.038,
+          "iteration_count": 3
+        },
+        {
+          "key": "formal-crc32_ieee-r2-d",
+          "repetition": 2,
+          "seven_values_MBps": [
+            24480.99,
+            24131.99,
+            24604.28,
+            24390.61,
+            24702.47,
+            24546.02,
+            24492.1
+          ],
+          "seven_mean_MBps": 24478.35142857143,
+          "seven_median_MBps": 24492.1,
+          "seven_sample_variance_MBps2": 33087.82624761889,
+          "improvement_percent": 37.90152157407611,
+          "tokens": {
+            "total": 32444276,
+            "input": 315797,
+            "output": 36387,
+            "reasoning": 183292,
+            "cache_read": 31908800,
+            "cache_write": 0,
+            "non_cache": 535476
+          },
+          "elapsed_seconds": 5448.288,
+          "iteration_count": 3
+        },
+        {
+          "key": "formal-crc32_ieee-r3-d",
+          "repetition": 3,
+          "seven_values_MBps": [
+            26932.62,
+            26891.5,
+            26929.42,
+            26916.21,
+            26851.44,
+            26921.37,
+            26868.13
+          ],
+          "seven_mean_MBps": 26901.527142857143,
+          "seven_median_MBps": 26916.21,
+          "seven_sample_variance_MBps2": 1013.1228571428298,
+          "improvement_percent": 51.552752091639206,
+          "tokens": {
+            "total": 75182723,
+            "input": 498118,
+            "output": 102278,
+            "reasoning": 203575,
+            "cache_read": 74378752,
+            "cache_write": 0,
+            "non_cache": 803971
+          },
+          "elapsed_seconds": 5434.675,
+          "iteration_count": 3
+        }
+      ],
+      "mean_improvement_percent": 36.70591362342998,
+      "median_improvement_percent": 37.90152157407611,
+      "variance_pp2": 239.60908898729542,
+      "non_cache_token_median": 535476,
+      "non_cache_token_sample_variance": 33222381997,
+      "total_token_median": 32444276,
+      "elapsed_minutes_median": 90.57791666666667,
+      "iteration_mean": 3
+    },
+    "F": {
+      "runs": [
+        {
+          "key": "fonly-crc-20261013-r1-f",
+          "repetition": 1,
+          "seven_values_MBps": [
+            22018.96,
+            22007.52,
+            22046.2,
+            22027.06,
+            22028.21,
+            22032.19,
+            22007.56
+          ],
+          "seven_mean_MBps": 22023.957142857143,
+          "seven_median_MBps": 22027.06,
+          "seven_sample_variance_MBps2": 192.3760904761843,
+          "improvement_percent": 24.07441775418171,
+          "tokens": {
+            "total": 26733933,
+            "input": 368556,
+            "output": 67992,
+            "reasoning": 189417,
+            "cache_read": 26107968,
+            "cache_write": 0,
+            "non_cache": 625965
+          },
+          "elapsed_seconds": 6169.17,
+          "iteration_count": 3
+        },
+        {
+          "key": "fonly-crc-20261013-r2-f",
+          "repetition": 2,
+          "seven_values_MBps": [
+            23741.68,
+            23797.42,
+            23805.73,
+            23737.99,
+            23723.75,
+            23795.83,
+            23738.89
+          ],
+          "seven_mean_MBps": 23763.04142857143,
+          "seven_median_MBps": 23741.68,
+          "seven_sample_variance_MBps2": 1215.0472142856963,
+          "improvement_percent": 33.871742947643945,
+          "tokens": {
+            "total": 30139217,
+            "input": 399640,
+            "output": 47048,
+            "reasoning": 179761,
+            "cache_read": 29512768,
+            "cache_write": 0,
+            "non_cache": 626449
+          },
+          "elapsed_seconds": 4856.17,
+          "iteration_count": 3
+        },
+        {
+          "key": "fonly-crc-20261013-r3-f",
+          "repetition": 3,
+          "seven_values_MBps": [
+            28591.64,
+            28617.94,
+            28532.73,
+            28561.09,
+            28527.9,
+            28557.41,
+            28647.43
+          ],
+          "seven_mean_MBps": 28576.591428571428,
+          "seven_median_MBps": 28561.09,
+          "seven_sample_variance_MBps2": 1976.19478095235,
+          "improvement_percent": 60.989413478270585,
+          "tokens": {
+            "total": 63340307,
+            "input": 451341,
+            "output": 96087,
+            "reasoning": 216879,
+            "cache_read": 62576000,
+            "cache_write": 0,
+            "non_cache": 764307
+          },
+          "elapsed_seconds": 8096.422,
+          "iteration_count": 3
+        }
+      ],
+      "mean_improvement_percent": 39.645191393365415,
+      "median_improvement_percent": 33.871742947643945,
+      "variance_pp2": 365.6787575439277,
+      "non_cache_token_median": 626449,
+      "non_cache_token_sample_variance": 6357261897.333333,
+      "total_token_median": 30139217,
+      "elapsed_minutes_median": 102.8195,
+      "iteration_mean": 3
+    }
+  },
+  "comparisons": {
+    "D_minus_A_improvement_pp": 3.031883611947606,
+    "D_minus_A_non_cache_token_median": -137553,
+    "F_minus_A_improvement_pp": 5.971161381883043,
+    "F_minus_A_non_cache_token_median": -46580,
+    "F_minus_D_improvement_pp": 2.939277769935437,
+    "F_minus_D_non_cache_token_median": 90973
+  },
+  "interpretation_boundary": "Same-window replay measurement; optimization sessions were historical and not contemporaneous."
+}
