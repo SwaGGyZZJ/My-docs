@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1440" viewBox="0 0 2560 1440" role="img" aria-labelledby="title desc">
+  <title id="title">CANNBot Knowledge：模块作用与调用关系</title>
+  <desc id="desc">上方是用户或已接入业务 Skill 调用 Query、读取知识卡并核对来源的消费路径；中间是维护者从原始材料经 Ingest、候选卡、检查和 PR 审阅发布知识的维护路径；下方列出治理、日志、安装、文档、临时产物和许可扫描的作用与调用时机。</desc>
+  <defs>
+    <style><![CDATA[
+      .font { font-family: "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; }
+      .title { font-size: 53px; font-weight: 760; fill: #142336; }
+      .band-title { font-size: 28px; font-weight: 740; fill: #21354b; }
+      .band-note { font-size: 22px; fill: #627187; }
+      .card-title { font-size: 31px; font-weight: 740; fill: #172b42; }
+      .card-body { font-size: 24px; fill: #374b60; }
+      .card-small { font-size: 21px; fill: #51647a; }
+      .eyebrow { font-size: 19px; font-weight: 740; letter-spacing: 1.8px; fill: #41658c; }
+      .eyebrow-maintain { fill: #9c5d25; }
+      .arrow-label { font-size: 21px; font-weight: 650; fill: #4776a4; }
+      .arrow-label-maintain { fill: #a86e34; }
+      .pill { font-size: 20px; font-weight: 700; fill: #ffffff; }
+      .line-read { fill: none; stroke: #4b83b6; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .line-write { fill: none; stroke: #bf864d; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .line-support { fill: none; stroke: #7d8da0; stroke-width: 3; stroke-dasharray: 9 8; stroke-linecap: round; }
+    ]]></style>
+    <marker id="arrow-read" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="11" markerHeight="11" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9 Z" fill="#4b83b6"/>
+    </marker>
+    <marker id="arrow-write" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="11" markerHeight="11" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9 Z" fill="#bf864d"/>
+    </marker>
+  </defs>
+
+  <rect width="2560" height="1440" fill="#f5f7fa"/>
+  <text class="font title" x="80" y="100">CANNBot Knowledge：模块作用与调用关系</text>
+  <g class="font" transform="translate(2074 61)">
+    <rect x="0" y="0" width="168" height="43" rx="21" fill="#4b83b6"/>
+    <text class="pill" x="84" y="29" text-anchor="middle">读取路径</text>
+    <rect x="181" y="0" width="168" height="43" rx="21" fill="#bf864d"/>
+    <text class="pill" x="265" y="29" text-anchor="middle">维护路径</text>
+  </g>
+
+  <!-- Consumption lane -->
+  <rect x="60" y="167" width="2440" height="365" rx="26" fill="#ecf3f9" stroke="#c8dcee" stroke-width="2"/>
+  <text class="font band-title" x="98" y="220">① 知识如何被使用</text>
+  <text class="font band-note" x="470" y="220">用户主动提问，或业务 Skill 在任务阶段按需检索</text>
+
+  <g class="font">
+    <rect x="95" y="253" width="450" height="238" rx="18" fill="#ffffff" stroke="#c6d8e9" stroke-width="2"/>
+    <text class="eyebrow" x="129" y="294">触发</text>
+    <text class="card-title" x="129" y="339">用户 / 业务 Skill</text>
+    <text class="card-body" x="129" y="388">用户提问 → Agent 发起查询</text>
+    <text class="card-body" x="129" y="428">业务任务 → 已接入 Skill 按需查</text>
+    <text class="card-small" x="129" y="467">触点未接入时，不会自动调用</text>
+
+    <rect x="670" y="253" width="420" height="238" rx="18" fill="#ffffff" stroke="#c6d8e9" stroke-width="2"/>
+    <text class="eyebrow" x="704" y="294">.agents/skills/ · 读取</text>
+    <text class="card-title" x="704" y="339">knowledge-query</text>
+    <text class="card-body" x="704" y="388">检索主题、平台与状态</text>
+    <text class="card-body" x="704" y="428">读取命中卡片，交给 Agent</text>
+    <text class="card-small" x="704" y="467">API 专用 Query 复用此流程</text>
+
+    <rect x="1225" y="253" width="580" height="238" rx="18" fill="#ffffff" stroke="#8db5d8" stroke-width="3"/>
+    <text class="eyebrow" x="1259" y="294">唯一 OKF BUNDLE · 正文</text>
+    <text class="card-title" x="1259" y="339">knowledge/</text>
+    <text class="card-body" x="1259" y="388">Markdown 卡片 + YAML 元数据</text>
+    <text class="card-body" x="1259" y="428">index.md 导航；路径形成 Concept ID</text>
+    <text class="card-small" x="1259" y="467">默认 Query 只返回适用范围内的 stable 卡</text>
+
+    <rect x="1940" y="253" width="520" height="238" rx="18" fill="#ffffff" stroke="#c6d8e9" stroke-width="2"/>
+    <text class="eyebrow" x="1974" y="294">消费时复核</text>
+    <text class="card-title" x="1974" y="339">原始来源 / 当前环境</text>
+    <text class="card-body" x="1974" y="388">按卡片证据入口回看原文</text>
+    <text class="card-body" x="1974" y="428">核对版本、平台、源码或观测</text>
+    <text class="card-small" x="1974" y="467">Agent 再回答或继续工程任务</text>
+  </g>
+
+  <path class="line-read" d="M 545 374 H 653" marker-end="url(#arrow-read)"/>
+  <path class="line-read" d="M 1090 374 H 1208" marker-end="url(#arrow-read)"/>
+  <path class="line-read" d="M 1805 374 H 1923" marker-end="url(#arrow-read)"/>
+  <text class="font arrow-label" x="599" y="352" text-anchor="middle">调用</text>
+  <text class="font arrow-label" x="1149" y="352" text-anchor="middle">读卡</text>
+  <text class="font arrow-label" x="1872" y="352" text-anchor="middle">核对</text>
+
+  <!-- Maintenance lane -->
+  <rect x="60" y="585" width="2440" height="415" rx="26" fill="#fbf4ed" stroke="#ead4bd" stroke-width="2"/>
+  <text class="font band-title" x="98" y="633">② 知识如何产生与更新</text>
+  <text class="font band-note" x="525" y="633">新知识先 Issue · 公共行为调整先 RFC · 错误修复可直接 PR</text>
+
+  <g class="font">
+    <rect x="95" y="672" width="390" height="268" rx="18" fill="#ffffff" stroke="#ead3bd" stroke-width="2"/>
+    <text class="eyebrow eyebrow-maintain" x="129" y="713">输入</text>
+    <text class="card-title" x="129" y="758">原始材料</text>
+    <text class="card-body" x="129" y="806">已登记的官方文档</text>
+    <text class="card-body" x="129" y="846">固定 commit 的源码</text>
+    <text class="card-body" x="129" y="886">trace / 可复现实验</text>
+    <text class="card-small" x="129" y="922">来源与版本须可回查</text>
+
+    <rect x="565" y="672" width="405" height="268" rx="18" fill="#ffffff" stroke="#ead3bd" stroke-width="2"/>
+    <text class="eyebrow eyebrow-maintain" x="599" y="713">.agents/skills/ · 生产</text>
+    <text class="card-title" x="599" y="758">Ingest / 专用 producer</text>
+    <text class="card-body" x="599" y="806">通用：新来源、增量、升级</text>
+    <text class="card-body" x="599" y="846">trace：运行后蒸馏 Runbook</text>
+    <text class="card-body" x="599" y="886">VV 非 Cube；CV 含 Cube</text>
+    <text class="card-small" x="599" y="922">上传 trace 本身不会自动入库</text>
+
+    <rect x="1050" y="672" width="350" height="268" rx="18" fill="#ffffff" stroke="#ead3bd" stroke-width="2"/>
+    <text class="eyebrow eyebrow-maintain" x="1084" y="713">工作分支</text>
+    <text class="card-title" x="1084" y="758">候选知识卡</text>
+    <text class="card-body" x="1084" y="806">写入 knowledge/</text>
+    <text class="card-body" x="1084" y="846">同步 index.md 导航</text>
+    <text class="card-body" x="1084" y="886">记录对应变更日志</text>
+    <text class="card-small" x="1084" y="922">还未成为已发布知识</text>
+
+    <rect x="1480" y="672" width="450" height="268" rx="18" fill="#ffffff" stroke="#ead3bd" stroke-width="2"/>
+    <text class="eyebrow eyebrow-maintain" x="1514" y="713">提交前门禁</text>
+    <text class="card-title" x="1514" y="758">Lint · check.sh · evals/</text>
+    <text class="card-body" x="1514" y="806">Lint 查结构、来源、导航、日志</text>
+    <text class="card-body" x="1514" y="846">bash check.sh 跑完整检查</text>
+    <text class="card-body" x="1514" y="886">evals/ 守住检索与治理回归</text>
+    <text class="card-small" x="1514" y="922">通过结构检查不等于结论正确</text>
+
+    <rect x="2010" y="672" width="450" height="268" rx="18" fill="#ffffff" stroke="#d7b89a" stroke-width="2"/>
+    <text class="eyebrow eyebrow-maintain" x="2044" y="713">发布门禁</text>
+    <text class="card-title" x="2044" y="758">PR 人工审阅</text>
+    <text class="card-body" x="2044" y="806">核对主张、来源与适用范围</text>
+    <text class="card-body" x="2044" y="846">检查验证材料与变更范围</text>
+    <text class="card-body" x="2044" y="886">批准后合入可消费版本</text>
+    <text class="card-small" x="2044" y="922">需要时回退或修订卡片</text>
+  </g>
+
+  <path class="line-write" d="M 485 806 H 548" marker-end="url(#arrow-write)"/>
+  <path class="line-write" d="M 970 806 H 1033" marker-end="url(#arrow-write)"/>
+  <path class="line-write" d="M 1400 806 H 1463" marker-end="url(#arrow-write)"/>
+  <path class="line-write" d="M 1930 806 H 1993" marker-end="url(#arrow-write)"/>
+
+  <!-- The reviewed PR publishes the card read by Query above. -->
+  <path class="line-write" d="M 2235 672 V 557 H 1515 V 491" marker-end="url(#arrow-write)"/>
+  <rect x="1705" y="536" width="255" height="38" rx="18" fill="#f5f7fa"/>
+  <text class="font arrow-label-maintain" x="1832" y="563" text-anchor="middle">审阅合入后发布</text>
+
+  <!-- Supporting modules -->
+  <rect x="60" y="1035" width="2440" height="326" rx="26" fill="#ffffff" stroke="#d9e0e8" stroke-width="2"/>
+  <text class="font band-title" x="98" y="1083">③ 规则与仓库配套模块</text>
+  <text class="font band-note" x="505" y="1083">它们由上面的流程读取、检查或更新，不会自行发布知识</text>
+
+  <g class="font">
+    <rect x="95" y="1110" width="440" height="220" rx="17" fill="#f8fafc" stroke="#d7e0e8" stroke-width="2"/>
+    <text class="card-title" x="125" y="1154">governance/</text>
+    <text class="card-small" x="125" y="1194">schemas/ 定字段、路径和受控值</text>
+    <text class="card-small" x="125" y="1228">contracts/ 供 Ingest、Query、Lint 用</text>
+    <text class="card-small" x="125" y="1262">specs/ 供编写、审阅时查规则</text>
+    <text class="card-small" x="125" y="1296">调用：生产、查询、校验或改规则</text>
+
+    <rect x="575" y="1110" width="360" height="220" rx="17" fill="#f8fafc" stroke="#d7e0e8" stroke-width="2"/>
+    <text class="card-title" x="605" y="1154">logs/</text>
+    <text class="card-small" x="605" y="1194">记已实施的知识/治理变更</text>
+    <text class="card-small" x="605" y="1228">改卡、改规则时同步编写</text>
+    <text class="card-small" x="605" y="1262">trace producer 可同步写入</text>
+    <text class="card-small" x="605" y="1296">Lint 检查；不是原始 trace</text>
+
+    <rect x="975" y="1110" width="370" height="220" rx="17" fill="#f8fafc" stroke="#d7e0e8" stroke-width="2"/>
+    <text class="card-title" x="1005" y="1154">install.sh</text>
+    <text class="card-small" x="1005" y="1194">业务项目接入时执行</text>
+    <text class="card-small" x="1005" y="1228">获取知识仓、准备资源与索引</text>
+    <text class="card-small" x="1005" y="1262">安装可用的 Query 等 Skill</text>
+    <text class="card-small" x="1005" y="1296">安装后由 Agent 按需调用</text>
+
+    <rect x="1385" y="1110" width="370" height="220" rx="17" fill="#f8fafc" stroke="#d7e0e8" stroke-width="2"/>
+    <text class="card-title" x="1415" y="1154">docs/ · recipes/</text>
+    <text class="card-small" x="1415" y="1194">docs/：设计、安装、使用指南</text>
+    <text class="card-small" x="1415" y="1228">recipes/：具体任务的实践步骤</text>
+    <text class="card-small" x="1415" y="1262">接入或贡献时由人/Agent 查阅</text>
+    <text class="card-small" x="1415" y="1296">规则变更时同步更新说明</text>
+
+    <rect x="1795" y="1110" width="665" height="220" rx="17" fill="#f8fafc" stroke="#d7e0e8" stroke-width="2"/>
+    <text class="card-title" x="1825" y="1154">artifacts/  ·  OAT.xml</text>
+    <text class="card-small" x="1825" y="1194">artifacts/：索引、图谱等本地可重建产物</text>
+    <text class="card-small" x="1825" y="1228">调用：构建或验证时生成；默认不提交</text>
+    <line x1="1825" y1="1247" x2="2430" y2="1247" stroke="#d7e0e8" stroke-width="2"/>
+    <text class="card-small" x="1825" y="1282">OAT.xml：GitCode 开源许可扫描时读取</text>
+  </g>
+
+  <text class="font card-small" x="80" y="1406">边界：卡片和来源仍须人工核对；Lint、检索命中与性能收益各自需要独立证据。</text>
+</svg>
