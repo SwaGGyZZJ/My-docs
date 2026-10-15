@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1560" viewBox="0 0 1600 1560" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1630" viewBox="0 0 1600 1630" role="img" aria-labelledby="title desc">
   <title id="title">KPBot Knowledge 多仓知识管理架构</title>
-  <desc id="desc">目标架构：知识更新使用统一 Skill 入口，新增来源也由该入口处理；知识查询使用独立 Skill。recipes 是面向维护者的流程指引，说明触发条件、来源固定、证据和验收步骤；更新 Skill 调用 kpbot-knowledge 内置的代码、PR、文档制作工具，分别生成或刷新三类 OKF Wiki 产物仓。三类 Wiki 仓按知识来源类型独立保存，不是三个查询 Skill，也不依赖外部 OpenWiki 或 Kernel Wiki 制作工具仓。来源卡和证据指针进入中央 kpbot-knowledge；正式卡片经审核发布。Coding Agent 使用独立的知识查询 Skill，远端客户端通过只读 MCP，复用查询后端检索三类来源 Wiki 和中央已审卡。KP-bench 是边界外的独立评测仓。</desc>
+  <desc id="desc">目标架构：知识更新使用统一 Skill 入口，新增来源也由该入口处理；知识查询使用独立 Skill。更新 Skill 调用 kpbot-knowledge 内置的代码、PR、文档制作工具，分别生成或刷新三类 OKF Wiki 产物仓。三类 Wiki 仓按知识来源类型独立保存，不是三个查询 Skill，也不依赖外部 OpenWiki 或 Kernel Wiki 制作工具仓。来源卡和证据指针进入中央 kpbot-knowledge；正式卡片经审核发布。Coding Agent 使用独立的知识查询 Skill，远端客户端通过只读 MCP，复用查询后端检索三类来源 Wiki 和中央已审卡。KP-bench 是边界外的独立评测仓。</desc>
   <defs>
     <style>
       .bg{fill:#f5f7fb}.ink{fill:#14243a}.muted{fill:#52647c}.card{fill:#fff;stroke:#cad5e4;stroke-width:2}.rule{stroke:#dbe3ed;stroke-width:1.5}
@@ -10,47 +10,43 @@
     </style>
     <marker id="head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#8da4c3"/></marker>
   </defs>
-  <rect class="bg" width="1600" height="1560"/>
+  <rect class="bg" width="1600" height="1630"/>
   <text class="t h1 ink" x="58" y="67">KPBot Knowledge · 多仓知识管理架构</text>
   <text class="t body muted" x="58" y="104">代码、PR、文档知识分仓保存；kpbot-knowledge 审核发布；KP-bench 独立评测</text>
   <text class="t small muted" x="1370" y="72">目标架构</text>
 
-  <rect class="card" x="58" y="137" width="1484" height="198" rx="17"/>
-  <rect class="blue" x="58" y="137" width="1484" height="61" rx="17"/>
-  <text class="t label ink" x="84" y="165">知识更新统一 Skill 入口 · kpbot-knowledge 内置</text>
-  <text class="t h2 ink" x="84" y="192">更新入口处理新增来源与版本变化；三类 Wiki 仓分别保存不同来源的知识</text>
-  <rect class="card" x="83" y="214" width="430" height="101" rx="10"/>
-  <text class="t h3 ink" x="105" y="243">recipes/ · 维护流程指引</text>
-  <text class="t small ink" x="105" y="270">选新增、增量或版本升级场景</text>
-  <text class="t small muted" x="105" y="296">固定来源版本，列证据与验收项</text>
-  <rect class="card" x="535" y="214" width="430" height="101" rx="10"/>
-  <text class="t h3 ink" x="557" y="243">knowledge-update · 执行入口</text>
-  <text class="t small ink" x="557" y="270">路由代码、PR、文档内置制作工具</text>
-  <text class="t small muted" x="557" y="296">生成或刷新对应 Wiki 快照与索引</text>
-  <rect class="card" x="987" y="214" width="530" height="101" rx="10"/>
-  <text class="t h3 ink" x="1009" y="243">候选复审 · 门禁 · 发布</text>
-  <text class="t small ink" x="1009" y="270">生成变更 digest，核对受影响卡片</text>
-  <text class="t small muted" x="1009" y="296">审核通过后发布；保留旧版可回退</text>
+  <rect class="card" x="58" y="137" width="1484" height="240" rx="17"/>
+  <rect class="blue" x="58" y="137" width="1484" height="62" rx="17"/>
+  <text class="t h2 ink" x="88" y="179">知识更新统一 Skill 入口 · kpbot-knowledge 内置</text>
+  <text class="t body muted" x="88" y="227">更新入口处理新增来源与版本变化；三类 Wiki 仓分别保存不同来源的知识</text>
+  <rect class="card" x="83" y="245" width="706" height="112" rx="10"/>
+  <text class="t h3 ink" x="113" y="278">knowledge-update · 制作与更新</text>
+  <text class="t small ink" x="113" y="309">按来源版本变化调用代码、PR、文档内置工具</text>
+  <text class="t small muted" x="113" y="336">分别生成或刷新 Wiki 快照与查询索引</text>
+  <rect class="card" x="811" y="245" width="706" height="112" rx="10"/>
+  <text class="t h3 ink" x="841" y="278">候选复审 · 门禁 · 发布</text>
+  <text class="t small ink" x="841" y="309">生成变更 digest，核对受影响卡片</text>
+  <text class="t small muted" x="841" y="336">审核通过后发布快照，旧版可回退</text>
 
-  <path class="bus" d="M800 336 V357 M293 357 H1307"/>
-  <path class="arrow" d="M293 357 V383"/>
-  <path class="arrow" d="M800 357 V383"/>
-  <path class="arrow" d="M1307 357 V383"/>
-  <g transform="translate(0 90)">
+  <path class="bus" d="M800 378 V398 M293 398 H1307"/>
+  <path class="arrow" d="M293 398 V433"/>
+  <path class="arrow" d="M800 398 V433"/>
+  <path class="arrow" d="M1307 398 V433"/>
+  <g transform="translate(0 140)">
 
   <rect class="card" x="58" y="309" width="470" height="386" rx="16"/>
   <rect class="blue" x="58" y="309" width="470" height="59" rx="16"/>
   <text class="t h3 ink" x="82" y="348">各代码仓 → 各自 OpenWiki 仓</text>
   <rect class="card" x="82" y="390" width="153" height="51" rx="9"/>
-  <text class="t small ink" x="99" y="422">代码仓 A</text>
+  <text class="t small ink" x="105" y="422">代码仓 A</text>
   <path class="arrow" d="M241 415 H273"/>
   <rect class="card" x="287" y="390" width="215" height="51" rx="9"/>
-  <text class="t small ink" x="301" y="422">OpenWiki 仓 A</text>
+  <text class="t small ink" x="311" y="422">OpenWiki 仓 A</text>
   <rect class="card" x="82" y="456" width="153" height="51" rx="9"/>
-  <text class="t small ink" x="99" y="488">代码仓 B ···</text>
+  <text class="t small ink" x="105" y="488">代码仓 B ···</text>
   <path class="arrow" d="M241 481 H273"/>
   <rect class="card" x="287" y="456" width="215" height="51" rx="9"/>
-  <text class="t small ink" x="301" y="488">OpenWiki 仓 B ···</text>
+  <text class="t small ink" x="311" y="488">OpenWiki 仓 B ···</text>
   <line class="rule" x1="82" y1="529" x2="502" y2="529"/>
   <text class="t small ink" x="82" y="559">每个代码仓对应一个 OpenWiki 仓</text>
   <text class="t small ink" x="82" y="590">按源码 commit 增量更新各自 Wiki</text>
@@ -61,12 +57,12 @@
   <rect class="orange" x="565" y="309" width="470" height="59" rx="16"/>
   <text class="t h3 ink" x="589" y="348">多仓 PR → Kernel Wiki 仓</text>
   <rect class="card" x="589" y="390" width="177" height="117" rx="9"/>
-  <text class="t small ink" x="605" y="425">代码仓 A / B / C</text>
-  <text class="t small ink" x="605" y="468">PR、diff、讨论</text>
+  <text class="t small ink" x="611" y="425">代码仓 A、B、C</text>
+  <text class="t small ink" x="611" y="468">PR、diff、讨论</text>
   <path class="arrow" d="M773 448 H792"/>
   <rect class="card" x="806" y="390" width="204" height="117" rx="9"/>
-  <text class="t small ink" x="822" y="425">Kernel Wiki 仓</text>
-  <text class="t small ink" x="822" y="468">跨仓专题与候选</text>
+  <text class="t small ink" x="830" y="425">Kernel Wiki 仓</text>
+  <text class="t small ink" x="830" y="468">跨仓专题与候选</text>
   <line class="rule" x1="589" y1="529" x2="1010" y2="529"/>
   <text class="t small ink" x="589" y="559">一仓汇聚多代码仓的 PR 证据</text>
   <text class="t small ink" x="589" y="590">发现候选后审 diff、测试和讨论</text>
@@ -77,12 +73,12 @@
   <rect class="green" x="1072" y="309" width="470" height="59" rx="16"/>
   <text class="t h3 ink" x="1096" y="348">领域文档 → 文档 Wiki 仓</text>
   <rect class="card" x="1096" y="390" width="177" height="117" rx="9"/>
-  <text class="t small ink" x="1112" y="425">手册 / 规范 / 报告</text>
-  <text class="t small ink" x="1112" y="468">URI、版次、许可</text>
+  <text class="t small ink" x="1118" y="425">手册、规范、报告</text>
+  <text class="t small ink" x="1118" y="468">URI、版次、许可</text>
   <path class="arrow" d="M1280 448 H1299"/>
   <rect class="card" x="1313" y="390" width="204" height="117" rx="9"/>
-  <text class="t small ink" x="1329" y="425">文档 Wiki 仓</text>
-  <text class="t small ink" x="1329" y="468">按领域组织页面</text>
+  <text class="t small ink" x="1337" y="425">文档 Wiki 仓</text>
+  <text class="t small ink" x="1337" y="468">按领域组织页面</text>
   <line class="rule" x1="1096" y1="529" x2="1517" y2="529"/>
   <text class="t small ink" x="1096" y="559">一仓汇集多份文档的 Wiki 页面</text>
   <text class="t small ink" x="1096" y="590">按文档 URI、hash 或发布版更新</text>
@@ -122,26 +118,26 @@
   <text class="t small muted" x="1197" y="1001">发布快照并支持回退</text>
 
   <path class="arrow" d="M800 1064 V1093"/>
-  <rect class="card" x="58" y="1107" width="1484" height="194" rx="15"/>
+  <rect class="card" x="58" y="1107" width="1484" height="214" rx="15"/>
   <rect class="blue" x="58" y="1107" width="1484" height="56" rx="15"/>
   <text class="t h3 ink" x="84" y="1144">统一查询访问层 · 两种入口复用同一查询后端</text>
-  <rect class="card" x="83" y="1179" width="430" height="96" rx="11"/>
-  <text class="t h3 ink" x="105" y="1209">Coding Agent → knowledge-query</text>
-  <text class="t small ink" x="105" y="1238">按任务、代码仓和领域选择查询范围</text>
-  <text class="t small muted" x="105" y="1260">给 Agent 返回带来源的结果包</text>
-  <rect class="card" x="535" y="1179" width="430" height="96" rx="11"/>
-  <text class="t h3 ink" x="557" y="1209">只读 MCP 服务</text>
-  <text class="t small ink" x="557" y="1238">为远端客户端提供 search / get</text>
-  <text class="t small muted" x="557" y="1260">共用查询后端；不审核或写知识</text>
-  <rect class="card" x="987" y="1179" width="530" height="96" rx="11"/>
-  <text class="t h3 ink" x="1009" y="1209">统一查询后端</text>
-  <text class="t small ink" x="1009" y="1238">查询三类 OKF Wiki 快照和中央已审卡</text>
-  <text class="t small muted" x="1009" y="1260">分别返回卡片来源、审核状态和版本</text>
+  <rect class="card" x="83" y="1179" width="430" height="116" rx="11"/>
+  <text class="t h3 ink" x="109" y="1214">Coding Agent → knowledge-query</text>
+  <text class="t small ink" x="109" y="1247">按任务、代码仓和领域选择查询范围</text>
+  <text class="t small muted" x="109" y="1275">给 Agent 返回带来源的结果包</text>
+  <rect class="card" x="535" y="1179" width="430" height="116" rx="11"/>
+  <text class="t h3 ink" x="561" y="1214">只读 MCP 服务</text>
+  <text class="t small ink" x="561" y="1247">为远端客户端提供 search / get</text>
+  <text class="t small muted" x="561" y="1275">共用查询后端；不审核或写知识</text>
+  <rect class="card" x="987" y="1179" width="530" height="116" rx="11"/>
+  <text class="t h3 ink" x="1013" y="1214">统一查询后端</text>
+  <text class="t small ink" x="1013" y="1247">查询三类 OKF Wiki 快照和中央已审卡</text>
+  <text class="t small muted" x="1013" y="1275">分别返回卡片来源、审核状态和版本</text>
 
-  <path class="arrow" d="M800 1302 V1317"/>
-  <rect class="external" x="58" y="1330" width="1484" height="100" rx="15"/>
-  <text class="t h3 ink" x="84" y="1361">边界外独立仓 · KP-bench</text>
-  <text class="t small ink" x="84" y="1390">固定任务、Agent 流程和知识快照，成对运行；记录正确性、性能与成本。原始记录留在本仓。</text>
-  <text class="t small muted" x="84" y="1415">测量结论如需进入正式知识，先核验证据，再走中央仓审核与发布门禁。</text>
+  <path class="arrow" d="M800 1322 V1337"/>
+  <rect class="external" x="58" y="1350" width="1484" height="100" rx="15"/>
+  <text class="t h3 ink" x="84" y="1381">边界外独立仓 · KP-bench</text>
+  <text class="t small ink" x="84" y="1410">固定任务、Agent 流程和知识快照，成对运行；记录正确性、性能与成本。原始记录留在本仓。</text>
+  <text class="t small muted" x="84" y="1435">测量结论如需进入正式知识，先核验证据，再走中央仓审核与发布门禁。</text>
   </g>
 </svg>
