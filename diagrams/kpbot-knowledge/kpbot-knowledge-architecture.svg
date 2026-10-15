@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1630" viewBox="0 0 1600 1630" role="img" aria-labelledby="title desc">
   <title id="title">KPBot Knowledge 多仓知识管理架构</title>
-  <desc id="desc">目标架构：知识更新使用统一 Skill 入口，新增来源也由该入口处理；知识查询使用独立 Skill。更新 Skill 调用 kpbot-knowledge 内置的代码、PR、文档制作工具，分别生成或刷新三类 OKF Wiki 产物仓。三类 Wiki 仓按知识来源类型独立保存，不是三个查询 Skill，也不依赖外部 OpenWiki 或 Kernel Wiki 制作工具仓。来源卡和证据指针进入中央 kpbot-knowledge；正式卡片经审核发布。Coding Agent 使用独立的知识查询 Skill，远端客户端通过只读 MCP，复用查询后端检索三类来源 Wiki 和中央已审卡。KP-bench 是边界外的独立评测仓。</desc>
+  <desc id="desc">目标架构：knowledge-create 登记新来源并生成首版 Wiki，knowledge-update 根据来源版本变化刷新 Wiki，knowledge-query 独立检索知识。创建与更新 Skill 都调用 kpbot-knowledge 内置的代码、PR、文档制作工具，分别维护三类 OKF Wiki 产物仓。三类 Wiki 仓按知识来源类型独立保存，不依赖外部 OpenWiki 或 Kernel Wiki 制作工具仓。来源卡和证据指针进入中央 kpbot-knowledge；正式卡片经审核发布。Coding Agent 使用知识查询 Skill，远端客户端通过只读 MCP，复用查询后端检索三类来源 Wiki 和中央已审卡。KP-bench 是边界外的独立评测仓。</desc>
   <defs>
     <style>
       .bg{fill:#f5f7fb}.ink{fill:#14243a}.muted{fill:#52647c}.card{fill:#fff;stroke:#cad5e4;stroke-width:2}.rule{stroke:#dbe3ed;stroke-width:1.5}
@@ -17,16 +17,20 @@
 
   <rect class="card" x="58" y="137" width="1484" height="240" rx="17"/>
   <rect class="blue" x="58" y="137" width="1484" height="62" rx="17"/>
-  <text class="t h2 ink" x="88" y="179">知识更新统一 Skill 入口 · kpbot-knowledge 内置</text>
-  <text class="t body muted" x="88" y="227">更新入口处理新增来源与版本变化；三类 Wiki 仓分别保存不同来源的知识</text>
-  <rect class="card" x="83" y="245" width="706" height="112" rx="10"/>
-  <text class="t h3 ink" x="113" y="278">knowledge-update · 制作与更新</text>
-  <text class="t small ink" x="113" y="309">按来源版本变化调用代码、PR、文档内置工具</text>
-  <text class="t small muted" x="113" y="336">分别生成或刷新 Wiki 快照与查询索引</text>
-  <rect class="card" x="811" y="245" width="706" height="112" rx="10"/>
-  <text class="t h3 ink" x="841" y="278">候选复审 · 门禁 · 发布</text>
-  <text class="t small ink" x="841" y="309">生成变更 digest，核对受影响卡片</text>
-  <text class="t small muted" x="841" y="336">审核通过后发布快照，旧版可回退</text>
+  <text class="t h2 ink" x="88" y="179">知识创建与更新 · kpbot-knowledge 内置 Skill</text>
+  <text class="t body muted" x="88" y="227">新来源创建首版，已有来源按版本刷新；三类 Wiki 仓分别保存产物</text>
+  <rect class="card" x="83" y="245" width="460" height="112" rx="10"/>
+  <text class="t h3 ink" x="111" y="278">knowledge-create · 创建首版</text>
+  <text class="t small ink" x="111" y="309">登记新来源，调用对应内置制作工具</text>
+  <text class="t small muted" x="111" y="336">生成 Wiki 初版快照与查询索引</text>
+  <rect class="card" x="565" y="245" width="460" height="112" rx="10"/>
+  <text class="t h3 ink" x="593" y="278">knowledge-update · 增量刷新</text>
+  <text class="t small ink" x="593" y="309">比较来源版本，调用对应内置工具</text>
+  <text class="t small muted" x="593" y="336">更新 Wiki 快照与索引，保留旧版</text>
+  <rect class="card" x="1047" y="245" width="470" height="112" rx="10"/>
+  <text class="t h3 ink" x="1075" y="278">候选复审 · 门禁 · 发布</text>
+  <text class="t small ink" x="1075" y="309">生成变更 digest，核对受影响卡片</text>
+  <text class="t small muted" x="1075" y="336">审核通过后发布快照，旧版可回退</text>
 
   <path class="bus" d="M800 378 V398 M293 398 H1307"/>
   <path class="arrow" d="M293 398 V433"/>

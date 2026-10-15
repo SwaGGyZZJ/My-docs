@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1360" viewBox="0 0 1600 1360" role="img" aria-labelledby="title desc">
   <title id="title">KPBot Knowledge 通路实现计划</title>
-  <desc id="desc">S01 与 E02 由团队共同确认，不指定单人。其他模块右上角以 A、B、C 标出负责人：A 负责 Wiki 制作工具、OKF Bundle 与更新门禁；B 负责 code-optimizer 知识迁移、KP-bench 和效果对照；C 从首轮开始建设基于现有 OKF 的查询后端与 KPBot 打包，接续 MCP 和干净安装验收。知识事实由领域审核人签核。三类 Wiki 工具整合到 kpbot-knowledge，随 KPBot 发布；更新走统一 Skill，查询走独立 Skill。三类 Wiki 仓按来源类型保存知识。同一算子任务分别使用迁移前旧 refs 和迁移后已审卡，比较正确性、性能、耗时与 token。最后由团队联合验收更新门禁、MCP 查询和效果对照。</desc>
+  <desc id="desc">S01 与 E02 由团队共同确认，不指定单人。其他模块右上角以 A、B、C 标出负责人：A 负责 Wiki 制作工具、OKF Bundle 与更新门禁；B 负责 code-optimizer 知识迁移、KP-bench 和效果对照；C 从首轮开始建设基于现有 OKF 的查询后端与 KPBot 打包，接续 MCP 和干净安装验收。知识事实由领域审核人签核。三类 Wiki 工具整合到 kpbot-knowledge，随 KPBot 发布；knowledge-create 创建首版，knowledge-update 刷新快照，knowledge-query 独立查询。三类 Wiki 仓按来源类型保存知识。同一算子任务分别使用迁移前旧 refs 和迁移后已审卡，比较正确性、性能、耗时与 token。最后由团队联合验收更新门禁、MCP 查询和效果对照。</desc>
   <defs>
     <style>
       .bg{fill:#f5f7fb}.ink{fill:#14243a}.muted{fill:#52647c}.card{fill:#fff;stroke:#cad5e4;stroke-width:2}.rule{stroke:#dbe3ed;stroke-width:1.5}
@@ -30,7 +30,7 @@
   <text class="t h3 ink" x="80" y="387">I01–I04  Wiki 制作工具内化</text>
   <rect class="owner-a" x="472" y="362" width="36" height="28" rx="9"/><text class="t owner-text" x="483" y="382">A</text>
   <text class="t small ink" x="80" y="439">内置代码、PR、文档 Wiki 制作工具</text>
-  <text class="t small ink" x="80" y="473">随 KPBot 安装；更新 Skill 调用</text>
+  <text class="t small ink" x="80" y="473">随 KPBot 安装；创建与更新 Skill 调用</text>
   <text class="t small ink" x="80" y="507">三类产物仓各生成、更新一次</text>
   <text class="t small muted" x="80" y="541">验快照、回源、许可和 references/</text>
   <rect class="card" x="565" y="350" width="470" height="232" rx="16"/>
