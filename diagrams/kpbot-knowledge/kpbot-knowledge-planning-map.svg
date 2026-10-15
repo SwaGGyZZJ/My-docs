@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1360" viewBox="0 0 1600 1360" role="img" aria-labelledby="title desc">
+  <title id="title">KPBot Knowledge 通路实现计划</title>
+  <desc id="desc">S01 与 E02 由团队共同确认，不指定单人。其他模块右上角以 A、B、C 标出负责人：A 负责 Wiki 制作工具、OKF Bundle 与更新门禁；B 负责 code-optimizer 知识迁移、KP-bench 和效果对照；C 从首轮开始建设基于现有 OKF 的查询后端与 KPBot 打包，接续 MCP 和干净安装验收。知识事实由领域审核人签核。三类 Wiki 工具整合到 kpbot-knowledge，随 KPBot 发布；更新走统一 Skill，查询走独立 Skill。三类 Wiki 仓按来源类型保存知识。同一算子任务分别使用迁移前旧 refs 和迁移后已审卡，比较正确性、性能、耗时与 token。最后由团队联合验收更新门禁、MCP 查询和效果对照。</desc>
+  <defs>
+    <style>
+      .bg{fill:#f5f7fb}.ink{fill:#14243a}.muted{fill:#52647c}.card{fill:#fff;stroke:#cad5e4;stroke-width:2}.rule{stroke:#dbe3ed;stroke-width:1.5}
+      .blue{fill:#dcecff}.orange{fill:#ffe7d6}.green{fill:#e2f3e7}.neutral{fill:#eef2f7}
+      .t{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}.h1{font-size:35px;font-weight:700}.h2{font-size:25px;font-weight:700}.h3{font-size:20px;font-weight:700}.body{font-size:18px}.small{font-size:16px}.tiny{font-size:15px}.label{font-size:15px;font-weight:700}
+      .arrow{fill:none;stroke:#8da4c3;stroke-width:3;marker-end:url(#head)}
+      .owner-a{fill:#dcecff;stroke:#78a7db;stroke-width:1.5}.owner-b{fill:#ffe7d6;stroke:#d49a70;stroke-width:1.5}.owner-c{fill:#e2f3e7;stroke:#84be96;stroke-width:1.5}.owner-text{font-size:18px;font-weight:700;fill:#263c55}
+    </style>
+    <marker id="head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#8da4c3"/></marker>
+  </defs>
+  <rect class="bg" width="1600" height="1360"/>
+  <text class="t h1 ink" x="58" y="67">KPBot Knowledge · 通路实现计划</text>
+  <text class="t body muted" x="58" y="104">同一算子案例贯通知识迁移、对照测试与发布验收；任务清单记录完整依赖。</text>
+  <text class="t small muted" x="1370" y="72">讨论稿</text>
+
+  <text class="t label muted" x="58" y="143">0 · 团队共同确认首轮输入</text>
+  <rect class="card" x="58" y="160" width="1484" height="116" rx="16"/>
+  <rect class="neutral" x="58" y="160" width="1484" height="50" rx="16"/>
+  <text class="t h3 ink" x="82" y="193">S01  选定首轮样例 · 团队共同确认</text>
+  <text class="t small ink" x="82" y="233">固定一个代码仓、一组跨仓 PR 和一份领域文档的来源版本</text>
+  <text class="t small ink" x="82" y="258">固定算子任务、测试机器、模型、预算和测量条件；OKF 沿用现有规范</text>
+  <path class="arrow" d="M800 277 V337"/>
+
+  <text class="t label muted" x="58" y="330">1 · A / B / C 并行准备</text>
+  <rect class="card" x="58" y="350" width="470" height="232" rx="16"/>
+  <rect class="blue" x="58" y="350" width="470" height="55" rx="16"/>
+  <text class="t h3 ink" x="80" y="387">I01–I04  Wiki 制作工具内化</text>
+  <rect class="owner-a" x="472" y="362" width="36" height="28" rx="9"/><text class="t owner-text" x="483" y="382">A</text>
+  <text class="t small ink" x="80" y="439">内置代码、PR、文档 Wiki 制作工具</text>
+  <text class="t small ink" x="80" y="473">随 KPBot 安装；更新 Skill 调用</text>
+  <text class="t small ink" x="80" y="507">三类产物仓各生成、更新一次</text>
+  <text class="t small muted" x="80" y="541">验快照、回源、许可和 references/</text>
+  <rect class="card" x="565" y="350" width="470" height="232" rx="16"/>
+  <rect class="orange" x="565" y="350" width="470" height="55" rx="16"/>
+  <text class="t h3 ink" x="589" y="387">K01 + B01–B02  refs 与 KP-bench</text>
+  <rect class="owner-b" x="979" y="362" width="36" height="28" rx="9"/><text class="t owner-text" x="990" y="382">B</text>
+  <text class="t small ink" x="589" y="439">冻结并分类 code-optimizer 旧 refs</text>
+  <text class="t small ink" x="589" y="473">候选卡保留原 ref、源码与适用条件</text>
+  <text class="t small ink" x="589" y="507">旧实验筛算子 case；过程归参考目录</text>
+  <text class="t small muted" x="589" y="541">建任务、正确性检查、运行和原始报告</text>
+  <rect class="card" x="1072" y="350" width="470" height="232" rx="16"/>
+  <rect class="green" x="1072" y="350" width="470" height="55" rx="16"/>
+  <text class="t h3 ink" x="1096" y="387">M00  OKF 查询与打包准备</text>
+  <rect class="owner-c" x="1486" y="362" width="36" height="28" rx="9"/><text class="t owner-text" x="1497" y="382">C</text>
+  <text class="t small ink" x="1096" y="439">沿用 OKF 字段，不另定知识契约</text>
+  <text class="t small ink" x="1096" y="473">用样例快照实现统一查询后端</text>
+  <text class="t small ink" x="1096" y="507">返回来源、版本与审核状态</text>
+  <text class="t small muted" x="1096" y="541">准备 KPBot 打包和干净安装路径</text>
+
+  <g transform="translate(0 -75)">
+  <text class="t label muted" x="58" y="695">2 · 知识收敛与服务接入</text>
+  <rect class="card" x="58" y="713" width="470" height="194" rx="16"/>
+  <rect class="blue" x="58" y="713" width="470" height="55" rx="16"/>
+  <text class="t h3 ink" x="82" y="750">K02 + G01  审卡与更新摘要</text>
+  <rect class="owner-a" x="472" y="725" width="36" height="28" rx="9"/><text class="t owner-text" x="483" y="745">A</text>
+  <text class="t small ink" x="82" y="798">核验候选的原文、许可、适用和反例</text>
+  <text class="t small ink" x="82" y="826">签核后发布已审 OKF Bundle</text>
+  <text class="t small ink" x="82" y="854">更新来源并定位受影响卡片</text>
+  <text class="t small muted" x="82" y="883">生成 digest 与人工复审队列</text>
+  <path class="arrow" d="M533 810 H557"/>
+  <rect class="card" x="565" y="713" width="470" height="194" rx="16"/>
+  <rect class="orange" x="565" y="713" width="470" height="55" rx="16"/>
+  <text class="t h3 ink" x="589" y="750">P01 → K03  映射并回接原入口</text>
+  <rect class="owner-b" x="979" y="725" width="36" height="28" rx="9"/><text class="t owner-text" x="990" y="745">B</text>
+  <text class="t small ink" x="589" y="798">旧 ref 映射到 K02 已审卡的 Concept ID</text>
+  <text class="t small ink" x="589" y="826">code-optimizer 原 knowledge 入口读新仓</text>
+  <text class="t small ink" x="589" y="854">trace 证实读卡，且回源码核验</text>
+  <text class="t small muted" x="589" y="883">执行规则留 Skill；其余变量不变</text>
+  <rect class="card" x="1072" y="713" width="470" height="194" rx="16"/>
+  <rect class="green" x="1072" y="713" width="470" height="55" rx="16"/>
+  <text class="t h3 ink" x="1096" y="750">M01  接入快照与只读 MCP</text>
+  <rect class="owner-c" x="1486" y="725" width="36" height="28" rx="9"/><text class="t owner-text" x="1497" y="745">C</text>
+  <text class="t small ink" x="1096" y="798">三类 Wiki 与已审 Bundle 接入查询后端</text>
+  <text class="t small ink" x="1096" y="826">MCP 与查询 Skill 共用 search / get</text>
+  <text class="t small ink" x="1096" y="854">返回来源仓、知识版本与审核状态</text>
+  <text class="t small muted" x="1096" y="883">接入真实快照后运行查询回归</text>
+
+  <text class="t label muted" x="58" y="952">3 · 效果对照、发布与安装验收</text>
+  <rect class="card" x="58" y="971" width="470" height="189" rx="16"/>
+  <rect class="orange" x="58" y="971" width="470" height="55" rx="16"/>
+  <text class="t h3 ink" x="82" y="1008">V01  code-optimizer 效果对照</text>
+  <rect class="owner-b" x="472" y="983" width="36" height="28" rx="9"/><text class="t owner-text" x="483" y="1003">B</text>
+  <rect x="80" y="1036" width="205" height="66" rx="9" fill="#fff8f1" stroke="#dbb485" stroke-width="1.5"/>
+  <text class="t label ink" x="94" y="1059">迁移前｜旧 refs</text>
+  <text class="t small ink" x="94" y="1085">原入口读旧知识</text>
+  <rect x="301" y="1036" width="205" height="66" rx="9" fill="#eef5ff" stroke="#a5c4e6" stroke-width="1.5"/>
+  <text class="t label ink" x="315" y="1059">迁移后｜已审卡</text>
+  <text class="t small ink" x="315" y="1085">原入口读新知识</text>
+  <text class="t small ink" x="82" y="1127">同一任务、模型、预算、源码和测试机</text>
+  <text class="t small muted" x="82" y="1150">比正确性、性能、耗时和 token；留原始报告</text>
+  <rect class="card" x="565" y="971" width="470" height="189" rx="16"/>
+  <rect class="blue" x="565" y="971" width="470" height="55" rx="16"/>
+  <text class="t h3 ink" x="589" y="1008">G02  门禁、发布与回退</text>
+  <rect class="owner-a" x="979" y="983" width="36" height="28" rx="9"/><text class="t owner-text" x="990" y="1003">A</text>
+  <text class="t small ink" x="589" y="1054">跑结构、来源、许可和审核门禁</text>
+  <text class="t small ink" x="589" y="1083">复审受影响卡并发布新快照</text>
+  <text class="t small ink" x="589" y="1112">记录发布版本与来源快照</text>
+  <text class="t small muted" x="589" y="1141">回退旧版并核对查询结果</text>
+  <rect class="card" x="1072" y="971" width="470" height="189" rx="16"/>
+  <rect class="green" x="1072" y="971" width="470" height="55" rx="16"/>
+  <text class="t h3 ink" x="1096" y="1008">M02 + E01  远程与安装验收</text>
+  <rect class="owner-c" x="1486" y="983" width="36" height="28" rx="9"/><text class="t owner-text" x="1497" y="1003">C</text>
+  <text class="t small ink" x="1096" y="1054">KPBot 远程查询 MCP 并切换版本</text>
+  <text class="t small ink" x="1096" y="1083">干净环境仅安装 KPBot</text>
+  <text class="t small ink" x="1096" y="1112">验三源更新、查询和原入口读卡</text>
+  <text class="t small muted" x="1096" y="1141">保留安装、来源与查询 trace</text>
+  <path class="arrow" d="M293 1162 V1187"/>
+  <path class="arrow" d="M800 1162 V1187"/>
+  <path class="arrow" d="M1307 1162 V1187"/>
+  <rect class="card" x="58" y="1200" width="1484" height="102" rx="15"/>
+  <rect class="neutral" x="58" y="1200" width="1484" height="44" rx="15"/>
+  <text class="t h3 ink" x="82" y="1230">E02 · 联合验收（团队共同）</text>
+  <text class="t small ink" x="82" y="1264">核对安装与来源版本、旧 ref→Concept ID 映射、读卡 trace、同任务迁移前后测量、digest、MCP 发布回退。</text>
+  <text class="t small muted" x="82" y="1289">记录性能偏差、未决问题与单案例结论边界。</text>
+  </g>
+  <rect class="card" x="58" y="1240" width="1484" height="100" rx="12"/>
+  <text class="t small ink" x="82" y="1268">A · Wiki 工具 / OKF Bundle / 更新门禁　　 B · code-optimizer / KP-bench / 效果对照　　 C · 查询 / MCP / 安装验收</text>
+  <text class="t small ink" x="82" y="1297">编号：S 首轮输入 · I Wiki 能力 · B Bench · K 知识整理/读卡 · P 入口回接 · G 门禁 · V 效果对照 · M 查询/MCP · E 验收</text>
+  <text class="t small muted" x="82" y="1326">S01 与 E02 由团队共同确认；其他模块右上角字母为负责人。领域审核人签核知识事实，A 负责审核流程与发布。</text>
+</svg>
