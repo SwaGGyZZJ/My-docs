@@ -21,66 +21,7 @@
 
 核心路径是：**连接器采集 → 模型融合 → Wiki 优先问答**。它不是代码仓的逐页任务队列。运行由 DeepAgents、配置的 LLM、连接器工具和受限文件系统工具共同完成。
 
-```mermaid
-flowchart TB
-    START["入口<br/>personal --init / --update<br/>ingest 指定来源 / 定时采集"]
-
-    subgraph INPUT["A · 语料进入与预处理"]
-        direction TB
-        CONFIG["①【程序】读取配置与初始化运行环境<br/>TypeScript · Node.js · Provider 适配<br/>连接器配置、凭据、来源范围"]
-        FETCH["②【程序 / 协作】采集来源<br/>直接 API 或只读 MCP 工具<br/>按连接器设置拉取、分页、限量"]
-        RAW["③【产物】原始数据与采集清单<br/>connectors/来源实例/raw/<br/>JSON 等原始结果 + manifest"]
-        META["④【程序】保留来源元信息<br/>来源 ID、时间、游标、覆盖范围<br/>内容哈希等字段取决于连接器"]
-        CONFIG --> FETCH --> RAW --> META
-    end
-
-    subgraph SYNTH["B · 语料消化：Agent 循环，而非固定逐页流水线"]
-        direction TB
-        CONTEXT["⑤【程序】建立 Agent 上下文<br/>DeepAgents + 配置的 LLM<br/>SQLite checkpoint 保存运行/会话状态<br/>虚拟文件系统，不开放通用 Shell"]
-        MAP["⑥【模型】建立知识盘点<br/>查看已有 wiki、目录索引和待解问题<br/>判断此次来源与哪些知识主题有关"]
-        READ["⑦【协作】按需阅读证据<br/>模型选择 ls / glob / grep / read_file<br/>raw 数据通过专用读取工具访问<br/>程序限制可访问范围"]
-        THINK["⑧【模型】跨来源理解与融合<br/>提炼主题、实体和长期有用信息<br/>比较新旧信息，合并重复知识<br/>保留矛盾、日期和置信度"]
-        WRITE["⑨【协作】更新 Markdown<br/>模型写新内容或修改已有页面<br/>程序执行 write_file / edit_file<br/>不是把原始数据整份复制成 wiki"]
-        CONTEXT --> MAP --> READ --> THINK --> WRITE
-        WRITE -. "需要更多证据" .-> READ
-    end
-
-    subgraph SAVE["C · 收尾与持久化"]
-        direction TB
-        CHECK["⑩【程序】确定性整理与检查<br/>OKF 元数据处理、目录 index 同步<br/>Mermaid 与内部链接检查<br/>生成来源记录"]
-        WIKI["⑪【产物】个人 wiki<br/>默认 ~/.openwiki/wiki/<br/>主题页、来源说明、导航及相关知识<br/>原始数据仍与综合知识分开保存"]
-        CHECK --> WIKI
-    end
-
-    subgraph QUERY["D · 查询：先读知识，再决定是否回到原文"]
-        direction TB
-        ASK["用户问题"]
-        NAV["⑫【模型 / Prompt】Wiki-first<br/>先导航 quickstart / index / 主题页<br/>用 grep / glob 定向寻找内容"]
-        ENOUGH{"【模型】Wiki 能否支持回答？"}
-        ANSWER["⑬【模型】基于 wiki 组织回答"]
-        BACK["⑭【协作】必要时回查原始证据<br/>缺失、过时、矛盾或用户要求原文时<br/>需要新数据则定向采集与更新"]
-        ASK --> NAV --> ENOUGH
-        ENOUGH -->|"能"| ANSWER
-        ENOUGH -->|"不能"| BACK
-        BACK --> ANSWER
-    end
-
-    START --> CONFIG
-    META --> CONTEXT
-    WRITE --> CHECK
-    WIKI --> NAV
-    RAW -. "按需回查" .-> BACK
-    WIKI -. "下次更新读取已有知识" .-> MAP
-
-    classDef prog fill:#e8f1ff,stroke:#7195c5,color:#193957;
-    classDef model fill:#f0e9fb,stroke:#a387bf,color:#49315e;
-    classDef mix fill:#fff0dc,stroke:#c49a62,color:#674520;
-    classDef output fill:#eaf3e2,stroke:#91ac76,color:#36502a;
-    class CONFIG,META,CONTEXT,CHECK prog;
-    class MAP,THINK,NAV,ENOUGH,ANSWER model;
-    class FETCH,READ,WRITE,BACK mix;
-    class RAW,WIKI output;
-```
+![OpenWiki 个人知识库技术流程图](./openwiki-personal-workflow.png)
 
 ### 个人知识库图注
 
@@ -98,80 +39,7 @@ flowchart TB
 
 核心路径是：**源码检查 → Plan → 页面 Worker → Claims → 确定性收尾**。模型决定知识内容，TypeScript 生命周期决定当前阶段允许哪些操作。
 
-```mermaid
-flowchart TB
-    ENTRY["入口：二选一<br/>原生 CLI + DeepAgents<br/>或宿主编码 Agent + OpenWiki MCP"]
-
-    subgraph PREP["A · Begin：确定语料范围与源码状态"]
-        direction TB
-        BEGIN["①【程序】初始化 / 恢复运行<br/>读取模式、语言、用户 INSTRUCTIONS<br/>加载忽略规则、旧 wiki 与运行状态"]
-        SNAP["②【程序】建立源码状态标识<br/>源码内容指纹 + Git HEAD（可用时）<br/>检查本次生成期间源码是否漂移"]
-        MODE{"【程序】Init 还是 Update？"}
-        INIT["Init：准备全新生成"]
-        UPDATE["Update：检查已有覆盖与证据<br/>比较源码状态、检查旧 Claims<br/>定位失效 / 缺失证据与需要关注的变化"]
-        NOOP{"【程序】是否满足严格无须更新条件？"}
-        SKIP["【程序】No-op<br/>跳过模型生成，记录检查结果"]
-        BEGIN --> SNAP --> MODE
-        MODE -->|"Init"| INIT
-        MODE -->|"Update"| UPDATE --> NOOP
-        NOOP -->|"是"| SKIP
-    end
-
-    subgraph PLAN["B · Plan：模型探索与页面规划"]
-        direction TB
-        EXPLORE["③【协作】Planner 按需探索原文<br/>目录 / 清单 / 入口 → 代表性调用链 → 测试<br/>模型选择读取位置，程序执行文件工具<br/>不是把所有代码逐行预先输入"]
-        DESIGN["④【模型 / Prompt】设计知识结构<br/>按系统、概念、工作流组织页面<br/>确定页面范围、相关源码路径、页面关系<br/>Update 结合已有页面与变化决定修改范围"]
-        SUBPLAN["⑤【程序】submit_plan<br/>校验并持久化计划与页面任务<br/>.run.json：阶段、队列和页面状态"]
-        EXPLORE --> DESIGN --> SUBPLAN
-    end
-
-    subgraph PAGE["C · 逐页任务：正文与 Claims 在这里形成"]
-        direction TB
-        NEXT["⑥【程序】分配待处理页面<br/>next_page / 原生 Worker 队列<br/>每个 Worker 只负责一页"]
-        READ["⑦【协作】Worker 定向查证<br/>读取计划相关代码、文档及必要的邻接实现<br/>Update 可检查该页已有 Claims"]
-        AUTHOR["⑧【模型】理解并撰写<br/>综合解释机制、调用关系、边界与失败路径<br/>组织 Markdown 正文和可核查论断"]
-        CLAIM["⑨【模型 → 程序】提交页面与 Claims<br/>模型给出论断、证据引用和处理结果<br/>程序检查当前任务、提交数据与证据"]
-        RESOLVE["⑩【程序】证据解析与持久化<br/>repo:// 文件或行范围 → 确定性解析<br/>SHA-256 内容版本 + 行范围重定位锚点<br/>保存页面、Claim sidecar 与覆盖状态"]
-        NEXT --> READ --> AUTHOR --> CLAIM --> RESOLVE
-        RESOLVE -->|"还有页面"| NEXT
-    end
-
-    subgraph FINISH["D · Finish：通过门禁后发布本轮结果"]
-        direction TB
-        GATE["⑪【程序】完成门禁<br/>不能把未完成队列直接当成成功<br/>再次检查源码状态，处理漂移 / 中断"]
-        FINAL["⑫【程序】确定性收尾<br/>Mermaid 校验 → index 同步 → 内链检查<br/>同步 Claim 来源与生成来源记录"]
-        OUT["⑬【产物】仓库中的可维护知识<br/>openwiki/ 下的 Markdown 与 quickstart<br/>.claims/ 证据 sidecar、页面覆盖记录<br/>更新元数据；完成运行状态清理"]
-        GATE --> FINAL --> OUT
-    end
-
-    subgraph RETRIEVE["E · 查询：这是生成后的另一条路径"]
-        direction TB
-        QUESTION["用户问题 / Agent 任务"]
-        SEARCH["⑭【协作】模型决定检索词和范围<br/>调用 openwiki_search<br/>可使用已链接的多仓 wiki 工作区"]
-        INDEX["⑮【程序】临时词法检索<br/>解析 wiki Markdown，按引言 / H2 构造单元<br/>SQLite 内存 FTS5 + BM25<br/>结合路径提示、词项覆盖度排序"]
-        DEEP["⑯【协作】渐进式深读<br/>先看紧凑结果，再 openwiki_read 读章节<br/>必要时回到源码核实"]
-        REPLY["⑰【模型】基于所读证据完成任务 / 回答"]
-        QUESTION --> SEARCH --> INDEX --> DEEP --> REPLY
-    end
-
-    ENTRY --> BEGIN
-    INIT --> EXPLORE
-    NOOP -->|"否"| EXPLORE
-    SUBPLAN --> NEXT
-    RESOLVE -->|"队列处理完成"| GATE
-    OUT --> INDEX
-    OUT -. "下次 Update" .-> BEGIN
-    GATE -. "源码漂移，需要重新规划" .-> EXPLORE
-
-    classDef prog fill:#e8f1ff,stroke:#7195c5,color:#193957;
-    classDef model fill:#f0e9fb,stroke:#a387bf,color:#49315e;
-    classDef mix fill:#fff0dc,stroke:#c49a62,color:#674520;
-    classDef output fill:#eaf3e2,stroke:#91ac76,color:#36502a;
-    class BEGIN,SNAP,MODE,INIT,UPDATE,NOOP,SKIP,SUBPLAN,NEXT,RESOLVE,GATE,FINAL,INDEX prog;
-    class DESIGN,AUTHOR,REPLY model;
-    class EXPLORE,READ,CLAIM,SEARCH,DEEP mix;
-    class OUT output;
-```
+![OpenWiki 代码仓知识库技术流程图](./openwiki-code-workflow.png)
 
 ### 代码仓知识库图注
 
@@ -217,4 +85,4 @@ flowchart TB
 - [Claims、源码证据与内容版本说明](https://github.com/langchain-ai/openwiki/blob/main/openwiki/concepts/grounded-claims.md)
 - [Markdown 分节、临时 FTS5/BM25 与章节读取：src/retrieval/wiki.ts](https://github.com/langchain-ai/openwiki/blob/main/src/retrieval/wiki.ts)
 
-> 渲染说明：本文使用 GitHub 原生支持的 Mermaid 代码块。Markdown 原文保留可编辑图结构，不需要额外上传图片或依赖本地文件。
+> 图片说明：两张流程图均以高分辨率 PNG 图片上传；文档直接引用图片，无需 Mermaid/SVG 渲染支持。点击图片可查看原始尺寸。图例、图注和源码依据保留在本文中。
