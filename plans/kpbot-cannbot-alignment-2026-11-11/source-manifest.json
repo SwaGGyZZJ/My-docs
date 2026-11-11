@@ -1,0 +1,20 @@
+{
+  "schema": "kpbot.design-snapshot/v1",
+  "sourceRepository": "https://gitcode.com/gcw_FzsXDb5x/kpbot-knowledge.git",
+  "sourceCommit": "551cd6f6bc395148774a6336496fd3f9759fcb91",
+  "documents": [
+    {
+      "path": "specs/2026-11-11-cannbot-alignment-discussion-design.md",
+      "sourcePath": "docs/superpowers/specs/2026-11-11-cannbot-alignment-discussion-design.md",
+      "sha256": "72a56dd14098e0004a8cca8df0e3eb3c8ce8aefd6f5c07ab955817ac20ffee87",
+      "bytes": 12884
+    },
+    {
+      "path": "plans/2026-11-11-alignment-implementation.md",
+      "sourcePath": "docs/superpowers/plans/2026-11-11-alignment-implementation.md",
+      "sha256": "8fe67f30301d3f767c1617e486fa623b29dc1ba5f0232b7e0c9220fb72a17f9d",
+      "bytes": 13353
+    }
+  ],
+  "scope": "Documentation snapshot only; no source code, runtime configuration, raw discussion trace or credentials."
+}
