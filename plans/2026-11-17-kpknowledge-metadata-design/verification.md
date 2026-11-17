@@ -1,29 +1,26 @@
-# 归档与撤回校验
+# v2 设计一致性检查
 
-日期：2026-11-17。以下为本次执行记录，范围是三文件设计归档与共享治理边界，不是完整产品验收。
+日期：2026-11-17。本次检查对象是修订后的设计文件，未实现或启用新的 module 和正文契约消费者。
 
-| 检查 | 结果 |
-| --- | --- |
-| 归档的三个候选文件与撤回前运行文件逐字节比较 | 相同；SHA-256 见 snapshot.json |
-| JSON 与 YAML 解析 | 通过；12 个必填字段、16 个 profile、5 类 registry |
-| 撤回前针对性检查 | 57 项通过、0 失败、0 跳过 |
-| 撤回后共享治理回归 | 46 项通过、0 失败、0 跳过 |
-| 三个运行文件与来源基线 HEAD 比较 | 无差异；原始备份与基线逐字节一致 |
-| 其他已跟踪开发改动 | 撤回前后 git diff HEAD --binary 排除这三个路径后相同 |
+| 检查                          | 本次结果                                                                                              |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------- |
+| JSON 与 YAML 解析、重复键检查 | 通过                                                                                                  |
+| frontmatter 变化              | 仅新增 module；原有 12 个全局必填字段及其他字段定义保留                                               |
+| module 字段形状               | 有效列表通过；空列表、空字符串、重复值、标量被 schema 拒绝                                            |
+| profile 一致性                | 16 个 profile 均有 requirements；type 与原有额外 required 保留                                        |
+| 条件规则静态引用              | 23 条规则的字段、枚举值、角色、条件必填 context 和来源角色均有定义                                    |
+| 正文与模块 schema             | 通过既有 schema 子集解释器的声明检查；README 示例通过正文及 context 的形状检查                        |
+| 模块登记                      | 11 项，含 8 项 UnifiedBus 与 3 项 Kunpeng Accelerator Engine；技术关联均可解析                        |
+| 模块关系约束                  | 已规定 parent 存在性、同技术与无环规则；当前登记没有臆造 parent，不能据此声称非空父链已经完成运行验证 |
+| 词表迁移                      | 13 条显式映射；前版全部 209 条词项说明在原位或目标位置保留                                            |
+| 运行文件                      | 三份文件逐字节等于恢复后的基线 HEAD，且散列与原归档记录一致                                           |
 
-57 项包含下列 46 项既有检查，以及本轮临时编写的 5 项芯片分类探针和 6 项全称词表探针。临时探针未作为项目测试提交；这些数字只记录本次检查，不表示设计目录本身带有可独立运行的完整测试工程。
+检查逐一核对了 required_roles、evidence_roles、context_schema、conditional 引用和 module_entry_schema，并将全部旧词项经映射后的说明与前版提交比较。所有证据类型约束也须引用已定义来源角色。设计文件散列记录在 snapshot.json。
 
-46 项既有检查覆盖 contract、applicability、conditions、vocabulary、latest-only、history 与 lint。于原 KunpengKnowledge 工作区运行：
+这些检查证明文件可解析、定义与引用一致，以及迁移没有丢失原说明。它们不证明未来消费者已经执行了条件规则、验证了正文锚点、判断了证据充分性，或实现了模块索引/筛选。README 中的示例是字段形状示意，含占位来源，不是一个已验证的完整知识页面。
 
-```sh
-node --test --test-concurrency=1 \
-  tests/governance-contract.test.mjs \
-  tests/governance-applicability.test.mjs \
-  tests/governance-conditions.test.mjs \
-  tests/governance-vocabulary.test.mjs \
-  tests/governance-latest-only.test.mjs \
-  tests/governance-history.test.mjs \
-  tests/governance-lint.test.mjs
-```
+## 前版历史记录
 
-未用这些检查声称代码、PR/补丁、文档三类生命周期端到端验收通过，也没有发布新的运行配置包。
+提交 86771a3 归档前，旧候选配置的针对性检查为 57 项通过；撤回后共享治理回归为 46 项通过。前者包含本轮当时临时编写的 11 项芯片分类和全称探针。这两组结果属于前版运行配置的历史记录，不能作为 v2 新内容契约或模块能力的验收结果。
+
+本次只更新 My-docs 的设计文档。代码、PR/补丁、文档三类生命周期验收需在后续消费者实现后分别执行。

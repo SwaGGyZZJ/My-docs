@@ -1,6 +1,19 @@
 {
   "type": "object",
-  "required": ["type", "profile", "title", "description", "domains", "technology", "scope", "tags", "status", "sources", "created_at", "updated_at"],
+  "required": [
+    "type",
+    "profile",
+    "title",
+    "description",
+    "domains",
+    "technology",
+    "scope",
+    "tags",
+    "status",
+    "sources",
+    "created_at",
+    "updated_at"
+  ],
   "properties": {
     "type": {
       "type": "string",
@@ -28,6 +41,15 @@
       }
     },
     "technology": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "module": {
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,

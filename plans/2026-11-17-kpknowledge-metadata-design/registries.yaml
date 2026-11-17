@@ -1,20 +1,8 @@
-# 受控分面词表；保持当前 registry -> token -> description 结构。
-# 扩展由维护者的包变更或既有 namespace/digest 准入流程完成，作者不能自行授予新词权限。
-# domains=领域，technology=语言/协议/库/框架，scope=关注层面，platforms=平台分类，tags=任务/主题/对象。
-# 一个主题可跨多个 profile 与来源；不枚举全部产品、仓库、软件版本或文件格式。
-# token 是稳定标识，不静默改变旧词义；别名/弃用继续走既有扩展声明机制。
-# 分类不是适用条件：agnostic 不等于条件match，cpu/gpu/npu不构成隐含兼容层级。
-# 审核、来源准入、项目激活和执行状态不进入分类词表。
-# object.* 是可选、多选的页级对象分类；没有主对象顺序，不默认继承父页标签。
-# 词表用于精确匹配，不自动展开父子对象；具体型号、stepping和软件版本不放通用对象词表。
-# RTL/DFT/验证/物理设计等表示形式与活动归topic.*，不混入器件/软件对象类别。
-# 设计说明、用户手册、数据手册、勘误等是来源资料类别，不是profile或页级source_doc标签。
-# 源级资料类别与适用性组合需独立实现；登记标签不证明来源类型、硬件兼容性或审核状态。
-# 专用术语以官方全称为主，缩写仅辅助说明；全称自身包含缩写时保留官方原文。
-# 命名技术放technology，硬件单元/地址模型/表结构放topic.*，通用对象类别仍用object.*。
-# 有上下文冲突的HCCS/SCCL/UMMU/UMDK/URPC/UACCE/iBMC/K-NET/HHA不设无条件规范词。
-# 不创建裸UB或KML等自动别名；UnifiedBus与昇腾Unified Buffer必须分别解释。
-# 以下公开名称不都属鲲鹏专有，范围与文档版本是定义的一部分，不授予适用性。
+# 设计稿 v2，未接入运行时。technology 为技术体系或独立技术，module 为有明确技术关联的组件。
+# module 使用结构化登记项，其余 registry 使用 token -> description。
+# module.technology 为目录关联；parent 需来源支持，禁止循环；点号前缀不产生父子关系。
+# 分类不授予适用性、兼容性或独占归属，不从父页或整本手册继承。
+# 全称为主体；有歧义的官方展开按来源上下文保留。未明确关联的历史单元暂留 topic。
 domains:
   systems: Software systems and implementation mechanisms
   semiconductors: Semiconductor devices, chip design, verification, integration and enablement
@@ -44,14 +32,8 @@ technology:
   # 全称来源：华为灵衢发布说明与openEuler 24.03 LTS SP3指南。
   # https://www.huawei.com/cn/news/2025/9/hc-xu-keynote-speech
   # https://docs.openeuler.org/zh/docs/24.03_LTS_SP3/unifiedbus/unifiedbus/urma/URMA%20User%20Guide.ch.html
-  huawei.unified_bus: UnifiedBus (UB)；灵衢；华为共享及开放互联生态，不限于鲲鹏。
-  unified_bus.to_ethernet: UB to Ethernet (UB2E)；Atlas 950资料中的UB到以太网转换桥。
-  unified_bus.over_ethernet: UB over Ethernet (UBoE)；Atlas 950资料中的以太网上UB互联。
-  unified_bus.unified_remote_memory_access: Unified Remote Memory Access (URMA)；统一远程内存访问；开放UB通信生态。
-  unified_bus.memory_based_socket: UB Memory-based Socket (UMS)；openEuler UB组件；与标准Socket兼容的网络协议栈。
-  unified_bus.management: UnifiedBus Management (UBM)；UB Service Core架构参考设计2.0中的管理组件。
-  unified_bus.unified_lock: Unified Lock (ULOCK)；openEuler 24.03 LTS SP3中文指南中的分布式锁组件名称。
-  unified_bus.unified_socket: Unified Socket (USOCK)；openEuler 24.03 LTS SP3中文指南中的Socket组件名称。
+  unified_bus: UnifiedBus (UB)；灵衢；华为共享及开放互联生态，不限于鲲鹏。
+  ub_over_ethernet: UB over Ethernet (UBoE)；Atlas 950资料中的以太网上UB互联。
   # 官方组件/框架全称；不把开放框架登记为鲲鹏独占技术。
   # https://github.com/kunpengcompute/KAE/blob/kae2/README.md
   # https://www.hikunpeng.com/document/detail/en/kunpenggrf/gls/kunpengglossary_0000_01.html
@@ -80,6 +62,95 @@ technology:
   heterogeneous_communication_acceleration_library: Heterogeneous Communication Acceleration Library (HCAL)；UB Service Core架构参考设计2.0中的异构通信加速库。
   hyper_communication_library: Hyper Communication Library (HCOM)；UB Service Core架构参考设计2.0中的通信库；不自动归一为其他文档中的HCOMM。
   virtual_kunpeng_accelerator_engine: virtual Kunpeng Accelerator Engine (vKAE)；鲲鹏虚拟化加速方案；virtual保留官方名称写法。
+module:
+  unified_bus.to_ethernet:
+    name: UB to Ethernet
+    description: UB to Ethernet (UB2E)；Atlas 950资料中的UB到以太网转换桥。
+    technology: unified_bus
+    kind: bridge
+    sources:
+      - uri: https://support.huaweicloud.com/resmgmt-modelarts/resmgmt-a5_0002.html
+        revision: Atlas 950 product context
+  unified_bus.unified_remote_memory_access:
+    name: Unified Remote Memory Access
+    description: Unified Remote Memory Access (URMA)；统一远程内存访问；开放UB通信生态。
+    technology: unified_bus
+    kind: software_component
+    sources:
+      - uri: https://docs.openeuler.org/zh/docs/24.03_LTS_SP3/unifiedbus/unifiedbus/urma/URMA%20User%20Guide.ch.html
+        revision: 24.03 LTS SP3
+  unified_bus.memory_based_socket:
+    name: UB Memory-based Socket
+    description: UB Memory-based Socket (UMS)；openEuler UB组件；与标准Socket兼容的网络协议栈。
+    technology: unified_bus
+    kind: software_component
+    sources:
+      - uri: https://docs.openeuler.org/en/docs/24.03_LTS_SP3/server/releasenotes/releasenotes/key_features.html
+        revision: 24.03 LTS SP3
+  unified_bus.management:
+    name: UnifiedBus Management
+    description: UnifiedBus Management (UBM)；UB Service Core架构参考设计2.0中的管理组件。
+    technology: unified_bus
+    kind: software_component
+    sources:
+      - uri: https://www.openeuler.org/projects/ub-service-core/white-paper/UB-Service-Core-SW-Arch-RD-2.0-en.pdf
+        revision: Software Architecture Reference Design 2.0
+  unified_bus.unified_lock:
+    name: Unified Lock
+    description: Unified Lock (ULOCK)；openEuler 24.03 LTS SP3中文指南中的分布式锁组件名称。
+    technology: unified_bus
+    kind: software_component
+    sources:
+      - uri: https://docs.openeuler.org/zh/docs/24.03_LTS_SP3/unifiedbus/unifiedbus/urma/URMA%20User%20Guide.ch.html
+        revision: 24.03 LTS SP3
+  unified_bus.unified_socket:
+    name: Unified Socket
+    description: Unified Socket (USOCK)；openEuler 24.03 LTS SP3中文指南中的Socket组件名称。
+    technology: unified_bus
+    kind: software_component
+    sources:
+      - uri: https://docs.openeuler.org/zh/docs/24.03_LTS_SP3/unifiedbus/unifiedbus/urma/URMA%20User%20Guide.ch.html
+        revision: 24.03 LTS SP3
+  unified_bus.processing_unit:
+    name: UB Processing Unit
+    description: UB Processing Unit (UBPU)；UB Root Table规范1.0中的UB处理单元。
+    technology: unified_bus
+    kind: hardware_unit
+    sources:
+      - uri: https://www.unifiedbus.com/static/UB-Root-Table-Spec-1.0-en.pdf
+        revision: "1.0"
+  unified_bus.bus_controller:
+    name: UB Bus Controller
+    description: UB Bus Controller (UBC)；UB Root Table规范1.0中的总线控制器。
+    technology: unified_bus
+    kind: hardware_unit
+    sources:
+      - uri: https://www.unifiedbus.com/static/UB-Root-Table-Spec-1.0-en.pdf
+        revision: "1.0"
+  kunpeng_accelerator_engine.kunpeng_security_engine:
+    name: Kunpeng Security Engine
+    description: Kunpeng Security Engine (kSEC)；鲲鹏安全加速引擎。
+    technology: kunpeng_accelerator_engine
+    kind: hardware_unit
+    sources:
+      - uri: https://github.com/kunpengcompute/KAE/blob/kae2/README.md
+        revision: kae2 mutable branch; pin an immutable commit before implementation
+  kunpeng_accelerator_engine.kunpeng_high_performance_rsa_engine:
+    name: Kunpeng High Performance RSA Engine
+    description: Kunpeng High Performance RSA Engine (kHPRE)；鲲鹏高性能RSA加速引擎。
+    technology: kunpeng_accelerator_engine
+    kind: hardware_unit
+    sources:
+      - uri: https://github.com/kunpengcompute/KAE/blob/kae2/README.md
+        revision: kae2 mutable branch; pin an immutable commit before implementation
+  kunpeng_accelerator_engine.kunpeng_hardware_acceleration_compression_engine:
+    name: Kunpeng Hardware Acceleration Compression Engine
+    description: Kunpeng Hardware Acceleration Compression Engine (kZIP)；鲲鹏硬件加速压缩引擎；不反推ZIP展开。
+    technology: kunpeng_accelerator_engine
+    kind: hardware_unit
+    sources:
+      - uri: https://github.com/kunpengcompute/KAE/blob/kae2/README.md
+        revision: kae2 mutable branch; pin an immutable commit before implementation
 scope:
   implementation: Implementation behavior and constraints
   usage: Interface usage and integration
@@ -200,10 +271,6 @@ tags:
   topic.high_speed_interface: High-speed links, protocols and interface constraints
   topic.analog_mixed_signal: Analog and mixed-signal design and behavior
   topic.rf: Radio-frequency circuit and system behavior
-  # 命名硬件单元、地址模型和表结构：全称主题，不作为通用对象类别或软件技术族。
-  # UB规范：https://www.unifiedbus.com/static/UB-Root-Table-Spec-1.0-en.pdf
-  topic.unified_bus.processing_unit: UB Processing Unit (UBPU)；UB Root Table规范1.0中的UB处理单元。
-  topic.unified_bus.bus_controller: UB Bus Controller (UBC)；UB Root Table规范1.0中的总线控制器。
   topic.unified_bus.virtual_address: Unified Bus Virtual Address (UBVA)；openEuler 24.03 LTS SP3指南中的总线虚拟地址模型。
   topic.unified_bus.root_table: UnifiedBus Root Table (UBRT)；UB Root Table规范1.0中的设备与配置描述表。
   # 鲲鹏官方词表及2023年KAE简介中的名称，不从旧缩写推断新模块名称。
@@ -212,10 +279,6 @@ tags:
   topic.kunpeng.raid_dif_engine: RAID DIF Engine (RDE)；鲲鹏语境中的RAID DIF计算加速引擎。
   topic.kunpeng.high_performance_rsa_engine: High Performance RSA Engine (HPRE)；鲲鹏旧KAE资料语境中的RSA加速模块。
   topic.kunpeng.security_engine: Security Engine (SEC)；鲲鹏旧KAE资料语境中的安全加速模块。
-  # 以下带Kunpeng前缀的名称按KAE kae2项目README记录，不自动与旧缩写合并。
-  topic.kunpeng_security_engine: Kunpeng Security Engine (kSEC)；鲲鹏安全加速引擎。
-  topic.kunpeng_high_performance_rsa_engine: Kunpeng High Performance RSA Engine (kHPRE)；鲲鹏高性能RSA加速引擎。
-  topic.kunpeng_hardware_acceleration_compression_engine: Kunpeng Hardware Acceleration Compression Engine (kZIP)；鲲鹏硬件加速压缩引擎；不反推ZIP展开。
   # 华为共享/相邻生态，不标记成鲲鹏专有。
   # https://support.huaweicloud.com/resmgmt-modelarts/resmgmt-a5_0002.html
   topic.huawei.collective_communication_unit: Collective Communication Unit (CCU)；Atlas 950资料中的集合通信硬件加速单元。

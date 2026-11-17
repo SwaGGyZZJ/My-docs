@@ -1,23 +1,171 @@
 {
-  "status": "design-only",
+  "status": "design-only-not-runtime-compatible",
   "date": "2026-11-17",
   "source_repository": "https://gitcode.com/KunpengSDK/KunpengKnowledge",
   "source_base_commit": "78110ea4c57f224f27a59ac3822ab3d043d00714",
   "files": {
     "frontmatter.schema.json": {
       "source_path": "src/governance/resources/frontmatter.schema.json",
-      "candidate_sha256": "41695ba88e89f67cdd375062c4ac7df210054522cd0be67988c1c117ced1432b",
-      "restored_runtime_sha256": "01324c371b7e0cfbe99d11105e0b940d9d567d0e5cf34d0df4ffe3d0dc5fcc64"
+      "restored_runtime_sha256": "01324c371b7e0cfbe99d11105e0b940d9d567d0e5cf34d0df4ffe3d0dc5fcc64",
+      "original_candidate_sha256": "41695ba88e89f67cdd375062c4ac7df210054522cd0be67988c1c117ced1432b",
+      "design_sha256": "409f552f62e425d139293525cfd449e87059efd09dc2f1a4dea0be74ffd54dd8"
     },
     "profiles.yaml": {
       "source_path": "src/governance/resources/profiles.yaml",
-      "candidate_sha256": "225ff05407c271f7c0962fe23f1c5dbae5da5a1dba42b578137d10a3360af4a0",
-      "restored_runtime_sha256": "a4ed4fc76a2de9d07bb46dd34614e6844241e6d5eb8f613e13579d3c6c7f176d"
+      "restored_runtime_sha256": "a4ed4fc76a2de9d07bb46dd34614e6844241e6d5eb8f613e13579d3c6c7f176d",
+      "original_candidate_sha256": "225ff05407c271f7c0962fe23f1c5dbae5da5a1dba42b578137d10a3360af4a0",
+      "design_sha256": "cebc1d90d3419ca973cd7ce1aa3be85b2ebe92426cf8e158ca79dc82b5140e67"
     },
     "registries.yaml": {
       "source_path": "src/governance/resources/registries.yaml",
-      "candidate_sha256": "7052843a55bdcc02571550dab215952a92f8fcb47cbde455b1b0aa5ad563d755",
-      "restored_runtime_sha256": "9fc5009dc98386dfa0dbab95d3ec2b9a0216ddfe010ebc251cdfd14ea68a4864"
+      "restored_runtime_sha256": "9fc5009dc98386dfa0dbab95d3ec2b9a0216ddfe010ebc251cdfd14ea68a4864",
+      "original_candidate_sha256": "7052843a55bdcc02571550dab215952a92f8fcb47cbde455b1b0aa5ad563d755",
+      "design_sha256": "10e8034d40dbaa2c053720886db9de4e19efdae9413f65c0c79d85b0ae2d57f6"
     }
-  }
+  },
+  "design_revision": 2,
+  "previous_design_commit": "86771a33d95c997ed62449bd2606c56b4c1c1229",
+  "registry_migrations": [
+    {
+      "from": {
+        "registry": "technology",
+        "key": "huawei.unified_bus"
+      },
+      "to": {
+        "registry": "technology",
+        "key": "unified_bus"
+      }
+    },
+    {
+      "from": {
+        "registry": "technology",
+        "key": "unified_bus.over_ethernet"
+      },
+      "to": {
+        "registry": "technology",
+        "key": "ub_over_ethernet"
+      }
+    },
+    {
+      "from": {
+        "registry": "technology",
+        "key": "unified_bus.to_ethernet"
+      },
+      "to": {
+        "registry": "module",
+        "key": "unified_bus.to_ethernet"
+      },
+      "technology": "unified_bus"
+    },
+    {
+      "from": {
+        "registry": "technology",
+        "key": "unified_bus.unified_remote_memory_access"
+      },
+      "to": {
+        "registry": "module",
+        "key": "unified_bus.unified_remote_memory_access"
+      },
+      "technology": "unified_bus"
+    },
+    {
+      "from": {
+        "registry": "technology",
+        "key": "unified_bus.memory_based_socket"
+      },
+      "to": {
+        "registry": "module",
+        "key": "unified_bus.memory_based_socket"
+      },
+      "technology": "unified_bus"
+    },
+    {
+      "from": {
+        "registry": "technology",
+        "key": "unified_bus.management"
+      },
+      "to": {
+        "registry": "module",
+        "key": "unified_bus.management"
+      },
+      "technology": "unified_bus"
+    },
+    {
+      "from": {
+        "registry": "technology",
+        "key": "unified_bus.unified_lock"
+      },
+      "to": {
+        "registry": "module",
+        "key": "unified_bus.unified_lock"
+      },
+      "technology": "unified_bus"
+    },
+    {
+      "from": {
+        "registry": "technology",
+        "key": "unified_bus.unified_socket"
+      },
+      "to": {
+        "registry": "module",
+        "key": "unified_bus.unified_socket"
+      },
+      "technology": "unified_bus"
+    },
+    {
+      "from": {
+        "registry": "tags",
+        "key": "topic.unified_bus.processing_unit"
+      },
+      "to": {
+        "registry": "module",
+        "key": "unified_bus.processing_unit"
+      },
+      "technology": "unified_bus"
+    },
+    {
+      "from": {
+        "registry": "tags",
+        "key": "topic.unified_bus.bus_controller"
+      },
+      "to": {
+        "registry": "module",
+        "key": "unified_bus.bus_controller"
+      },
+      "technology": "unified_bus"
+    },
+    {
+      "from": {
+        "registry": "tags",
+        "key": "topic.kunpeng_security_engine"
+      },
+      "to": {
+        "registry": "module",
+        "key": "kunpeng_accelerator_engine.kunpeng_security_engine"
+      },
+      "technology": "kunpeng_accelerator_engine"
+    },
+    {
+      "from": {
+        "registry": "tags",
+        "key": "topic.kunpeng_high_performance_rsa_engine"
+      },
+      "to": {
+        "registry": "module",
+        "key": "kunpeng_accelerator_engine.kunpeng_high_performance_rsa_engine"
+      },
+      "technology": "kunpeng_accelerator_engine"
+    },
+    {
+      "from": {
+        "registry": "tags",
+        "key": "topic.kunpeng_hardware_acceleration_compression_engine"
+      },
+      "to": {
+        "registry": "module",
+        "key": "kunpeng_accelerator_engine.kunpeng_hardware_acceleration_compression_engine"
+      },
+      "technology": "kunpeng_accelerator_engine"
+    }
+  ]
 }
