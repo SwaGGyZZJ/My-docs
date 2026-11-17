@@ -1,0 +1,23 @@
+{
+  "status": "design-only",
+  "date": "2026-11-17",
+  "source_repository": "https://gitcode.com/KunpengSDK/KunpengKnowledge",
+  "source_base_commit": "78110ea4c57f224f27a59ac3822ab3d043d00714",
+  "files": {
+    "frontmatter.schema.json": {
+      "source_path": "src/governance/resources/frontmatter.schema.json",
+      "candidate_sha256": "41695ba88e89f67cdd375062c4ac7df210054522cd0be67988c1c117ced1432b",
+      "restored_runtime_sha256": "01324c371b7e0cfbe99d11105e0b940d9d567d0e5cf34d0df4ffe3d0dc5fcc64"
+    },
+    "profiles.yaml": {
+      "source_path": "src/governance/resources/profiles.yaml",
+      "candidate_sha256": "225ff05407c271f7c0962fe23f1c5dbae5da5a1dba42b578137d10a3360af4a0",
+      "restored_runtime_sha256": "a4ed4fc76a2de9d07bb46dd34614e6844241e6d5eb8f613e13579d3c6c7f176d"
+    },
+    "registries.yaml": {
+      "source_path": "src/governance/resources/registries.yaml",
+      "candidate_sha256": "7052843a55bdcc02571550dab215952a92f8fcb47cbde455b1b0aa5ad563d755",
+      "restored_runtime_sha256": "9fc5009dc98386dfa0dbab95d3ec2b9a0216ddfe010ebc251cdfd14ea68a4864"
+    }
+  }
+}

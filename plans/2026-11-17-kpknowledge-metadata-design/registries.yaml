@@ -1,0 +1,250 @@
+# 受控分面词表；保持当前 registry -> token -> description 结构。
+# 扩展由维护者的包变更或既有 namespace/digest 准入流程完成，作者不能自行授予新词权限。
+# domains=领域，technology=语言/协议/库/框架，scope=关注层面，platforms=平台分类，tags=任务/主题/对象。
+# 一个主题可跨多个 profile 与来源；不枚举全部产品、仓库、软件版本或文件格式。
+# token 是稳定标识，不静默改变旧词义；别名/弃用继续走既有扩展声明机制。
+# 分类不是适用条件：agnostic 不等于条件match，cpu/gpu/npu不构成隐含兼容层级。
+# 审核、来源准入、项目激活和执行状态不进入分类词表。
+# object.* 是可选、多选的页级对象分类；没有主对象顺序，不默认继承父页标签。
+# 词表用于精确匹配，不自动展开父子对象；具体型号、stepping和软件版本不放通用对象词表。
+# RTL/DFT/验证/物理设计等表示形式与活动归topic.*，不混入器件/软件对象类别。
+# 设计说明、用户手册、数据手册、勘误等是来源资料类别，不是profile或页级source_doc标签。
+# 源级资料类别与适用性组合需独立实现；登记标签不证明来源类型、硬件兼容性或审核状态。
+# 专用术语以官方全称为主，缩写仅辅助说明；全称自身包含缩写时保留官方原文。
+# 命名技术放technology，硬件单元/地址模型/表结构放topic.*，通用对象类别仍用object.*。
+# 有上下文冲突的HCCS/SCCL/UMMU/UMDK/URPC/UACCE/iBMC/K-NET/HHA不设无条件规范词。
+# 不创建裸UB或KML等自动别名；UnifiedBus与昇腾Unified Buffer必须分别解释。
+# 以下公开名称不都属鲲鹏专有，范围与文档版本是定义的一部分，不授予适用性。
+domains:
+  systems: Software systems and implementation mechanisms
+  semiconductors: Semiconductor devices, chip design, verification, integration and enablement
+  software_engineering: Requirements, design, construction, testing, maintenance and quality
+  data_ai: Data engineering, datasets, models, machine learning and agent systems
+  security: Security mechanisms, weaknesses, vulnerabilities and supply-chain assurance
+  operations: Deployment, observability, reliability and incident response
+  engineering_collaboration: Engineering decisions, processes, responsibilities and economics
+technology:
+  generic: Mechanisms not limited to a named programming stack
+  c: C language interfaces and implementation
+  cpp: C++ language interfaces and implementation
+  python: Python language interfaces and implementation
+  rust: Rust language interfaces and implementation
+  go: Go language interfaces and implementation
+  java: Java language interfaces and implementation
+  javascript: JavaScript language interfaces and implementation
+  typescript: TypeScript language interfaces and implementation
+  assembly: Assembly language and instruction-level implementation
+  sql: SQL queries, data definitions and constraints
+  shell: Shell commands and scripts
+  verilog: Verilog hardware description and modeling
+  systemverilog: SystemVerilog hardware description, assertions and verification
+  vhdl: VHDL hardware description and modeling
+  tcl: Tcl scripting for design automation and tool control
+  spice: SPICE circuit descriptions and simulation models
+  # 全称来源：华为灵衢发布说明与openEuler 24.03 LTS SP3指南。
+  # https://www.huawei.com/cn/news/2025/9/hc-xu-keynote-speech
+  # https://docs.openeuler.org/zh/docs/24.03_LTS_SP3/unifiedbus/unifiedbus/urma/URMA%20User%20Guide.ch.html
+  huawei.unified_bus: UnifiedBus (UB)；灵衢；华为共享及开放互联生态，不限于鲲鹏。
+  unified_bus.to_ethernet: UB to Ethernet (UB2E)；Atlas 950资料中的UB到以太网转换桥。
+  unified_bus.over_ethernet: UB over Ethernet (UBoE)；Atlas 950资料中的以太网上UB互联。
+  unified_bus.unified_remote_memory_access: Unified Remote Memory Access (URMA)；统一远程内存访问；开放UB通信生态。
+  unified_bus.memory_based_socket: UB Memory-based Socket (UMS)；openEuler UB组件；与标准Socket兼容的网络协议栈。
+  unified_bus.management: UnifiedBus Management (UBM)；UB Service Core架构参考设计2.0中的管理组件。
+  unified_bus.unified_lock: Unified Lock (ULOCK)；openEuler 24.03 LTS SP3中文指南中的分布式锁组件名称。
+  unified_bus.unified_socket: Unified Socket (USOCK)；openEuler 24.03 LTS SP3中文指南中的Socket组件名称。
+  # 官方组件/框架全称；不把开放框架登记为鲲鹏独占技术。
+  # https://github.com/kunpengcompute/KAE/blob/kae2/README.md
+  # https://www.hikunpeng.com/document/detail/en/kunpenggrf/gls/kunpengglossary_0000_01.html
+  user_space_accelerator_development_kit: User Space Accelerator Development Kit (UADK)；用户态加速器开发包；开放加速器框架。
+  kunpeng_accelerator_engine: Kunpeng Accelerator Engine (KAE)；鲲鹏加速引擎；采用官方项目正文名称，不由旧材料中的Acceleration写法另建产品。
+  kunpeng_math_library: Kunpeng Math Library (KML)；鲲鹏数学库。
+  kunpeng_unified_parallel_library: Kunpeng Unified Parallel Library (KUPL)；鲲鹏统一并行加速库。
+  hyper_message_passing_interface: Hyper Message Passing Interface (HMPI / Hyper MPI)；鲲鹏HPCKit并行通信组件。
+  kunpeng_unified_acceleration_framework: Kunpeng Unified Acceleration Framework (KUAF)；鲲鹏统一加速框架。
+  kunpeng_online_vectorized_analysis_engine: Kunpeng Online Vectorized Analysis Engine (KOVAE)；鲲鹏数据库可插拔在线向量化分析引擎。
+  kunpeng_hyper_media_performance_primitives: Kunpeng Hyper Media Performance Primitives (HMPP)；鲲鹏超媒体性能库；官方也使用不带Kunpeng前缀的名称。
+  kunpeng_system_library: Kunpeng System Library (KSL)；鲲鹏系统库。
+  hyper_thread_library: Hyper Thread Library (HTL)；鲲鹏系统库中的轻量级线程库。
+  kunpeng_data_processing_and_acceleration_kit: Kunpeng Data Processing & Acceleration Kit (DPAK)；鲲鹏DPU及SmartNIC生态数据处理加速套件。
+  data_acceleration_kit: Data Acceleration Kit (DA Kit)；鲲鹏部件及计算模组生态的数据加速套件。
+  # HPCKit组件全称以官方安装输出为依据，不从Ku*缩写猜测。
+  # https://www.hikunpeng.com/document/detail/en/kunpenghpcs/hpckit/instg/KunpengHPCKit_install_020.html
+  kunpeng_hyper_io_middleware: Kunpeng Hyper IO Middleware (HIO)；鲲鹏HPCKit科学数据IO中间件。
+  kunpeng_lithography_library: Kunpeng Lithography Library (KuLitho)；鲲鹏计算光刻加速库。
+  kunpeng_unified_quantum_chromodynamics_library: Kunpeng Unified Quantum Chromodynamics Library (KuQCD)；鲲鹏量子色动力学加速库。
+  kunpeng_unified_transformer_accelerator: Kunpeng Unified Transformer Accelerator (KuTACC)；鲲鹏Transformer加速组件。
+  kunpeng_unified_reverse_time_migration: Kunpeng Unified Reverse Time Migration (KuRTM)；鲲鹏逆时偏移加速组件。
+  kunpeng_unified_deep_neural_networks: Kunpeng Unified Deep Neural Networks (KuDNN)；鲲鹏深度神经网络加速组件。
+  kunpeng_quick_malloc: Kunpeng Quick Malloc (KQMalloc)；鲲鹏软件生态中的内存分配库。
+  homogeneous_acceleration_framework: Homogeneous Acceleration Framework (HAF)；鲲鹏软件生态中的同构加速框架。
+  heterogeneous_communication_acceleration_library: Heterogeneous Communication Acceleration Library (HCAL)；UB Service Core架构参考设计2.0中的异构通信加速库。
+  hyper_communication_library: Hyper Communication Library (HCOM)；UB Service Core架构参考设计2.0中的通信库；不自动归一为其他文档中的HCOMM。
+  virtual_kunpeng_accelerator_engine: virtual Kunpeng Accelerator Engine (vKAE)；鲲鹏虚拟化加速方案；virtual保留官方名称写法。
+scope:
+  implementation: Implementation behavior and constraints
+  usage: Interface usage and integration
+  diagnostics: Failure investigation
+  design: Requirements, alternatives, architecture and design constraints
+  validation: Tests, experiments, benchmarks and acceptance criteria
+  operations: Deployment, monitoring, recovery and service operation
+  governance: Engineering rules, decisions, responsibilities and maintenance policy
+platforms:
+  agnostic: Hardware independent within the stated conditions
+  cpu: CPU execution within the stated conditions
+  gpu: GPU execution within the stated conditions
+  npu: Neural processing unit execution within the stated conditions
+tags:
+  # 读者任务：至少一个 task.*，可以选择多个；任务不是页面类型。
+  task.lookup: Find a definition or contract
+  task.design: Select a design
+  task.implementation: Implement behavior
+  task.debugging: Investigate a failure
+  task.optimization: Improve resource use
+  task.testing: Verify behavior
+  task.migration: Adapt between implementations
+  task.learning: Learn a concept or complete a guided learning path
+  task.operation: Operate, deploy, monitor or recover a system
+  task.evaluation: Compare evidence, methods, results and limitations
+  task.security_review: Assess security properties and mitigations
+  task.decision: Understand or document a choice and its consequences
+  # 技术主题：至少一个 topic.*；覆盖面通过分面组合扩展，不增加复合type。
+  topic.data_movement: Transfer data between locations
+  topic.alignment: Address and size alignment
+  topic.memory: Memory behavior and constraints
+  topic.compilation: Compilation and build behavior
+  topic.precision: Numerical correctness
+  topic.terminology: Technical definitions
+  topic.architecture: System structure
+  topic.algorithm: Algorithms, complexity and invariants
+  topic.data_structure: Data organization and access behavior
+  topic.api: Callable interfaces, signatures and contracts
+  topic.abi: Binary interfaces, calling conventions and layout contracts
+  topic.cli: Command-line interfaces and options
+  topic.protocol: Message formats, state transitions and communication contracts
+  topic.configuration: Configuration fields, defaults and effective scope
+  topic.data_model: Data schemas, formats and integrity constraints
+  topic.storage: Persistence, filesystems, databases and data durability
+  topic.network: Networking mechanisms and constraints
+  topic.concurrency: Synchronization, ordering, races and parallel execution
+  topic.distributed_systems: Coordination, consistency and distributed failures
+  topic.resource_lifecycle: Resource ownership, acquisition, release and state transitions
+  topic.hardware: Hardware architecture, instruction sets and device constraints
+  topic.runtime: Runtime services, scheduling and execution behavior
+  topic.build: Build systems, linking, dependencies and toolchains
+  topic.installation: Installation, environment setup and onboarding prerequisites
+  topic.deployment: Deployment, delivery, rollback and recovery
+  topic.release: Release scope, delivered artifacts and deprecation notices
+  topic.observability: Logs, metrics, traces, alerts and service objectives
+  topic.reliability: Availability, resilience, recovery and failure containment
+  topic.incident: Incident observations, timelines, analysis and follow-up
+  topic.defect: Defect symptoms, causes, reproduction and fixes
+  topic.performance: Latency, throughput, resource utilization and bottlenecks
+  topic.cost: Engineering cost, resource cost and economic trade-offs
+  topic.testing: Test methods, fixtures, coverage and validation behavior
+  topic.benchmark: Benchmark workloads, harnesses, baselines and measurements
+  topic.acceptance: Acceptance criteria, oracles and release evidence
+  topic.security: Security boundaries, weaknesses, vulnerabilities and mitigations
+  topic.supply_chain: Dependencies, artifact inventories and production provenance
+  topic.licensing: Recorded licenses, attribution and source usage constraints
+  topic.compatibility: Compatibility boundaries and behavior differences
+  topic.migration: Porting, upgrade paths and conversion requirements
+  topic.change: Changes to behavior, interfaces or implementation across revisions
+  topic.requirements: Functional requirements, quality attributes and constraints
+  topic.specification: Normative rules, standards and conformance requirements
+  topic.decision: Alternatives, decisions, rationale and consequences
+  topic.research: Research claims, methods, synthesis and reproduction status
+  topic.dataset: Dataset composition, collection, processing and intended use
+  topic.model: Model behavior, training, inference, evaluation and limitations
+  topic.agent: Agent workflows, tools, prompts, memory and evaluation
+  topic.counterexample: Counterexamples, failed attempts and limits of generalization
+  topic.process: Engineering procedures, collaboration and responsibilities
+  topic.knowledge_organization: Knowledge maps, catalogs and reference relationships
+  # 芯片机制、设计活动与工件主题；与对象标签组合，不创建对象×主题复合词。
+  topic.isa: Instruction-set semantics and architectural contracts
+  topic.microarchitecture: Processor and device internal implementation organization
+  topic.register: Hardware register definitions, access semantics and reset values
+  topic.mmio: Memory-mapped device input and output behavior
+  topic.dma: Direct memory access operations and hardware-software coordination
+  topic.interrupt: Interrupt signaling, delivery, handling and ordering
+  topic.cache_coherence: Cache coherence behavior and protocols
+  topic.memory_model: Memory ordering rules and synchronization semantics
+  topic.mmu: Processor address translation and memory protection
+  topic.iommu: Device address translation and isolation
+  topic.interconnect: On-chip and system interconnect behavior
+  topic.device_initialization: Device discovery, configuration and initialization
+  topic.firmware_loading: Firmware transfer, loading and initialization
+  topic.device_tree: Hardware descriptions and device-tree bindings
+  topic.boot: Platform and device boot sequences
+  topic.secure_boot: Authentication and trust establishment during boot
+  topic.clock: Clock generation, distribution and control
+  topic.reset: Reset generation, sequencing and state transitions
+  topic.power_management: Hardware and software control of power states
+  topic.rtl_design: Register-transfer-level design representations and behavior
+  topic.simulation: Circuit, logic and system simulation methods and results
+  topic.formal_verification: Property specification and formal verification
+  topic.clock_domain_crossing: Clock-domain crossings and synchronization
+  topic.reset_domain_crossing: Reset-domain crossings and synchronization
+  topic.dft: Design-for-test structures and test-access behavior
+  topic.synthesis: Logic synthesis and implementation mapping
+  topic.static_timing: Static timing constraints and analysis
+  topic.physical_design: Floorplanning, placement, clock-tree synthesis and routing
+  topic.ppa: Power, performance and area objectives and trade-offs
+  topic.packaging: Chip packaging and package-level integration
+  topic.silicon_test: Silicon characterization, production test and yield analysis
+  topic.signal_integrity: Signal quality and interface integrity
+  topic.power_integrity: Power-delivery quality and integrity
+  topic.thermal: Thermal behavior, limits and management
+  topic.bringup: Initial chip, board and platform enablement and diagnosis
+  topic.firmware_update: Firmware update, recovery and rollback behavior
+  topic.memory_interface: Memory-device interfaces and controller behavior
+  topic.high_speed_interface: High-speed links, protocols and interface constraints
+  topic.analog_mixed_signal: Analog and mixed-signal design and behavior
+  topic.rf: Radio-frequency circuit and system behavior
+  # 命名硬件单元、地址模型和表结构：全称主题，不作为通用对象类别或软件技术族。
+  # UB规范：https://www.unifiedbus.com/static/UB-Root-Table-Spec-1.0-en.pdf
+  topic.unified_bus.processing_unit: UB Processing Unit (UBPU)；UB Root Table规范1.0中的UB处理单元。
+  topic.unified_bus.bus_controller: UB Bus Controller (UBC)；UB Root Table规范1.0中的总线控制器。
+  topic.unified_bus.virtual_address: Unified Bus Virtual Address (UBVA)；openEuler 24.03 LTS SP3指南中的总线虚拟地址模型。
+  topic.unified_bus.root_table: UnifiedBus Root Table (UBRT)；UB Root Table规范1.0中的设备与配置描述表。
+  # 鲲鹏官方词表及2023年KAE简介中的名称，不从旧缩写推断新模块名称。
+  # https://www.hikunpeng.com/developer/techArticles/20230906-4
+  topic.kunpeng.protocol_adapter: Protocol Adapter (PA)；鲲鹏CPU语境中的片间协议适配单元。
+  topic.kunpeng.raid_dif_engine: RAID DIF Engine (RDE)；鲲鹏语境中的RAID DIF计算加速引擎。
+  topic.kunpeng.high_performance_rsa_engine: High Performance RSA Engine (HPRE)；鲲鹏旧KAE资料语境中的RSA加速模块。
+  topic.kunpeng.security_engine: Security Engine (SEC)；鲲鹏旧KAE资料语境中的安全加速模块。
+  # 以下带Kunpeng前缀的名称按KAE kae2项目README记录，不自动与旧缩写合并。
+  topic.kunpeng_security_engine: Kunpeng Security Engine (kSEC)；鲲鹏安全加速引擎。
+  topic.kunpeng_high_performance_rsa_engine: Kunpeng High Performance RSA Engine (kHPRE)；鲲鹏高性能RSA加速引擎。
+  topic.kunpeng_hardware_acceleration_compression_engine: Kunpeng Hardware Acceleration Compression Engine (kZIP)；鲲鹏硬件加速压缩引擎；不反推ZIP展开。
+  # 华为共享/相邻生态，不标记成鲲鹏专有。
+  # https://support.huaweicloud.com/resmgmt-modelarts/resmgmt-a5_0002.html
+  topic.huawei.collective_communication_unit: Collective Communication Unit (CCU)；Atlas 950资料中的集合通信硬件加速单元。
+  topic.huawei.direct_tcp_offload_engine: Direct TCP Offload Engine (DTOE)；鲲鹏官方词表中的华为网络卸载技术。
+  # 对象类别：按局部正文的核心对象选择；仅提及名称不触发标签，不推断适用平台。
+  object.chip: Chip-level hardware behavior and constraints
+  object.soc: System-on-chip integration and behavior
+  object.ip: Reusable hardware intellectual-property blocks
+  object.cpu_core: Processor-core hardware and behavior
+  object.accelerator: Hardware acceleration devices and blocks
+  object.memory_device: Memory-device hardware and behavior
+  object.storage_controller: Storage-controller hardware and behavior
+  object.network_device: Network-device hardware and behavior
+  object.fpga: Field-programmable gate-array devices and implementations
+  object.analog_device: Analog and mixed-signal devices and blocks
+  object.rf_device: Radio-frequency devices and blocks
+  object.power_device: Power-management and power-control devices and blocks
+  object.board: Board-level hardware and system integration
+  object.bsp: Board support packages and platform enablement software
+  object.bootrom: Boot ROM code and behavior
+  object.bootloader: Bootloader software and behavior
+  object.firmware: Firmware executing on a platform or device
+  object.microcode: Processor or device microcode
+  object.driver: Device-driver software and its interfaces
+  object.os: Operating-system software mechanisms and interfaces
+  object.hypervisor: Hypervisor software and virtualization interfaces
+  object.runtime: Runtime software services and behavior
+  object.compiler: Compiler and code-generation toolchains
+  object.sdk: Software development kits and integration surfaces
+  object.library: Reusable software libraries
+  object.operator: Compute-operator implementation and contracts
+  object.application: Application-level integration and behavior

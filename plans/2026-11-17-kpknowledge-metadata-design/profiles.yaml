@@ -1,0 +1,224 @@
+# 三文件契约：frontmatter.schema.json 定义字段，本文定义页面契约，registries.yaml 定义词义。
+# version 是契约结构版本；资源与解释器的具体修订由现有 governance pin.digest 绑定。
+# 执行边界：当前 contract.js 只强制执行 type、required，以及既有跨字段规则。
+# guidance 经 guidance().profiles 提供给生产者，是写作与证据指导，不是已实现的正文校验器。
+# profile 跨 code/pr/document 复用；任务、主题、来源种类不能当作 profile 的替代。
+# 平台分类不授予适用性，stable 不授予人工审核；条件、审核、权限继续走独立机制。
+# 芯片分类沿用现有frontmatter：task.*=读者任务，topic.*=机制/活动，object.*=核心对象。
+# object.*可选、多选、无主次顺序；按局部页内容选择，不静默继承父页或整本手册标签。
+# 设计说明、用户/参考/编程/寄存器手册、数据手册、勘误、测试报告等是来源资料类别。
+# 从手册提炼的机制页仍是mechanism；引用原始资料版本与条款，不添加未实现的doc_type字段。
+# 型号/stepping、固件/驱动配套与板卡修订不靠通用标签证明，继续走来源与适用性机制。
+# 现有非glossary稳定页仍要求已知platforms；非计算器件不可为过门禁而伪填agnostic。
+# 专用术语以官方全称书写；technology使用命名协议/库/框架，命名单元/地址模型用topic.*。
+# 缩写只作辅助说明，不据UB等裸缩写自动推断技术；名称登记不代替来源版本或适用性验证。
+# 不创建driver、手册或厂商组件profile；有歧义的官方展开按原始文档上下文保留。
+version: kpbot.governance/v1
+profiles:
+  concept:
+    type: Concept
+    required: [platforms]
+    guidance:
+      purpose: 解释概念、原理、理论模型及适用前提。
+      chip_examples: [ISA内存模型与微架构实现的区别, MMIO与DMA的概念边界]
+      terminology_examples: [UnifiedBus互联语义, Unified Bus Virtual Address地址模型]
+      body_sections: [定义与范围, 前提与假设, 原理解释, 边界与反例, 来源]
+      evidence_requirements:
+        - 关键解释关联原生证据，区分来源定义、实现事实和作者推断。
+        - 芯片架构规范中的承诺与特定IP或实片的行为分开，不跨型号推断。
+        - UnifiedBus与Unified Buffer分别解释，不能因都缩写为UB就合并概念或证据。
+      avoid_when: 主要查询接口参数、执行操作步骤或记录一项决定。
+  api:
+    type: API
+    required: [platforms]
+    guidance:
+      purpose: 描述 API、ABI、CLI 或 SDK 的调用契约。
+      chip_examples: [驱动ioctl与固件mailbox接口, MMIO寄存器访问契约, SDK与算子调用契约]
+      terminology_examples: [Unified Remote Memory Access接口, User Space Accelerator Development Kit接口, Kunpeng Math Library接口]
+      body_sections: [接口与版本, 输入与输出, 前后置条件, 错误与限制, 示例, 来源]
+      evidence_requirements:
+        - 签名、参数和错误语义关联固定版本的定义、实现或规范。
+        - 契约陈述与测试结果分开，未执行示例不得声称验证通过。
+        - 固件ABI、寄存器位域、访问宽度、时序与错误条件关联精确接口或手册条款。
+        - 记录完整组件名称和接口版本，缩写相同不证明ABI兼容或接口等价。
+      avoid_when: 主要描述内部调用过程或完整学习路径。
+  guide:
+    type: Guide
+    required: [platforms]
+    guidance:
+      purpose: 帮助已有基础的使用者完成一项具体任务。
+      chip_examples: [板级bring-up步骤, 驱动安装与设备初始化, 芯片勘误规避操作]
+      terminology_examples: [Kunpeng Math Library配置, Kunpeng Unified Acceleration Framework集成]
+      body_sections: [目标, 前置条件, 操作步骤, 成功判据, 失败分支, 来源]
+      evidence_requirements:
+        - 命令、配置和关键步骤关联来源，明确未验证的环境或步骤。
+        - 记录芯片与板卡修订、固件和驱动环境，不从用户手册适用范围推导本机已验证。
+      avoid_when: 面向新手教学，或需要应急回滚与升级处置。
+  optimization:
+    type: Optimization
+    required: [platforms]
+    guidance:
+      purpose: 解释性能、资源或成本优化的机制、收益和代价。
+      chip_examples: [缓存与DMA性能优化, 算子访存优化, 芯片PPA权衡]
+      terminology_examples: [Kunpeng Accelerator Engine卸载优化, Kunpeng Unified Parallel Library并行优化]
+      body_sections: [问题与基线, 环境与负载, 瓶颈证据, 优化方法, 结果与代价, 适用限制, 来源]
+      evidence_requirements:
+        - 数值结论关联原始结果、基线、工具与环境，预期收益和实测收益分开。
+        - 未实测的方案标为草稿，标签或来源版本不代替适用条件。
+        - 仿真估计、实现工具报告与实片测量分开，保留约束、角点与负载条件。
+      avoid_when: 主要比较实验方法和多组结果，而不是解释一项优化。
+  runbook:
+    type: Runbook
+    required: [platforms]
+    guidance:
+      purpose: 支持运维、发布、回滚、灾备与事件处置。
+      chip_examples: [固件升级与恢复, 板卡上电检查, 驱动与设备故障处置]
+      terminology_examples: [UnifiedBus Management故障处置, virtual Kunpeng Accelerator Engine部署检查]
+      body_sections: [触发条件, 前置检查与权限, 操作步骤, 检查点, 回滚与恢复, 升级处置, 来源]
+      evidence_requirements:
+        - 关键操作、检查点与恢复路径有依据，操作说明本身不授予执行权限。
+        - 写寄存器、烧录、复位与升级步骤说明前置状态、检查点和已知恢复限制。
+      avoid_when: 主要分析根因或面向新手讲解操作原理。
+  example:
+    type: Example
+    required: [platforms]
+    guidance:
+      purpose: 用最小实例、配方或案例呈现一种做法及其限制。
+      chip_examples: [最小寄存器访问示例, 固件接口调用示例, RTL模块使用示例]
+      terminology_examples: [Unified Remote Memory Access最小调用, Hyper Thread Library线程示例]
+      body_sections: [场景与前提, 输入, 代码或操作, 预期输出, 验证状态与限制, 来源]
+      evidence_requirements:
+        - 明确示例是否实际运行，虚构输入输出不当作实测结果。
+        - 分清模拟器、FPGA原型与实片环境，不把示意地址或位域当成真实器件定义。
+      avoid_when: 主要结论来自系统实验，或需要完整任务流程。
+  glossary:
+    type: Glossary
+    required: []
+    guidance:
+      purpose: 解释术语、缩写、单位、同义词与歧义。
+      chip_examples: [芯片与SoC及IP术语, ISA与微架构术语, BSP与固件及驱动术语]
+      terminology_examples: [Kunpeng Accelerator Engine正式名称, UB Processing Unit与UB Bus Controller的区别]
+      body_sections: [术语与定义, 别名, 区别与边界, 来源]
+      evidence_requirements:
+        - 关键定义有来源，搜索别名不等于稳定身份别名或词表迁移。
+        - 全称为主名，简称附列，保留官方来源、版本与技术范围；全称内含缩写时不自行逐层扩写。
+        - HCCS、UMMU、UMDK、URPC等存在不同官方展开时按文档上下文说明，不猜测统一全称。
+      avoid_when: 需要长篇机制解释或结构化接口契约。
+  interoperability:
+    type: Interoperability
+    required: [platforms, source_technology, target_technology]
+    guidance:
+      purpose: 解释不同技术之间的兼容、移植、迁移和行为映射。
+      chip_examples: [HDL或编程技术间的接口迁移, 跨技术软硬件接口映射]
+      terminology_examples: [UnifiedBus与UB over Ethernet接口映射, 不同命名通信技术间的迁移]
+      body_sections: [源与目标, 行为差异, 映射与迁移步骤, 验证方法, 回退, 适用限制, 来源]
+      evidence_requirements:
+        - 源和目标必须是不同的已登记技术，兼容性结论绑定各自依据与条件。
+        - 不以芯片型号或版本冒充source_technology与target_technology，同技术版本变更可用change描述。
+        - 驱动与固件配套、板卡与芯片修订等组合条件单独保留，不能由迁移标签推出兼容。
+      avoid_when: 只列一项技术的接口，或只描述补丁前后的变更。
+  architecture:
+    type: Architecture
+    required: [platforms]
+    guidance:
+      purpose: 描述系统边界、组件职责、依赖、部署与关键关系。
+      chip_examples: [SoC与IP互连架构, 芯片与板级集成, 驱动与固件及运行时架构]
+      terminology_examples: [UnifiedBus互联与通信组件架构, Kunpeng Accelerator Engine软硬件边界]
+      body_sections: [范围与版本, 组件与职责, 关系与数据流, 约束与质量属性, 现状与设计边界, 来源]
+      evidence_requirements:
+        - 组件和关系关联固定来源，当前实现与目标设计明确区分。
+        - 区分ISA、微架构、RTL设计、物理实现和板级系统，设计说明不自动证明实物实现。
+      avoid_when: 主要解释细粒度执行链，或记录为何选择某项架构。
+  mechanism:
+    type: Mechanism
+    required: [platforms]
+    guidance:
+      purpose: 解释算法、数据结构、控制流、状态机或资源生命周期如何工作。
+      chip_examples: [驱动装载固件的调用链, DMA与中断时序, 复位与启动状态机, RTL跨时钟域机制]
+      terminology_examples: [UB Bus Controller运行机制, Kunpeng Hardware Acceleration Compression Engine卸载机制]
+      body_sections: [入口与范围, 状态或调用过程, 不变量与前提, 失败路径与反例, 来源]
+      evidence_requirements:
+        - 因果链关联源码、规范或原生证据定位，推断与直接陈述分开。
+        - 缺少失败路径证据时明确未知，不为填章节编造结论。
+        - 寄存器、时序、状态转移与软硬件边界对应源码或手册定位，跨层页可多选object标签。
+      avoid_when: 主要列接口定义，或指导使用者执行操作。
+  reference:
+    type: Reference
+    required: [platforms]
+    guidance:
+      purpose: 提供数据、协议、配置、规范、需求或工程资产的结构化查阅资料。
+      chip_examples: [寄存器与位域参考, 芯片接口与电气约束, 用户手册中的参数与配置条目]
+      terminology_examples: [UnifiedBus Root Table字段, Kunpeng Math Library接口参考]
+      body_sections: [对象与版本, 条目与结构, 约束与默认值, 兼容与限制, 相关资源, 来源]
+      evidence_requirements:
+        - 规范要求和观察事实分开，优先引用原生 schema、协议、清单或制品。
+        - 数据集与模型资料保留来源、用途与局限，不能只保留一个性能分数。
+        - 数据手册、参考手册、寄存器手册与用户手册保留原版本和章节，不把来源类别当页面profile。
+        - 组件全称和简称关联官方材料；官方产品名没有独立展开时保留原名，不自造英文名称。
+      avoid_when: 主要解释运行因果、教学或实验结果。
+  tutorial:
+    type: Tutorial
+    required: [platforms]
+    guidance:
+      purpose: 引导新手通过一条完整路径获得知识和操作经验。
+      chip_examples: [开发板入门与首次运行, SDK与算子入门, RTL仿真入门]
+      terminology_examples: [Kunpeng Math Library入门, User Space Accelerator Development Kit入门]
+      body_sections: [学习目标, 起点与环境, 引导步骤, 阶段检查, 完成结果, 后续学习, 来源]
+      evidence_requirements:
+        - 明确演示路径的前提和验证状态，区分教学输出与实际执行记录。
+        - 指明开发板、芯片与工具环境，模拟环境的成功不等于实片操作成功。
+      avoid_when: 使用者已有基础，只需完成一项日常任务。
+  troubleshooting:
+    type: Troubleshooting
+    required: [platforms]
+    guidance:
+      purpose: 整理缺陷、故障诊断、事故复盘、失败模式与负面经验。
+      chip_examples: [芯片勘误及软件规避, 固件与驱动版本不匹配, 板级上电与时钟故障]
+      terminology_examples: [Unified Remote Memory Access建链故障, Kunpeng Accelerator Engine卸载失败]
+      body_sections: [症状与影响, 环境与复现, 鉴别过程, 根因与推断, 修复或规避, 验证与预防, 来源]
+      evidence_requirements:
+        - 观察、根因推断、修复效果分别绑定证据，无法复现或未验证需明确说明。
+        - 保留失败尝试与反例，不将单次经验直接推广为普遍规律。
+        - 勘误记录受影响型号或stepping、触发条件与规避依据，区分芯片缺陷、驱动缺陷和配置问题。
+      avoid_when: 主要提供应急操作清单，或解释一个正常工作机制。
+  change:
+    type: Change
+    required: [platforms]
+    guidance:
+      purpose: 解释 PR、补丁、提交、发布与废弃带来的行为变化。
+      chip_examples: [驱动补丁与固件ABI变更, RTL设计修订, 芯片勘误或发布说明中的行为变化]
+      terminology_examples: [Kunpeng Accelerator Engine模块变更, Unified Remote Memory Access接口变更]
+      body_sections: [背景与范围, 变更前后, 机制变化, 影响与兼容性, 验证状态, 来源]
+      evidence_requirements:
+        - PR或补丁保留原生 base、head、diff 与元数据依据，作者说法和实现变化分开。
+        - 合入、测试通过、进入发行包和上线是不同事实，不能互相推断。
+        - 芯片设计修订、实片stepping、固件与驱动发行版本是不同对象的变化，逐项绑定证据。
+        - 名称表述差异不自动解释为产品改名或协议升级，改名关系需独立来源支持。
+      avoid_when: 主要描述当前实现全貌，或记录尚待裁决的方案。
+  decision:
+    type: Decision
+    required: [platforms]
+    guidance:
+      purpose: 保留 ADR、RFC、需求取舍、会议决定及其理由与后果。
+      chip_examples: [芯片PPA方案选择, IP集成取舍, 软硬件职责划分, 寄存器接口设计决定]
+      terminology_examples: [选用Kunpeng Unified Parallel Library的取舍, 选用UnifiedBus通信技术的取舍]
+      body_sections: [问题与约束, 候选方案, 决策与状态, 理由与后果, 替代关系与待决项, 来源]
+      evidence_requirements:
+        - 决策状态放在正文，区分提议、已接受、被否决和被替代，不混入页面status。
+        - 决策和决定者来自已登记材料，讨论记录不自动等于已批准决定。
+        - 保留设计约束、被否决方案与预期后果，不把已接受设计等同于已实现或实片验证。
+      avoid_when: 主要描述当前事实，或只提供没有取舍的流程步骤。
+  evaluation:
+    type: Evaluation
+    required: [platforms]
+    guidance:
+      purpose: 组织测试、基准、研究、模型或数据评估的方法与结果。
+      chip_examples: [RTL仿真与形式验证, DFT与芯片测试, FPGA原型与实片测试, 时序与PPA评估]
+      terminology_examples: [Hyper Message Passing Interface性能评估, Kunpeng Math Library数值与性能评估]
+      body_sections: [问题与假设, 方法与数据, 环境与版本, 基线与指标, 结果或计划, 局限与反例, 来源]
+      evidence_requirements:
+        - 结果关联原始制品、指标定义和环境，来源转述与独立复现分开。
+        - 无结果的实验计划保持草稿，测试通过不自动证明所有语义主张正确。
+        - 分开记录仿真、形式验证、FPGA原型、实现工具分析和实片测量，注明约束与环境。
+        - 用完整组件名称、实际版本与环境标识评估对象，不把同缩写结果自动汇总为同一产品。
+      avoid_when: 主要解释单项优化机制，或只描述模型与数据结构。
